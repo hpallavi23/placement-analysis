@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NXTSTEP — Your next move, mapped.</title>
+<style>
+/* ============================================================
+   NXTSTEP DESIGN SYSTEM
+   Premium career-tech SaaS aesthetic.
+   Existing blue/teal palette is preserved; mint is used as a
+   subtle brand accent in the logo, active navigation, and key
+   progress indicators.
+   ============================================================ */
+:root{
+  --navy-900:#0b1f33;
+  --navy-800:#102c47;
+  --blue-900:#0b3d63;
+  --blue-700:#12557f;
+  --blue-600:#166a99;
+  --teal-600:#0f8b8d;
+  --teal-500:#12a19a;
+  --mint-400:#2fd8c2;
+  --mint-300:#63e6d4;
+  --mint-100:#e3f6f5;
+  --blue-50:#eaf3fa;
+  --white:#ffffff;
+  --slate-900:#17222b;
+  --slate-700:#3d4c59;
+  --slate-500:#63717d;
+  --slate-200:#dde5ea;
+  --slate-100:#f2f6f8;
+  --green-600:#188554;
+  --green-100:#e3f6ec;
+  --amber-700:#9a6200;
+  --amber-100:#fff2d6;
+  --red-700:#a43232;
+  --red-100:#fdeaea;
+  --shadow:0 10px 25px rgba(11,61,99,.10);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  background:var(--slate-100);
+  color:var(--slate-900);
+  line-height:1.5;
+}
+button{font:inherit;cursor:pointer}
+a{color:var(--blue-600)}
+.hidden{display:none !important}
+
+/* Layout */
+.app{display:flex;min-height:100vh}
+.sidebar{
+  width:280px;flex-shrink:0;
+  background:linear-gradient(180deg,var(--navy-900),var(--blue-700));
+  color:#fff;padding:24px 18px;
+  position:sticky;top:0;height:100vh;
+}
+
+/* NXTSTEP text-based logo: no external image or icon library. */
+.brand{
+  display:flex;gap:12px;align-items:center;margin-bottom:10px;
+}
+.logo-lockup{
+  display:flex;align-items:center;gap:10px;min-width:0;
+}
+.logo-mark{
+  width:40px;height:40px;flex-shrink:0;border-radius:12px;
+  background:linear-gradient(135deg,var(--mint-400),var(--teal-500));
+  display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(47,216,194,.28);
+}
+.logo-mark svg{display:block}
+.wordmark{
+  display:flex;align-items:baseline;gap:2px;
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;
+  font-weight:800;letter-spacing:-.4px;line-height:1;
+  color:#fff;white-space:nowrap;
+}
+.wordmark .nxt{color:var(--mint-300)}
+.wordmark .step{color:#fff}
+.wordmark .arrow{
+  display:inline-block;margin-left:5px;transform:translateY(1px);
+}
+.tagline{
+  margin:8px 0 0 50px;
+  font-size:12px;color:#a9cadb;font-weight:600;letter-spacing:.2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+.nav{display:flex;flex-direction:column;gap:7px;margin-top:24px}
+.nav button{
+  width:100%;text-align:left;border:0;background:transparent;color:#d7e8f2;
+  padding:12px 14px;border-radius:10px;display:flex;gap:11px;align-items:center;
+  transition:.18s;font-weight:600;
+}
+.nav button:hover{background:rgba(255,255,255,.10);color:#fff}
+.nav button.active{
+  background:linear-gradient(90deg,var(--teal-500),var(--mint-400));
+  color:#04222b;box-shadow:0 6px 16px rgba(47,216,194,.24);
+}
+.nav-icon{width:20px;text-align:center}
+.sidebar-note{
+  margin-top:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);
+  padding:12px;border-radius:12px;font-size:11.5px;color:#cfe2ed;
+}
+.main{flex:1;min-width:0}
+.topbar{
+  background:var(--white);border-bottom:1px solid var(--slate-200);
+  padding:16px 28px;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  position:sticky;top:0;z-index:10;
+}
+.topbar-brand{
+  display:flex;align-items:center;gap:10px;min-width:0;
+}
+.topbar-logo{
+  width:30px;height:30px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--mint-400),var(--teal-500));
+  display:grid;place-items:center;
+}
+.topbar-logo svg{display:block}
+.topbar-wordmark{
+  font-weight:800;font-size:16px;letter-spacing:-.3px;color:var(--navy-900);
+  white-space:nowrap;
+}
+.topbar-wordmark .nxt{color:var(--teal-600)}
+.topbar-wordmark .arrow{display:inline-block;margin-left:3px;transform:translateY(1px)}
+.topbar-text{min-width:0}
+.topbar h2{margin:0;font-size:20px;color:var(--blue-900)}
+.topbar p{margin:2px 0 0;font-size:13px;color:var(--slate-500)}
+.top-actions{display:flex;gap:10px;flex-wrap:wrap}
+.content{padding:26px 28px 48px;max-width:1250px;margin:0 auto}
+
+/* Components */
+.card{
+  background:var(--white);border:1px solid var(--slate-200);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:20px;
+}
+.card h3{margin:0 0 6px;color:var(--blue-900);font-size:18px}
+.card-sub{margin:0 0 18px;color:var(--slate-500);font-size:13.5px}
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.metric{
+  background:linear-gradient(135deg,var(--blue-50),var(--mint-100));
+  border:1px solid #d3e7ef;border-radius:12px;padding:16px;
+}
+.metric .label{font-size:12px;font-weight:700;color:var(--blue-700);text-transform:uppercase;letter-spacing:.4px}
+.metric .value{font-size:28px;font-weight:800;color:var(--blue-900);margin-top:5px}
+.metric .hint{font-size:12px;color:var(--slate-500);margin-top:3px}
+label{display:block;font-size:13px;font-weight:700;color:var(--slate-700);margin-bottom:6px}
+input,select,textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--slate-200);border-radius:9px;
+  background:#fff;font:inherit;color:var(--slate-900);
+}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(47,216,194,.24);border-color:var(--teal-500)}
+.field{margin-bottom:14px}
+.field-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.btn{
+  border:0;border-radius:10px;padding:11px 18px;font-weight:700;
+  background:linear-gradient(90deg,var(--teal-500),var(--mint-400));
+  color:#04222b;transition:.18s;
+}
+.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+.btn.secondary{background:var(--white);color:var(--blue-700);border:1px solid var(--slate-200)}
+.btn.secondary:hover{background:var(--blue-50)}
+.btn.ghost{background:transparent;color:var(--blue-600);border:1px solid #bcd7e6}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.progress{height:10px;background:#e4edf2;border-radius:999px;overflow:hidden}
+.progress > div{height:100%;background:linear-gradient(90deg,var(--teal-500),var(--mint-400));transition:width .35s}
+.score-ring{
+  width:170px;height:170px;border-radius:50%;margin:auto;display:grid;place-items:center;
+  background:conic-gradient(var(--teal-500) calc(var(--pct) * 1%),#e2ecf1 0);
+}
+.score-ring-inner{
+  width:132px;height:132px;background:#fff;border-radius:50%;display:grid;place-items:center;text-align:center;
+}
+.score-ring-inner strong{font-size:38px;color:var(--blue-900);display:block;line-height:1}
+.score-ring-inner small{color:var(--slate-500);font-weight:600}
+.tag{
+  display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 10px;
+  font-size:12px;font-weight:700;margin:3px 5px 3px 0;
+}
+.tag.good{background:var(--green-100);color:var(--green-600)}
+.tag.warn{background:var(--amber-100);color:var(--amber-700)}
+.tag.bad{background:var(--red-100);color:var(--red-700)}
+.tag.info{background:var(--blue-50);color:var(--blue-700)}
+.tag.teal{background:var(--mint-100);color:var(--teal-600)}
+.empty{
+  border:2px dashed #c6d8e2;border-radius:12px;padding:28px;text-align:center;color:var(--slate-500);background:#fbfdfe;
+}
+.notice{
+  border-left:5px solid var(--teal-500);background:var(--mint-100);
+  padding:13px 16px;border-radius:10px;font-size:13px;color:#084f4f;
+}
+.notice.blue{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-900)}
+ul.clean{margin:8px 0 0;padding-left:20px}
+ul.clean li{margin-bottom:7px}
+.roadmap-step{
+  border:1px solid var(--slate-200);border-left:5px solid var(--teal-500);
+  border-radius:10px;padding:14px 16px;margin-bottom:12px;background:#fbfdfe;
+}
+.roadmap-step h4{margin:0 0 5px;color:var(--blue-900)}
+.roadmap-step p{margin:0;font-size:13.5px;color:var(--slate-700)}
+.opp{
+  border:1px solid var(--slate-200);border-radius:12px;padding:17px;margin-bottom:14px;background:#fff;
+}
+.opp-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.match-pill{
+  min-width:78px;text-align:center;background:var(--mint-100);color:var(--teal-600);
+  border-radius:10px;padding:8px 10px;font-weight:800;
+}
+.opp h4{margin:0;color:var(--blue-900);font-size:16.5px}
+.opp p{margin:4px 0 0;font-size:13.5px;color:var(--slate-700)}
+.opp-actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.detail{
+  margin-top:14px;border-top:1px solid var(--slate-200);padding-top:14px;
+}
+.detail h4{margin:0 0 8px;color:var(--blue-900)}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.detail-block{
+  border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:#fbfdfe;
+}
+.detail-block h5{margin:0 0 7px;font-size:13px;color:var(--blue-900)}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+.filter-btn{
+  border:1px solid var(--slate-200);background:#fff;color:var(--slate-700);
+  padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px;
+}
+.filter-btn.active{background:var(--blue-700);border-color:var(--blue-700);color:#fff}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px}
+.skill-item{border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:#fbfdfe}
+.skill-item .skill-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--slate-700)}
+.skill-item output{color:var(--teal-600);font-weight:800}
+input[type=range]{accent-color:var(--teal-500);margin-top:8px}
+footer{
+  padding:18px 28px;color:var(--slate-500);font-size:12.5px;text-align:center;
+  border-top:1px solid var(--slate-200);background:#fff;
+}
+.footer-brand{
+  font-weight:800;color:var(--navy-900);letter-spacing:-.3px;
+}
+.footer-brand .nxt{color:var(--teal-600)}
+
+@media(max-width:1000px){
+  .app{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;padding:18px}
+  .brand{margin-bottom:6px}
+  .tagline{margin-left:50px}
+  .nav{flex-direction:row;overflow-x:auto;margin-top:16px}
+  .nav button{white-space:nowrap}
+  .sidebar-note{display:none}
+  .grid-2,.grid-3,.grid-4,.field-row,.detail-grid{grid-template-columns:1fr}
+  .content{padding:20px 16px 40px}
+  .topbar{padding:14px 16px}
+  .topbar-brand{display:none}
+}
+@media(max-width:420px){
+  .wordmark{font-size:20px}
+  .tagline{font-size:11px;margin-left:50px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <!-- NXTSTEP logo: CSS/inline-SVG text lockup, no external assets. -->
+    <div class="brand">
+      <div class="logo-lockup">
+        <div class="logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 18L18 6" stroke="#04222b" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M9.5 6H18V14.5" stroke="#04222b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="wordmark" aria-label="NXTSTEP">
+          <span class="nxt">NXT</span><span class="step">STEP</span>
+          <span class="arrow" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7" stroke="#63e6d4" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M10 7H17V14" stroke="#63e6d4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="tagline">Your next move, mapped.</p>
+
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-view="dashboard"><span class="nav-icon">📊</span> Dashboard</button>
+      <button data-view="skills"><span class="nav-icon">🧠</span> Skill Analysis</button>
+      <button data-view="roadmap"><span class="nav-icon">🗓️</span> Learning Roadmap</button>
+      <button data-view="opportunities"><span class="nav-icon">🎯</span> Opportunities</button>
+    </nav>
+    <div class="sidebar-note">
+      <strong>Prototype notice:</strong> This demo uses deterministic, explainable rules and fictional sample data. It does not use a trained ML model, live job API, database, authentication, or cloud storage.
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-text">
+        <div class="topbar-brand">
+          <div class="topbar-logo" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 18L18 6" stroke="#04222b" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M9.5 6H18V14.5" stroke="#04222b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="topbar-wordmark" aria-label="NXTSTEP">
+            <span class="nxt">NXT</span><span>STEP</span>
+            <span class="arrow" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7" stroke="#12a19a" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M10 7H17V14" stroke="#12a19a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <h2 id="viewTitle">Student Dashboard</h2>
+        <p id="viewSubtitle">Personalized placement-readiness overview for the sample student profile.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn secondary" id="resetBtn">Reset Demo Data</button>
+        <button class="btn" id="assessBtn">Assess My Readiness</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- ============ DASHBOARD ============ -->
+      <section id="view-dashboard">
+        <div class="notice">
+          <strong>How this estimate works:</strong> The readiness score is calculated in the browser from your selected target role, skill levels, and project experience using transparent weighted rules. It is a <strong>prototype estimate</strong>, not a validated prediction of placement success.
+        </div>
+
+        <div class="grid grid-4" style="margin-top:20px">
+          <div class="metric">
+            <div class="label">Readiness Score</div>
+            <div class="value" id="dashScore">—</div>
+            <div class="hint">Out of 100, role-weighted</div>
+          </div>
+          <div class="metric">
+            <div class="label">Target Role</div>
+            <div class="value" id="dashRole" style="font-size:22px">—</div>
+            <div class="hint">Used for skill weighting</div>
+          </div>
+          <div class="metric">
+            <div class="label">Strong Skills</div>
+            <div class="value" id="dashStrengths">—</div>
+            <div class="hint">Skill level 4 or 5</div>
+          </div>
+          <div class="metric">
+            <div class="label">Priority Gaps</div>
+            <div class="value" id="dashGaps">—</div>
+            <div class="hint">Skills needing attention</div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:20px">
+          <div class="card">
+            <h3>Readiness Progress</h3>
+            <p class="card-sub">Current score against the prototype readiness benchmark.</p>
+            <div class="progress"><div id="dashProgress" style="width:0%"></div></div>
+            <p style="font-size:13px;color:var(--slate-500);margin-top:10px" id="dashProgressText">Run an assessment to view progress.</p>
+            <div class="grid grid-2" style="margin-top:16px">
+              <div class="metric"><div class="label">Technical Score</div><div class="value" id="dashTechnical">—</div><div class="hint">Core technical skills</div></div>
+              <div class="metric"><div class="label">Applied Score</div><div class="value" id="dashApplied">—</div><div class="hint">Projects and Git</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Student Profile</h3>
+            <p class="card-sub">Edit these details in Skill Analysis, then reassess.</p>
+            <div id="dashProfile" class="empty">Profile will appear after assessment.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <div>
+              <h3>Top Opportunity Matches</h3>
+              <p class="card-sub">Preview of the highest-scoring sample opportunities for the current profile.</p>
+            </div>
+            <button class="btn ghost" data-goto="opportunities">View all opportunities</button>
+          </div>
+          <div id="dashTopOpportunities" class="empty">Assess readiness to calculate opportunity matches.</div>
+        </div>
+      </section>
+
+      <!-- ============ SKILL ANALYSIS ============ -->
+      <section id="view-skills" class="hidden">
+        <div class="card">
+          <h3>Student Profile</h3>
+          <p class="card-sub">Update the sample student details. All data remains in this browser tab only.</p>
+          <div class="field-row">
+            <div class="field"><label for="studentName">Student name</label><input id="studentName" type="text" /></div>
+            <div class="field"><label for="studentCollege">College / branch</label><input id="studentCollege" type="text" /></div>
+            <div class="field"><label for="targetRole">Target placement role</label>
+              <select id="targetRole">
+                <option value="Software Developer">Software Developer</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="cgpa">CGPA (0–10)</label><input id="cgpa" type="number" min="0" max="10" step="0.01" /></div>
+            <div class="field"><label for="projectsCount">Completed projects</label><input id="projectsCount" type="number" min="0" max="20" step="1" /></div>
+            <div class="field"><label for="projectQuality">Best project quality</label>
+              <select id="projectQuality">
+                <option value="1">Basic / tutorial-level</option>
+                <option value="2">Course project with limited features</option>
+                <option value="3">Functional project with database or API</option>
+                <option value="4">Deployed / well-documented full-stack project</option>
+                <option value="5">Strong portfolio project with testing and documentation</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="projectSummary">Project experience summary</label>
+            <textarea id="projectSummary" rows="3" placeholder="Briefly describe your strongest project, technologies used, and your contribution."></textarea>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Skill Levels</h3>
+          <p class="card-sub">Use 1 = beginner, 2 = basic, 3 = intermediate, 4 = advanced, 5 = strong/interview-ready.</p>
+          <div class="skill-grid" id="skillInputs"></div>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" id="assessBtn2">Assess My Readiness</button>
+            <button class="btn secondary" id="resetSkillsBtn">Reset Skills to Sample</button>
+          </div>
+        </div>
+
+        <div class="card hidden" id="analysisResult">
+          <div class="grid grid-2">
+            <div>
+              <h3>Readiness Result</h3>
+              <p class="card-sub" id="analysisMeta"></p>
+              <div class="score-ring" id="scoreRing" style="--pct:0">
+                <div class="score-ring-inner">
+                  <div><strong id="finalScore">0</strong><small>/ 100</small></div>
+                </div>
+              </div>
+              <p style="text-align:center;font-weight:700;color:var(--blue-900)" id="readinessBand"></p>
+            </div>
+            <div>
+              <h3>Score Breakdown</h3>
+              <p class="card-sub">Each component is calculated from visible rules.</p>
+              <div id="scoreBreakdown"></div>
+            </div>
+          </div>
+
+          <div class="grid grid-2" style="margin-top:18px">
+            <div class="card" style="margin:0">
+              <h3>Strengths</h3>
+              <div id="strengthsBox" class="empty">No assessment yet.</div>
+            </div>
+            <div class="card" style="margin:0">
+              <h3>Missing / Weak Skills</h3>
+              <div id="gapsBox" class="empty">No assessment yet.</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin:18px 0 0">
+            <h3>Prioritized Skill Gaps</h3>
+            <p class="card-sub">Gaps are ranked by importance to the selected target role and current skill level.</p>
+            <div id="priorityGaps" class="empty">No assessment yet.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ROADMAP ============ -->
+      <section id="view-roadmap" class="hidden">
+        <div class="notice blue">
+          The four-week roadmap is generated from the latest assessment and prioritizes the highest-impact skill gaps for your selected role. It is a study plan, not a guarantee of placement outcomes.
+        </div>
+        <div class="card" id="roadmapCard">
+          <h3>Personalized Four-Week Improvement Roadmap</h3>
+          <p class="card-sub" id="roadmapMeta">Run an assessment first to generate your roadmap.</p>
+          <div id="roadmapContent" class="empty">No roadmap available yet. Open <strong>Skill Analysis</strong> and click <strong>Assess My Readiness</strong>.</div>
+        </div>
+      </section>
+
+      <!-- ============ OPPORTUNITIES ============ -->
+      <section id="view-opportunities" class="hidden">
+        <div class="notice">
+          <strong>Sample data:</strong> These are fictional opportunities created for the project demonstration. They are not live vacancies, and no real company has verified or posted these listings.
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="section-title">
+            <div>
+              <h3>Opportunity Matching &amp; Eligibility Analysis</h3>
+              <p class="card-sub">Match scores compare your profile with each sample opportunity’s required skills and eligibility criteria.</p>
+            </div>
+            <select id="oppRoleFilter" style="max-width:260px">
+              <option value="all">All roles</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+            </select>
+          </div>
+          <div id="opportunityList" class="empty">Run an assessment to calculate eligibility and match scores.</div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <span class="footer-brand"><span class="nxt">NXT</span>STEP</span> — Your next move, mapped. Browser-based prototype using deterministic rules and sample data.
+    </footer>
+  </main>
+</div>
+
+<script>
+/* ==========================================================================
+   NXTSTEP — AI-Based Personalized Placement Readiness &
+   Opportunity Analysis System
+   Prototype version — plain HTML, CSS and vanilla JavaScript.
+
+   Branding-only update:
+   - NXTSTEP wordmark and tagline added.
+   - Custom CSS/inline-SVG forward-motion logo added.
+   - Mint accent introduced subtly.
+   - No calculation, opportunity, matching, filter, or interaction logic changed.
+
+   Honesty note:
+   - No machine-learning model is trained or used.
+   - No backend, database, authentication, cloud storage, or live job API.
+   - All calculations are deterministic, explainable rules.
+   - Opportunities are fictional sample records for demonstration only.
+   ========================================================================== */
+
+"use strict";
+
+/* --------------------------------------------------------------------------
+   1. CONFIGURATION
+   -------------------------------------------------------------------------- */
+
+const STORAGE_KEY = "placement-readiness-prototype-v1";
+
+const SKILLS = [
+  "Python", "Java", "DSA", "OOP", "DBMS", "SQL",
+  "HTML", "CSS", "JavaScript", "Git"
+];
+
+const SKILL_LABELS = {
+  Python: "Python",
+  Java: "Java",
+  DSA: "Data Structures & Algorithms",
+  OOP: "Object-Oriented Programming",
+  DBMS: "DBMS Concepts",
+  SQL: "SQL",
+  HTML: "HTML",
+  CSS: "CSS",
+  JavaScript: "JavaScript",
+  Git: "Git & Version Control"
+};
+
+const ROLE_WEIGHTS = {
+  "Software Developer": {
+    Python: 12, Java: 10, DSA: 18, OOP: 12, DBMS: 8, SQL: 8,
+    HTML: 4, CSS: 4, JavaScript: 10, Git: 6
+  },
+  "Frontend Developer": {
+    Python: 4, Java: 3, DSA: 8, OOP: 7, DBMS: 4, SQL: 4,
+    HTML: 14, CSS: 14, JavaScript: 24, Git: 8
+  },
+  "Backend Developer": {
+    Python: 14, Java: 12, DSA: 14, OOP: 12, DBMS: 12, SQL: 14,
+    HTML: 2, CSS: 2, JavaScript: 8, Git: 10
+  }
+};
+
+const SAMPLE_STUDENT = {
+  name: "Aarav Sharma",
+  college: "BTech CSE, Semester VII",
+  targetRole: "Software Developer",
+  cgpa: 8.2,
+  projectsCount: 2,
+  projectQuality: 3,
+  projectSummary: "Built a library management web app using HTML, CSS, JavaScript and MySQL. Implemented login, book issue/return and admin dashboard features.",
+  skills: {
+    Python: 4, Java: 3, DSA: 3, OOP: 4, DBMS: 3, SQL: 4,
+    HTML: 4, CSS: 3, JavaScript: 4, Git: 3
+  }
+};
+
+const SAMPLE_OPPORTUNITIES = [
+  {
+    id: "opp-1",
+    company: "NovaTech Solutions (Sample)",
+    role: "Software Developer",
+    type: "Sample campus opportunity",
+    stipend: "₹25,000/month (sample)",
+    minCgpa: 7.0,
+    minProjects: 1,
+    requiredSkills: ["Python", "DSA", "OOP", "SQL", "Git"],
+    preferredSkills: ["Java", "DBMS"],
+    description: "Fictional full-stack development role involving application features, database queries and version-controlled teamwork.",
+    scoreExplanation: "Weighted match across required technical skills, plus eligibility and project experience."
+  },
+  {
+    id: "opp-2",
+    company: "BlueWave Digital (Sample)",
+    role: "Frontend Developer",
+    type: "Sample internship",
+    stipend: "₹20,000/month (sample)",
+    minCgpa: 6.5,
+    minProjects: 1,
+    requiredSkills: ["HTML", "CSS", "JavaScript", "Git"],
+    preferredSkills: ["Python", "DSA"],
+    description: "Fictional interface-development internship focused on responsive web pages and interactive components.",
+    scoreExplanation: "Frontend skills carry the highest weight; DSA and backend knowledge are optional preferences."
+  },
+  {
+    id: "opp-3",
+    company: "CoreStack Systems (Sample)",
+    role: "Backend Developer",
+    type: "Sample internship",
+    stipend: "₹28,000/month (sample)",
+    minCgpa: 7.5,
+    minProjects: 2,
+    requiredSkills: ["Python", "SQL", "DBMS", "OOP", "Git"],
+    preferredSkills: ["Java", "DSA"],
+    description: "Fictional backend internship involving REST APIs, relational databases and server-side logic.",
+    scoreExplanation: "Strong emphasis on Python, SQL, DBMS, OOP and version control."
+  },
+  {
+    id: "opp-4",
+    company: "CloudBridge Labs (Sample)",
+    role: "Software Developer",
+    type: "Sample graduate trainee role",
+    stipend: "₹30,000/month (sample)",
+    minCgpa: 7.0,
+    minProjects: 2,
+    requiredSkills: ["Java", "DSA", "OOP", "SQL", "Git"],
+    preferredSkills: ["Python", "JavaScript"],
+    description: "Fictional graduate-trainee role for students interested in software engineering and problem solving.",
+    scoreExplanation: "Java, DSA and OOP are primary requirements; SQL and Git support the technical-fit score."
+  },
+  {
+    id: "opp-5",
+    company: "PixelForge Studio (Sample)",
+    role: "Frontend Developer",
+    type: "Sample UI engineering internship",
+    stipend: "₹18,000/month (sample)",
+    minCgpa: 6.0,
+    minProjects: 1,
+    requiredSkills: ["HTML", "CSS", "JavaScript"],
+    preferredSkills: ["Git", "Python"],
+    description: "Fictional UI engineering internship for responsive, accessible and user-friendly web interfaces.",
+    scoreExplanation: "HTML, CSS and JavaScript dominate the score; Git is a useful supporting skill."
+  },
+  {
+    id: "opp-6",
+    company: "DataNest Analytics (Sample)",
+    role: "Backend Developer",
+    type: "Sample database-focused internship",
+    stipend: "₹22,000/month (sample)",
+    minCgpa: 7.0,
+    minProjects: 1,
+    requiredSkills: ["SQL", "DBMS", "Python", "Git"],
+    preferredSkills: ["DSA", "OOP"],
+    description: "Fictional data-backend internship involving SQL queries, database design and Python-based automation.",
+    scoreExplanation: "Database and Python skills are weighted most heavily."
+  }
+];
+
+/* --------------------------------------------------------------------------
+   2. STATE
+   -------------------------------------------------------------------------- */
+
+let student = structuredClone(SAMPLE_STUDENT);
+let lastAssessment = null;
+
+/* --------------------------------------------------------------------------
+   3. UTILITIES
+   -------------------------------------------------------------------------- */
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function round1(value) {
+  return Math.round(value * 10) / 10;
+}
+
+function getEl(id) {
+  return document.getElementById(id);
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ student, lastAssessment }));
+  } catch (err) {
+    /* localStorage may be unavailable in restricted browser contexts. */
+  }
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.student) {
+      student = Object.assign(structuredClone(SAMPLE_STUDENT), parsed.student);
+      student.skills = Object.assign(structuredClone(SAMPLE_STUDENT.skills), parsed.student.skills || {});
+    }
+    if (parsed && parsed.lastAssessment) lastAssessment = parsed.lastAssessment;
+  } catch (err) {
+    /* Ignore malformed saved data. */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. READINESS ENGINE
+   -------------------------------------------------------------------------- */
+
+function calculateReadiness(profile) {
+  const role = profile.targetRole;
+  const weights = ROLE_WEIGHTS[role];
+
+  let weightedSkillTotal = 0;
+  let weightTotal = 0;
+
+  const skillDetails = SKILLS.map(skill => {
+    const level = clamp(Number(profile.skills[skill]) || 1, 1, 5);
+    const weight = weights[skill];
+    weightedSkillTotal += level * weight;
+    weightTotal += weight;
+    return { skill, level, weight, contribution: round1((level * weight) / 5) };
+  });
+
+  const technicalScore = round1(weightedSkillTotal / weightTotal * 20);
+
+  const projects = clamp(Number(profile.projectsCount) || 0, 0, 20);
+  const quality = clamp(Number(profile.projectQuality) || 1, 1, 5);
+
+  const projectCountScore = clamp(projects / 3, 0, 1) * 60;
+  const projectQualityScore = ((quality - 1) / 4) * 40;
+  const projectScore = round1(projectCountScore + projectQualityScore);
+
+  const cgpa = clamp(Number(profile.cgpa) || 0, 0, 10);
+  const academicScore = round1((cgpa / 10) * 100);
+
+  const finalScore = Math.round(technicalScore * 0.75 + projectScore * 0.20 + academicScore * 0.05);
+
+  return {
+    finalScore,
+    technicalScore,
+    projectScore,
+    academicScore,
+    skillDetails,
+    role,
+    projects,
+    quality,
+    cgpa
+  };
+}
+
+function getReadinessBand(score) {
+  if (score >= 80) return { label: "Strong readiness", className: "good" };
+  if (score >= 65) return { label: "Good readiness", className: "good" };
+  if (score >= 50) return { label: "Developing readiness", className: "warn" };
+  return { label: "Early-stage readiness", className: "bad" };
+}
+
+function identifyStrengthsAndGaps(assessment) {
+  const role = assessment.role;
+  const weights = ROLE_WEIGHTS[role];
+  const strengths = [];
+  const gaps = [];
+
+  assessment.skillDetails.forEach(item => {
+    const importance = weights[item.skill];
+    if (item.level >= 4) strengths.push(item.skill);
+    if (item.level <= 3 && importance >= 6) {
+      gaps.push({
+        skill: item.skill,
+        level: item.level,
+        importance,
+        priority: importance * (5 - item.level),
+        reason: `${SKILL_LABELS[item.skill]} is important for ${role}, but the current level is ${item.level}/5.`
+      });
+    }
+  });
+
+  gaps.sort((a, b) => b.priority - a.priority || b.importance - a.importance);
+  return { strengths, gaps };
+}
+
+function buildRoadmap(assessment, gaps) {
+  const weeks = [
+    { week: "Week 1", focus: "Strengthen the highest-priority fundamentals", actions: [], outcome: "Build confidence in the most important weak area and complete a small practical exercise." },
+    { week: "Week 2", focus: "Apply skills through a focused mini-project", actions: [], outcome: "Create a small, working project feature that demonstrates the improved skill." },
+    { week: "Week 3", focus: "Practice interview-oriented problem solving", actions: [], outcome: "Improve ability to explain technical decisions and solve common problems." },
+    { week: "Week 4", focus: "Polish portfolio, documentation and mock interview readiness", actions: [], outcome: "Present at least one clear project story and complete a self-review checklist." }
+  ];
+
+  const topSkills = gaps.slice(0, 4).map(g => g.skill);
+  if (topSkills.length === 0) topSkills.push("DSA", "Git");
+
+  weeks[0].actions = [
+    `Revise ${SKILL_LABELS[topSkills[0]]} fundamentals for 45–60 minutes daily.`,
+    `Solve or build 3 small practice tasks related to ${SKILL_LABELS[topSkills[0]]}.`,
+    topSkills[1] ? `Spend 2–3 sessions improving ${SKILL_LABELS[topSkills[1]]}.` : "Review previous coursework notes and identify one improvement area."
+  ];
+
+  weeks[1].actions = [
+    `Build a small feature or mini-project using ${SKILL_LABELS[topSkills[0]]}.`,
+    topSkills[1] ? `Use ${SKILL_LABELS[topSkills[1]]} in the same project where relevant.` : "Document the feature and add it to your portfolio.",
+    "Commit work to Git with meaningful commit messages."
+  ];
+
+  weeks[2].actions = [
+    "Practice 10–15 beginner-to-intermediate technical questions.",
+    `Prepare concise explanations for ${SKILL_LABELS[topSkills[0]]} concepts.`,
+    "Do one 30-minute mock technical discussion with a teammate."
+  ];
+
+  weeks[3].actions = [
+    "Update your resume project section with measurable contributions.",
+    "Prepare a 2-minute explanation of your strongest project.",
+    "Review common HR and technical interview questions for your target role."
+  ];
+
+  return {
+    weeks,
+    focusSkills: topSkills,
+    targetRole: assessment.role,
+    generatedFor: assessment.finalScore
+  };
+}
+
+/* --------------------------------------------------------------------------
+   5. OPPORTUNITY MATCHING ENGINE
+   -------------------------------------------------------------------------- */
+
+function calculateOpportunityMatch(profile, assessment, opportunity) {
+  const required = Array.isArray(opportunity.requiredSkills) ? opportunity.requiredSkills : [];
+  const preferred = Array.isArray(opportunity.preferredSkills) ? opportunity.preferredSkills : [];
+
+  let requiredScore = 0;
+  const matching = [];
+  const missing = [];
+  const skillGapReasons = [];
+
+  required.forEach(skill => {
+    const level = clamp(Number(profile.skills[skill]) || 1, 1, 5);
+    if (level >= 3) {
+      matching.push(skill);
+      requiredScore += level / 5;
+    } else {
+      missing.push(skill);
+      skillGapReasons.push(
+        `${SKILL_LABELS[skill]} is required for this sample opportunity, but your current level is ${level}/5. ` +
+        `A level of 3 or above is treated as a match in this prototype.`
+      );
+    }
+  });
+
+  requiredScore = required.length ? (requiredScore / required.length) * 70 : 70;
+
+  let preferredScore = 0;
+  const preferredMatched = [];
+  preferred.forEach(skill => {
+    const level = clamp(Number(profile.skills[skill]) || 1, 1, 5);
+    if (level >= 3) {
+      preferredMatched.push(skill);
+      preferredScore += 1;
+    }
+  });
+  preferredScore = preferred.length ? (preferredScore / preferred.length) * 15 : 15;
+
+  const cgpa = clamp(Number(profile.cgpa) || 0, 0, 10);
+  const projects = clamp(Number(profile.projectsCount) || 0, 0, 20);
+  const cgpaOk = cgpa >= opportunity.minCgpa;
+  const projectsOk = projects >= opportunity.minProjects;
+  const eligibilityScore = ((cgpaOk ? 1 : 0) + (projectsOk ? 1 : 0)) / 2 * 10;
+
+  const quality = clamp(Number(profile.projectQuality) || 1, 1, 5);
+  const qualityScore = ((quality - 1) / 4) * 5;
+
+  const matchScore = Math.round(requiredScore + preferredScore + eligibilityScore + qualityScore);
+
+  let eligibility;
+  if (cgpaOk && projectsOk) {
+    eligibility = { status: "Eligible", className: "good" };
+  } else if (cgpaOk || projectsOk) {
+    eligibility = { status: "Partially eligible", className: "warn" };
+  } else {
+    eligibility = { status: "Not eligible", className: "bad" };
+  }
+
+  const personalizedExplanation =
+    `For the ${opportunity.role} sample opportunity at ${opportunity.company}, your profile matches ` +
+    `${matching.length} of ${required.length} required skills. ` +
+    (missing.length
+      ? `Improving ${missing.join(", ")} would improve the required-skill component of the match. `
+      : `You currently meet the prototype threshold for every required skill. `) +
+    (preferredMatched.length
+      ? `Your ${preferredMatched.join(", ")} proficiency also supports the preferred-skill component. `
+      : `No preferred skills currently reach the level-3 match threshold. `) +
+    `Your CGPA is ${cgpa} and you have ${projects} project(s), which are compared with this opportunity’s minimum requirements of ${opportunity.minCgpa} CGPA and ${opportunity.minProjects} project(s).`;
+
+  const reasons = [
+    `Required-skill fit: ${matching.length}/${required.length} required skills are at level 3 or above.`,
+    `Preferred-skill fit: ${preferredMatched.length}/${preferred.length} preferred skills are at level 3 or above.`,
+    `CGPA criterion: ${cgpaOk ? "met" : "not met"} — current ${cgpa}, minimum ${opportunity.minCgpa}.`,
+    `Project criterion: ${projectsOk ? "met" : "not met"} — current ${projects}, minimum ${opportunity.minProjects}.`,
+    `Project-quality alignment contributes ${round1(qualityScore)}/5 based on a quality rating of ${quality}/5.`,
+    opportunity.scoreExplanation
+  ];
+
+  return {
+    opportunity,
+    matchScore,
+    matching,
+    missing,
+    preferredMatched,
+    required,
+    preferred,
+    eligibility,
+    cgpaOk,
+    projectsOk,
+    cgpa,
+    projects,
+    quality,
+    reasons,
+    skillGapReasons,
+    personalizedExplanation
+  };
+}
+
+function getOpportunityMatches() {
+  if (!lastAssessment) return [];
+  return SAMPLE_OPPORTUNITIES
+    .map(opp => calculateOpportunityMatch(student, lastAssessment, opp))
+    .sort((a, b) => b.matchScore - a.matchScore);
+}
+
+/* --------------------------------------------------------------------------
+   6. RENDERING
+   -------------------------------------------------------------------------- */
+
+function renderSkillInputs() {
+  const container = getEl("skillInputs");
+  container.innerHTML = "";
+
+  SKILLS.forEach(skill => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "skill-item";
+
+    const head = document.createElement("div");
+    head.className = "skill-head";
+    const name = document.createElement("span");
+    name.textContent = SKILL_LABELS[skill];
+    const output = document.createElement("output");
+    output.id = `output-${skill}`;
+    output.textContent = `${student.skills[skill]}/5`;
+    head.append(name, output);
+
+    const input = document.createElement("input");
+    input.type = "range";
+    input.min = "1";
+    input.max = "5";
+    input.step = "1";
+    input.value = student.skills[skill];
+    input.id = `skill-${skill}`;
+    input.setAttribute("aria-label", `${SKILL_LABELS[skill]} skill level`);
+    input.addEventListener("input", event => {
+      student.skills[skill] = Number(event.target.value);
+      output.textContent = `${student.skills[skill]}/5`;
+      saveState();
+    });
+
+    wrapper.append(head, input);
+    container.appendChild(wrapper);
+  });
+}
+
+function fillProfileForm() {
+  getEl("studentName").value = student.name;
+  getEl("studentCollege").value = student.college;
+  getEl("targetRole").value = student.targetRole;
+  getEl("cgpa").value = student.cgpa;
+  getEl("projectsCount").value = student.projectsCount;
+  getEl("projectQuality").value = String(student.projectQuality);
+  getEl("projectSummary").value = student.projectSummary;
+}
+
+function readProfileForm() {
+  student.name = getEl("studentName").value.trim() || "Sample Student";
+  student.college = getEl("studentCollege").value.trim() || "BTech CSE";
+  student.targetRole = getEl("targetRole").value;
+  student.cgpa = clamp(Number(getEl("cgpa").value) || 0, 0, 10);
+  student.projectsCount = clamp(Number(getEl("projectsCount").value) || 0, 0, 20);
+  student.projectQuality = clamp(Number(getEl("projectQuality").value) || 1, 1, 5);
+  student.projectSummary = getEl("projectSummary").value.trim();
+}
+
+function renderDashboard() {
+  if (!lastAssessment) {
+    getEl("dashScore").textContent = "—";
+    getEl("dashRole").textContent = student.targetRole;
+    getEl("dashStrengths").textContent = "—";
+    getEl("dashGaps").textContent = "—";
+    getEl("dashTechnical").textContent = "—";
+    getEl("dashApplied").textContent = "—";
+    getEl("dashProgress").style.width = "0%";
+    getEl("dashProgressText").textContent = "Run an assessment to view progress.";
+    getEl("dashProfile").innerHTML = `<div class="empty">Click <strong>Assess My Readiness</strong> to generate results.</div>`;
+    getEl("dashTopOpportunities").innerHTML = `<div class="empty">No matches calculated yet.</div>`;
+    return;
+  }
+
+  const { strengths, gaps } = identifyStrengthsAndGaps(lastAssessment);
+  const band = getReadinessBand(lastAssessment.finalScore);
+
+  getEl("dashScore").textContent = lastAssessment.finalScore;
+  getEl("dashRole").textContent = student.targetRole;
+  getEl("dashStrengths").textContent = strengths.length;
+  getEl("dashGaps").textContent = gaps.length;
+  getEl("dashTechnical").textContent = lastAssessment.technicalScore;
+  getEl("dashApplied").textContent = lastAssessment.projectScore;
+  getEl("dashProgress").style.width = `${lastAssessment.finalScore}%`;
+  getEl("dashProgressText").innerHTML =
+    `<strong>${band.label}.</strong> Score: ${lastAssessment.finalScore}/100 for the ${student.targetRole} target role.`;
+
+  getEl("dashProfile").innerHTML = `
+    <p style="margin:0 0 8px"><strong>${escapeHtml(student.name)}</strong><br>${escapeHtml(student.college)}</p>
+    <p style="margin:0 0 8px"><span class="tag info">CGPA ${student.cgpa}</span>
+      <span class="tag teal">${student.projectsCount} project(s)</span>
+      <span class="tag info">Quality ${student.projectQuality}/5</span></p>
+    <p style="margin:0;font-size:13px;color:var(--slate-700)">${escapeHtml(student.projectSummary || "No project summary provided.")}</p>
+  `;
+
+  const matches = getOpportunityMatches().slice(0, 3);
+  getEl("dashTopOpportunities").innerHTML = matches.length
+    ? matches.map(match => renderOpportunityCard(match, false, "dashboard")).join("")
+    : `<div class="empty">No sample opportunities match the selected filter.</div>`;
+}
+
+function renderAnalysis() {
+  if (!lastAssessment) {
+    getEl("analysisResult").classList.add("hidden");
+    return;
+  }
+
+  const assessment = lastAssessment;
+  const { strengths, gaps } = identifyStrengthsAndGaps(assessment);
+  const band = getReadinessBand(assessment.finalScore);
+
+  getEl("analysisResult").classList.remove("hidden");
+  getEl("analysisMeta").textContent =
+    `Calculated for ${student.name} targeting ${student.targetRole}. Prototype estimate only.`;
+  getEl("finalScore").textContent = assessment.finalScore;
+  getEl("scoreRing").style.setProperty("--pct", assessment.finalScore);
+  getEl("readinessBand").innerHTML = `<span class="tag ${band.className}">${band.label}</span>`;
+
+  const breakdown = [
+    ["Technical skills", assessment.technicalScore, "Role-weighted average of all ten skill levels."],
+    ["Applied / project experience", assessment.projectScore, "Based on completed projects and best-project quality."],
+    ["Academic indicator", assessment.academicScore, "CGPA converted to a 0–100 indicator."]
+  ];
+
+  getEl("scoreBreakdown").innerHTML = breakdown.map(([label, value, explanation]) => `
+    <div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13.5px">
+        <span>${label}</span><span>${value}/100</span>
+      </div>
+      <div class="progress" style="margin-top:6px"><div style="width:${value}%"></div></div>
+      <p style="margin:5px 0 0;font-size:12.5px;color:var(--slate-500)">${explanation}</p>
+    </div>
+  `).join("") + `
+    <div class="notice blue" style="margin-top:14px">
+      Final score = 75% technical + 20% applied/project + 5% academic indicator.
+    </div>
+  `;
+
+  getEl("strengthsBox").innerHTML = strengths.length
+    ? strengths.map(s => `<span class="tag good">${SKILL_LABELS[s]} — Level ${student.skills[s]}/5</span>`).join("")
+    : `<div class="empty">No skill is currently at level 4 or 5. Focus first on the prioritized gaps below.</div>`;
+
+  getEl("gapsBox").innerHTML = gaps.length
+    ? gaps.map(g => `<span class="tag warn">${SKILL_LABELS[g.skill]} — Level ${g.level}/5</span>`).join("")
+    : `<div class="empty">No major role-relevant gaps detected by the prototype rules.</div>`;
+
+  getEl("priorityGaps").innerHTML = gaps.length
+    ? gaps.map((g, index) => `
+        <div class="roadmap-step">
+          <h4>${index + 1}. ${SKILL_LABELS[g.skill]}</h4>
+          <p><strong>Current level:</strong> ${g.level}/5 &nbsp;•&nbsp; <strong>Role importance:</strong> ${g.importance}/100</p>
+          <p>${escapeHtml(g.reason)}</p>
+        </div>
+      `).join("")
+    : `<div class="empty">Your current profile meets the prototype threshold for the selected role’s core skills.</div>`;
+
+  renderRoadmap();
+}
+
+function renderRoadmap() {
+  if (!lastAssessment) {
+    getEl("roadmapMeta").textContent = "Run an assessment first to generate your roadmap.";
+    getEl("roadmapContent").innerHTML = `<div class="empty">No roadmap available yet.</div>`;
+    return;
+  }
+
+  const { gaps } = identifyStrengthsAndGaps(lastAssessment);
+  const roadmap = buildRoadmap(lastAssessment, gaps);
+
+  getEl("roadmapMeta").textContent =
+    `Generated for ${student.name} • Target role: ${student.targetRole} • Current readiness: ${lastAssessment.finalScore}/100.`;
+
+  getEl("roadmapContent").innerHTML = `
+    <p style="margin:0 0 14px">
+      <strong>Focus areas:</strong>
+      ${roadmap.focusSkills.map(skill => `<span class="tag teal">${SKILL_LABELS[skill]}</span>`).join("")}
+    </p>
+    ${roadmap.weeks.map(week => `
+      <div class="roadmap-step">
+        <h4>${week.week}: ${week.focus}</h4>
+        <ul class="clean">
+          ${week.actions.map(action => `<li>${escapeHtml(action)}</li>`).join("")}
+        </ul>
+        <p style="margin-top:8px"><strong>Expected outcome:</strong> ${escapeHtml(week.outcome)}</p>
+      </div>
+    `).join("")}
+    <div class="notice" style="margin-top:14px">
+      This roadmap is generated from rule-based gap prioritization. Adjust your skill levels and reassess to see an updated plan.
+    </div>
+  `;
+}
+
+function renderOpportunityCard(match, showDetails = false, context = "opportunities") {
+  const opp = match.opportunity;
+  const safeContext = context === "dashboard" ? "dashboard" : "opportunities";
+  const detailsId = `${safeContext}-details-${opp.id}`;
+  const buttonId = `${safeContext}-toggle-${opp.id}`;
+
+  const requiredTags = match.required.length
+    ? match.required.map(skill => {
+        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
+        const cls = level >= 3 ? "good" : "bad";
+        return `<span class="tag ${cls}">${skill} — ${level}/5</span>`;
+      }).join("")
+    : `<span class="tag info">No required skills specified</span>`;
+
+  const matchingTags = match.matching.length
+    ? match.matching.map(skill => `<span class="tag good">${skill}</span>`).join("")
+    : `<span class="tag bad">No required skill currently meets the level-3 threshold</span>`;
+
+  const missingTags = match.missing.length
+    ? match.missing.map(skill => `<span class="tag bad">${skill}</span>`).join("")
+    : `<span class="tag good">None</span>`;
+
+  const preferredTags = match.preferred.length
+    ? match.preferred.map(skill => {
+        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
+        const cls = level >= 3 ? "good" : "warn";
+        return `<span class="tag ${cls}">${skill} — ${level}/5</span>`;
+      }).join("")
+    : `<span class="tag info">No preferred skills specified</span>`;
+
+  return `
+    <div class="opp" data-opportunity-id="${escapeHtml(opp.id)}">
+      <div class="opp-head">
+        <div>
+          <h4>${escapeHtml(opp.company)} — ${escapeHtml(opp.role)}</h4>
+          <p>${escapeHtml(opp.type)} • ${escapeHtml(opp.stipend)}</p>
+          <p>${escapeHtml(opp.description)}</p>
+          <div style="margin-top:8px">
+            <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span>
+            <span class="tag info">Min. CGPA ${opp.minCgpa}</span>
+            <span class="tag info">Min. projects ${opp.minProjects}</span>
+          </div>
+        </div>
+        <div class="match-pill">${match.matchScore}%</div>
+      </div>
+
+      <div style="margin-top:10px">
+        <strong style="font-size:13px">Matching required skills:</strong><br>
+        ${matchingTags}
+      </div>
+
+      <div style="margin-top:6px">
+        <strong style="font-size:13px">Missing / below-threshold required skills:</strong><br>
+        ${missingTags}
+      </div>
+
+      <div class="opp-actions">
+        <button
+          class="btn secondary"
+          id="${buttonId}"
+          data-detail-context="${safeContext}"
+          data-detail-opportunity="${escapeHtml(opp.id)}"
+          aria-expanded="${showDetails}"
+          aria-controls="${detailsId}"
+        >
+          ${showDetails ? "Hide details" : "View details"}
+        </button>
+      </div>
+
+      <div id="${detailsId}" class="detail ${showDetails ? "" : "hidden"}">
+        <h4>Opportunity Details</h4>
+
+        <div class="detail-grid">
+          <div class="detail-block">
+            <h5>Company and Role</h5>
+            <p style="margin:0"><strong>${escapeHtml(opp.company)}</strong><br>${escapeHtml(opp.role)}</p>
+            <p style="margin:6px 0 0">${escapeHtml(opp.type)} • ${escapeHtml(opp.stipend)}</p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Opportunity Summary</h5>
+            <p style="margin:0">${escapeHtml(opp.description)}</p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Required Skills and Your Level</h5>
+            <div>${requiredTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Skills You Already Possess</h5>
+            <div>${matchingTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Missing / Below-Threshold Skills</h5>
+            <div>${missingTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Preferred Skills and Your Level</h5>
+            <div>${preferredTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Eligibility Status and Criteria</h5>
+            <p style="margin:0">
+              <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span><br>
+              CGPA: <strong>${match.cgpa}</strong> / minimum ${opp.minCgpa} — ${match.cgpaOk ? "met" : "not met"}.<br>
+              Projects: <strong>${match.projects}</strong> / minimum ${opp.minProjects} — ${match.projectsOk ? "met" : "not met"}.
+            </p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Match Percentage</h5>
+            <p style="margin:0"><strong>${match.matchScore}%</strong></p>
+            <p style="margin:6px 0 0;font-size:12.5px;color:var(--slate-500)">
+              Formula: 70% required skills + 15% preferred skills + 10% eligibility + 5% project-quality alignment.
+            </p>
+          </div>
+        </div>
+
+        <div class="detail-block" style="margin-top:14px">
+          <h5>Personalized Match Explanation</h5>
+          <p style="margin:0">${escapeHtml(match.personalizedExplanation)}</p>
+        </div>
+
+        <div class="detail-block" style="margin-top:14px">
+          <h5>Specific Skill-Gap Reasons</h5>
+          ${match.skillGapReasons.length
+            ? `<ul class="clean">${match.skillGapReasons.map(reason => `<li>${escapeHtml(reason)}</li>`).join("")}</ul>`
+            : `<p style="margin:0">No required-skill gap affects this opportunity under the current prototype rules.</p>`}
+        </div>
+
+        <div class="detail-block" style="margin-top:14px">
+          <h5>Score Explanation</h5>
+          <ul class="clean">
+            ${match.reasons.map(reason => `<li>${escapeHtml(reason)}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderOpportunities() {
+  const filter = getEl("oppRoleFilter").value;
+  const matches = getOpportunityMatches().filter(match =>
+    filter === "all" || match.opportunity.role === filter
+  );
+
+  const container = getEl("opportunityList");
+  if (!lastAssessment) {
+    container.innerHTML = `<div class="empty">Run an assessment to calculate eligibility and match scores.</div>`;
+    return;
+  }
+
+  if (!matches.length) {
+    container.innerHTML = `<div class="empty">No sample opportunities match this role filter.</div>`;
+    return;
+  }
+
+  container.innerHTML = matches
+    .map(match => renderOpportunityCard(match, false, "opportunities"))
+    .join("");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* --------------------------------------------------------------------------
+   7. NAVIGATION AND EVENTS
+   -------------------------------------------------------------------------- */
+
+const VIEW_META = {
+  dashboard: ["Student Dashboard", "Personalized placement-readiness overview for the sample student profile."],
+  skills: ["Skill Analysis", "Edit the student profile, select a target role, and calculate a transparent readiness estimate."],
+  roadmap: ["Learning Roadmap", "A personalized four-week study plan based on the latest skill-gap assessment."],
+  opportunities: ["Opportunities", "Explore sample opportunities, eligibility status, and personalized match explanations."]
+};
+
+function showView(viewName) {
+  ["dashboard", "skills", "roadmap", "opportunities"].forEach(view => {
+    getEl(`view-${view}`).classList.toggle("hidden", view !== viewName);
+  });
+
+  document.querySelectorAll(".nav button").forEach(button => {
+    button.classList.toggle("active", button.dataset.view === viewName);
+  });
+
+  const [title, subtitle] = VIEW_META[viewName];
+  getEl("viewTitle").textContent = title;
+  getEl("viewSubtitle").textContent = subtitle;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function runAssessment() {
+  readProfileForm();
+  lastAssessment = calculateReadiness(student);
+
+  saveState();
+  renderDashboard();
+  renderAnalysis();
+  renderOpportunities();
+
+  const band = getReadinessBand(lastAssessment.finalScore);
+  alert(`Assessment complete.\n\nReadiness score: ${lastAssessment.finalScore}/100\nReadiness band: ${band.label}\n\nOpen Skill Analysis or Learning Roadmap for the detailed result.`);
+}
+
+function resetDemoData() {
+  const confirmed = confirm("Reset all demo data to the preloaded fictional sample student?");
+  if (!confirmed) return;
+
+  student = structuredClone(SAMPLE_STUDENT);
+  lastAssessment = calculateReadiness(student);
+
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (err) {
+    /* Ignore storage errors. */
+  }
+
+  fillProfileForm();
+  renderSkillInputs();
+  renderDashboard();
+  renderAnalysis();
+  renderOpportunities();
+  showView("dashboard");
+}
+
+function handleGlobalClick(event) {
+  const navButton = event.target.closest("[data-view]");
+  if (navButton) {
+    showView(navButton.dataset.view);
+    return;
+  }
+
+  const gotoButton = event.target.closest("[data-goto]");
+  if (gotoButton) {
+    showView(gotoButton.dataset.goto);
+    return;
+  }
+
+  const detailsButton = event.target.closest("[data-detail-opportunity]");
+  if (detailsButton) {
+    const context = detailsButton.dataset.detailContext;
+    const opportunityId = detailsButton.dataset.detailOpportunity;
+    const panel = getEl(`${context}-details-${opportunityId}`);
+
+    if (!panel) return;
+
+    const isOpen = !panel.classList.contains("hidden");
+    panel.classList.toggle("hidden", isOpen);
+    detailsButton.textContent = isOpen ? "View details" : "Hide details";
+    detailsButton.setAttribute("aria-expanded", String(!isOpen));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. INITIALIZATION
+   -------------------------------------------------------------------------- */
+
+function initializeApp() {
+  loadState();
+
+  SKILLS.forEach(skill => {
+    student.skills[skill] = clamp(Number(student.skills[skill]) || 1, 1, 5);
+  });
+
+  fillProfileForm();
+  renderSkillInputs();
+
+  lastAssessment = calculateReadiness(student);
+  renderDashboard();
+  renderAnalysis();
+  renderOpportunities();
+
+  document.addEventListener("click", handleGlobalClick);
+
+  getEl("assessBtn").addEventListener("click", runAssessment);
+  getEl("assessBtn2").addEventListener("click", runAssessment);
+  getEl("resetBtn").addEventListener("click", resetDemoData);
+  getEl("resetSkillsBtn").addEventListener("click", () => {
+    student.skills = structuredClone(SAMPLE_STUDENT.skills);
+    fillProfileForm();
+    renderSkillInputs();
+    saveState();
+  });
+
+  getEl("oppRoleFilter").addEventListener("change", renderOpportunities);
+
+  ["studentName", "studentCollege", "targetRole", "cgpa", "projectsCount", "projectQuality", "projectSummary"]
+    .forEach(id => {
+      getEl(id).addEventListener("input", () => {
+        readProfileForm();
+        saveState();
+        renderDashboard();
+      });
+    });
+
+  showView("dashboard");
+}
+
+document.addEventListener("DOMContentLoaded", initializeApp);
+</script>
+</body>
+</html>
