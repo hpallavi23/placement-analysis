@@ -1,0 +1,49 @@
+# NXTSTEP — Backend dependencies
+# Python 3.13.x  |  Windows / PowerShell
+# Install:  python -m pip install -r backend/requirements.txt
+
+# ---------------------------------------------------------------
+# Core web framework and validation
+# ---------------------------------------------------------------
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.1
+pydantic-settings==2.15.0
+
+# EmailStr validation in Pydantic schemas
+email-validator>=2.2,<3.0
+
+# Required by FastAPI OAuth2PasswordRequestForm (login form)
+python-multipart>=0.0.20,<1.0
+
+# Loads variables from .env through pydantic-settings
+python-dotenv>=1.0,<2.0
+
+# ---------------------------------------------------------------
+# Database: SQLite now, MySQL later
+# ---------------------------------------------------------------
+SQLAlchemy==2.1.4
+# Pure-Python MySQL driver: no C compiler needed on Windows
+PyMySQL==1.2.3
+
+# ---------------------------------------------------------------
+# Authentication and password hashing
+# ---------------------------------------------------------------
+python-jose[cryptography]==3.5.0
+passlib==1.7.4
+# Deliberate pin: passlib 1.7.4 is incompatible with bcrypt >= 4.1
+bcrypt==4.0.1
+
+# ---------------------------------------------------------------
+# Testing
+# ---------------------------------------------------------------
+pytest==9.2.0
+httpx==0.28.1
+
+# ---------------------------------------------------------------
+# Machine learning (Phase 4)
+# ---------------------------------------------------------------
+numpy>=2.1,<3.0
+pandas>=2.2,<3.0
+scikit-learn==1.9.1
+joblib>=1.4,<2.0

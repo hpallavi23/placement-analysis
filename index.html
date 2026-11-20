@@ -7,56 +7,67 @@
 <style>
 /* ============================================================
    NXTSTEP DESIGN SYSTEM
-   Premium career-tech SaaS aesthetic.
-   Existing blue/teal palette is preserved; mint is used as a
-   subtle brand accent in the logo, active navigation, and key
-   progress indicators.
+   Theme: Warm Brown, Cream & Baby Blue Palette
+   - Primary brown: #3B2418
+   - Cream:         #F2E8DA
+   - Baby blue:     #8EC5FF
    ============================================================ */
 :root{
-  --navy-900:#0b1f33;
-  --navy-800:#102c47;
-  --blue-900:#0b3d63;
-  --blue-700:#12557f;
-  --blue-600:#166a99;
-  --teal-600:#0f8b8d;
-  --teal-500:#12a19a;
-  --mint-400:#2fd8c2;
-  --mint-300:#63e6d4;
-  --mint-100:#e3f6f5;
-  --blue-50:#eaf3fa;
-  --white:#ffffff;
-  --slate-900:#17222b;
-  --slate-700:#3d4c59;
-  --slate-500:#63717d;
-  --slate-200:#dde5ea;
-  --slate-100:#f2f6f8;
-  --green-600:#188554;
-  --green-100:#e3f6ec;
-  --amber-700:#9a6200;
-  --amber-100:#fff2d6;
-  --red-700:#a43232;
-  --red-100:#fdeaea;
-  --shadow:0 10px 25px rgba(11,61,99,.10);
+  /* Exact Required Palette */
+  --primary-brown:#3B2418;
+  --cream:#F2E8DA;
+  --baby-blue:#8EC5FF;
+  --baby-blue-hover:#7AB7F7;
+  --baby-blue-active:#66A5EC;
+  --baby-blue-border:#B5D7FF;
+
+  /* Theme Mappings */
+  --navy-900:#29180F;
+  --navy-800:#3B2418;
+  --blue-900:#3B2418;
+  --blue-700:#4E3224;
+  --blue-600:#624231;
+  --teal-600:#3B2418;
+  --teal-500:#8EC5FF;
+  --mint-400:#8EC5FF;
+  --mint-300:#B8DCFF;
+  --mint-100:#F4ECE1;
+  --blue-50:#EBF4FF;
+  --surface-alt:#F4ECE1;
+  --cream-border-subtle:#EDE2D4;
+  --white:#FAF6F0;
+  --slate-900:#3B2418;
+  --slate-700:#5C4033;
+  --slate-500:#7A5C4D;
+  --slate-200:#E2D3C0;
+  --slate-100:#F2E8DA;
+  --green-600:#1B7A4B;
+  --green-100:#E3F6EC;
+  --amber-700:#945B00;
+  --amber-100:#FFF2D6;
+  --red-700:#A82E2E;
+  --red-100:#FDEAEA;
+  --shadow:0 10px 25px rgba(59,36,24,.08);
   --radius:14px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
-  background:var(--slate-100);
-  color:var(--slate-900);
+  background:var(--cream);
+  color:var(--primary-brown);
   line-height:1.5;
 }
 button{font:inherit;cursor:pointer}
-a{color:var(--blue-600)}
+a{color:var(--primary-brown);text-decoration-color:var(--baby-blue)}
 .hidden{display:none !important}
 
 /* Layout */
 .app{display:flex;min-height:100vh}
 .sidebar{
   width:280px;flex-shrink:0;
-  background:linear-gradient(180deg,var(--navy-900),var(--blue-700));
-  color:#fff;padding:24px 18px;
+  background:linear-gradient(180deg,var(--navy-900),var(--primary-brown));
+  color:#FAF6F0;padding:24px 18px;
   position:sticky;top:0;height:100vh;
 }
 
@@ -69,43 +80,43 @@ a{color:var(--blue-600)}
 }
 .logo-mark{
   width:40px;height:40px;flex-shrink:0;border-radius:12px;
-  background:linear-gradient(135deg,var(--mint-400),var(--teal-500));
+  background:linear-gradient(135deg,var(--baby-blue),#B5D7FF);
   display:grid;place-items:center;
-  box-shadow:0 6px 16px rgba(47,216,194,.28);
+  box-shadow:0 6px 16px rgba(142,197,255,.30);
 }
 .logo-mark svg{display:block}
 .wordmark{
   display:flex;align-items:baseline;gap:2px;
   font-family:"Segoe UI",system-ui,Arial,sans-serif;
   font-weight:800;letter-spacing:-.4px;line-height:1;
-  color:#fff;white-space:nowrap;
+  color:#FAF6F0;white-space:nowrap;
 }
-.wordmark .nxt{color:var(--mint-300)}
-.wordmark .step{color:#fff}
+.wordmark .nxt{color:var(--baby-blue)}
+.wordmark .step{color:#FAF6F0}
 .wordmark .arrow{
   display:inline-block;margin-left:5px;transform:translateY(1px);
 }
 .tagline{
   margin:8px 0 0 50px;
-  font-size:12px;color:#a9cadb;font-weight:600;letter-spacing:.2px;
+  font-size:12px;color:#D6C4B2;font-weight:600;letter-spacing:.2px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 
 .nav{display:flex;flex-direction:column;gap:7px;margin-top:24px}
 .nav button{
-  width:100%;text-align:left;border:0;background:transparent;color:#d7e8f2;
+  width:100%;text-align:left;border:0;background:transparent;color:#E8D8C5;
   padding:12px 14px;border-radius:10px;display:flex;gap:11px;align-items:center;
   transition:.18s;font-weight:600;
 }
-.nav button:hover{background:rgba(255,255,255,.10);color:#fff}
+.nav button:hover{background:rgba(242,232,218,.14);color:#ffffff}
 .nav button.active{
-  background:linear-gradient(90deg,var(--teal-500),var(--mint-400));
-  color:#04222b;box-shadow:0 6px 16px rgba(47,216,194,.24);
+  background:var(--baby-blue);
+  color:var(--primary-brown);box-shadow:0 6px 16px rgba(142,197,255,.30);
 }
 .nav-icon{width:20px;text-align:center}
 .sidebar-note{
-  margin-top:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);
-  padding:12px;border-radius:12px;font-size:11.5px;color:#cfe2ed;
+  margin-top:24px;background:rgba(242,232,218,.10);border:1px solid rgba(242,232,218,.18);
+  padding:12px;border-radius:12px;font-size:11.5px;color:#E8D8C5;
 }
 .main{flex:1;min-width:0}
 .topbar{
@@ -118,18 +129,18 @@ a{color:var(--blue-600)}
 }
 .topbar-logo{
   width:30px;height:30px;border-radius:9px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--mint-400),var(--teal-500));
+  background:var(--baby-blue);
   display:grid;place-items:center;
 }
 .topbar-logo svg{display:block}
 .topbar-wordmark{
-  font-weight:800;font-size:16px;letter-spacing:-.3px;color:var(--navy-900);
+  font-weight:800;font-size:16px;letter-spacing:-.3px;color:var(--primary-brown);
   white-space:nowrap;
 }
-.topbar-wordmark .nxt{color:var(--teal-600)}
+.topbar-wordmark .nxt{color:var(--primary-brown)}
 .topbar-wordmark .arrow{display:inline-block;margin-left:3px;transform:translateY(1px)}
 .topbar-text{min-width:0}
-.topbar h2{margin:0;font-size:20px;color:var(--blue-900)}
+.topbar h2{margin:0;font-size:20px;color:var(--primary-brown)}
 .topbar p{margin:2px 0 0;font-size:13px;color:var(--slate-500)}
 .top-actions{display:flex;gap:10px;flex-wrap:wrap}
 .content{padding:26px 28px 48px;max-width:1250px;margin:0 auto}
@@ -139,47 +150,59 @@ a{color:var(--blue-600)}
   background:var(--white);border:1px solid var(--slate-200);
   border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:20px;
 }
-.card h3{margin:0 0 6px;color:var(--blue-900);font-size:18px}
+.card h3{margin:0 0 6px;color:var(--primary-brown);font-size:18px}
 .card-sub{margin:0 0 18px;color:var(--slate-500);font-size:13.5px}
 .grid{display:grid;gap:16px}
 .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .metric{
-  background:linear-gradient(135deg,var(--blue-50),var(--mint-100));
-  border:1px solid #d3e7ef;border-radius:12px;padding:16px;
+  background:linear-gradient(135deg,var(--surface-alt),var(--blue-50));
+  border:1px solid var(--slate-200);border-radius:12px;padding:16px;
 }
-.metric .label{font-size:12px;font-weight:700;color:var(--blue-700);text-transform:uppercase;letter-spacing:.4px}
-.metric .value{font-size:28px;font-weight:800;color:var(--blue-900);margin-top:5px}
+.metric .label{font-size:12px;font-weight:700;color:var(--slate-700);text-transform:uppercase;letter-spacing:.4px}
+.card .grid-4 .metric .label{
+  text-align: center;
+  line-height: 1.25;
+  min-height: 30px;
+  font-size: 10px;
+}
+.card .grid-4 .metric:nth-child(3) .label{
+  overflow-wrap: anywhere;
+  hyphens: none;
+}
+.metric .value{font-size:28px;font-weight:800;color:var(--primary-brown);margin-top:5px}
 .metric .hint{font-size:12px;color:var(--slate-500);margin-top:3px}
 label{display:block;font-size:13px;font-weight:700;color:var(--slate-700);margin-bottom:6px}
 input,select,textarea{
   width:100%;padding:10px 12px;border:1px solid var(--slate-200);border-radius:9px;
   background:#fff;font:inherit;color:var(--slate-900);
 }
-input:focus,select:focus,textarea:focus{outline:3px solid rgba(47,216,194,.24);border-color:var(--teal-500)}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(142,197,255,.45);border-color:var(--baby-blue)}
 .field{margin-bottom:14px}
 .field-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .btn{
-  border:0;border-radius:10px;padding:11px 18px;font-weight:700;
-  background:linear-gradient(90deg,var(--teal-500),var(--mint-400));
-  color:#04222b;transition:.18s;
+  border:1px solid var(--baby-blue-border);border-radius:10px;padding:11px 18px;font-weight:700;
+  background:var(--baby-blue);
+  color:#1F140D;transition:.18s;
 }
-.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
-.btn.secondary{background:var(--white);color:var(--blue-700);border:1px solid var(--slate-200)}
-.btn.secondary:hover{background:var(--blue-50)}
-.btn.ghost{background:transparent;color:var(--blue-600);border:1px solid #bcd7e6}
+.btn:hover{background:var(--baby-blue-hover);filter:brightness(.97);transform:translateY(-1px)}
+.btn:active{background:var(--baby-blue-active);transform:none}
+.btn.secondary{background:var(--white);color:var(--primary-brown);border:1.5px solid var(--baby-blue)}
+.btn.secondary:hover{background:var(--blue-50);border-color:var(--baby-blue);color:#1F140D}
+.btn.ghost{background:transparent;color:var(--primary-brown);border:1px solid var(--slate-200)}
+.btn.ghost:hover{background:var(--blue-50)}
 .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
-.progress{height:10px;background:#e4edf2;border-radius:999px;overflow:hidden}
-.progress > div{height:100%;background:linear-gradient(90deg,var(--teal-500),var(--mint-400));transition:width .35s}
+.progress{height:10px;background:var(--cream-border-subtle);border-radius:999px;overflow:hidden}
+.progress > div{height:100%;background:linear-gradient(90deg,var(--baby-blue),var(--primary-brown));transition:width .35s}
 .score-ring{
   width:170px;height:170px;border-radius:50%;margin:auto;display:grid;place-items:center;
-  background:conic-gradient(var(--teal-500) calc(var(--pct) * 1%),#e2ecf1 0);
+  background:conic-gradient(var(--baby-blue) calc(var(--pct) * 1%),var(--cream-border-subtle) 0);
 }
 .score-ring-inner{
-  width:132px;height:132px;background:#fff;border-radius:50%;display:grid;place-items:center;text-align:center;
+  width:132px;height:132px;background:var(--white);border-radius:50%;display:grid;place-items:center;text-align:center;
 }
-.score-ring-inner strong{font-size:38px;color:var(--blue-900);display:block;line-height:1}
+.score-ring-inner strong{font-size:38px;color:var(--primary-brown);display:block;line-height:1}
 .score-ring-inner small{color:var(--slate-500);font-weight:600}
 .tag{
   display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 10px;
@@ -188,64 +211,129 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(47,216,194,.24);b
 .tag.good{background:var(--green-100);color:var(--green-600)}
 .tag.warn{background:var(--amber-100);color:var(--amber-700)}
 .tag.bad{background:var(--red-100);color:var(--red-700)}
-.tag.info{background:var(--blue-50);color:var(--blue-700)}
-.tag.teal{background:var(--mint-100);color:var(--teal-600)}
+.tag.info{background:var(--blue-50);color:var(--primary-brown);border:1px solid var(--baby-blue-border)}
+.tag.teal{background:var(--surface-alt);color:var(--primary-brown);border:1px solid var(--slate-200)}
 .empty{
-  border:2px dashed #c6d8e2;border-radius:12px;padding:28px;text-align:center;color:var(--slate-500);background:#fbfdfe;
+  border:2px dashed var(--slate-200);border-radius:12px;padding:28px;text-align:center;color:var(--slate-500);background:var(--surface-alt);
 }
 .notice{
-  border-left:5px solid var(--teal-500);background:var(--mint-100);
-  padding:13px 16px;border-radius:10px;font-size:13px;color:#084f4f;
+  border-left:5px solid var(--baby-blue);background:var(--blue-50);
+  padding:13px 16px;border-radius:10px;font-size:13px;color:var(--primary-brown);
 }
-.notice.blue{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-900)}
+.notice.blue{border-color:var(--primary-brown);background:var(--surface-alt);color:var(--primary-brown)}
 ul.clean{margin:8px 0 0;padding-left:20px}
 ul.clean li{margin-bottom:7px}
 .roadmap-step{
-  border:1px solid var(--slate-200);border-left:5px solid var(--teal-500);
-  border-radius:10px;padding:14px 16px;margin-bottom:12px;background:#fbfdfe;
+  border:1px solid var(--slate-200);border-left:5px solid var(--primary-brown);
+  border-radius:10px;padding:14px 16px;margin-bottom:12px;background:var(--white);
 }
-.roadmap-step h4{margin:0 0 5px;color:var(--blue-900)}
+.roadmap-step h4{margin:0 0 5px;color:var(--primary-brown)}
 .roadmap-step p{margin:0;font-size:13.5px;color:var(--slate-700)}
 .opp{
-  border:1px solid var(--slate-200);border-radius:12px;padding:17px;margin-bottom:14px;background:#fff;
+  border:1px solid var(--slate-200);border-radius:12px;padding:17px;margin-bottom:14px;background:var(--white);
 }
 .opp-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
 .match-pill{
-  min-width:78px;text-align:center;background:var(--mint-100);color:var(--teal-600);
+  min-width:78px;text-align:center;background:var(--blue-50);color:var(--primary-brown);
+  border:1px solid var(--baby-blue-border);
   border-radius:10px;padding:8px 10px;font-weight:800;
 }
-.opp h4{margin:0;color:var(--blue-900);font-size:16.5px}
+.opp h4{margin:0;color:var(--primary-brown);font-size:16.5px}
 .opp p{margin:4px 0 0;font-size:13.5px;color:var(--slate-700)}
 .opp-actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
 .detail{
   margin-top:14px;border-top:1px solid var(--slate-200);padding-top:14px;
 }
-.detail h4{margin:0 0 8px;color:var(--blue-900)}
+.detail h4{margin:0 0 8px;color:var(--primary-brown)}
 .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .detail-block{
-  border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:#fbfdfe;
+  border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:var(--surface-alt);
 }
-.detail-block h5{margin:0 0 7px;font-size:13px;color:var(--blue-900)}
+.detail-block h5{margin:0 0 7px;font-size:13px;color:var(--primary-brown)}
 .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
 .filter-btn{
-  border:1px solid var(--slate-200);background:#fff;color:var(--slate-700);
+  border:1px solid var(--slate-200);background:var(--white);color:var(--slate-700);
   padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px;
+  transition:.15s;
 }
-.filter-btn.active{background:var(--blue-700);border-color:var(--blue-700);color:#fff}
+.filter-btn:hover{background:var(--blue-50);border-color:var(--baby-blue);color:var(--primary-brown)}
+.filter-btn.active{background:var(--primary-brown);border-color:var(--primary-brown);color:#F2E8DA}
 .section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px}
-.skill-item{border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:#fbfdfe}
+.skill-item{border:1px solid var(--slate-200);border-radius:10px;padding:12px;background:var(--white)}
 .skill-item .skill-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--slate-700)}
-.skill-item output{color:var(--teal-600);font-weight:800}
-input[type=range]{accent-color:var(--teal-500);margin-top:8px}
+.skill-item output{color:var(--primary-brown);font-weight:800}
+input[type=range]{accent-color:var(--primary-brown);margin-top:8px}
+.skill-evidence-meta{margin-top:10px;padding-top:8px;border-top:1px dashed var(--slate-200);display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.evidence-badge{display:inline-flex;align-items:center;justify-content:center;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.2px}
+.evidence-badge.tier-e0{background:var(--surface-alt);color:var(--slate-500);border:1px solid var(--cream-border)}
+.evidence-badge.tier-e1{background:var(--amber-100);color:var(--amber-700);border:1px solid #f0d5a3}
+.evidence-badge.tier-e2{background:var(--green-100);color:var(--green-600);border:1px solid #b8e2cb}
+.btn-evidence{background:var(--blue-50);border:1px solid var(--baby-blue);color:var(--primary-brown);font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:6px;cursor:pointer;transition:all .15s ease}
+.btn-evidence:hover{background:var(--baby-blue);color:#1F140D}
+.evidence-status-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700}
+.evidence-status-badge.badge-approved{background:var(--green-100);color:var(--green-600);border:1px solid #b8e2cb}
+.evidence-status-badge.badge-pending{background:var(--amber-100);color:var(--amber-700);border:1px solid #f0d5a3}
+.evidence-status-badge.badge-rejected{background:var(--red-100);color:var(--red-700);border:1px solid #f5c2c2}
+.evidence-modal-card{max-width:620px;max-height:90vh;overflow-y:auto}
 footer{
   padding:18px 28px;color:var(--slate-500);font-size:12.5px;text-align:center;
-  border-top:1px solid var(--slate-200);background:#fff;
+  border-top:1px solid var(--slate-200);background:var(--white);
 }
 .footer-brand{
-  font-weight:800;color:var(--navy-900);letter-spacing:-.3px;
+  font-weight:800;color:var(--primary-brown);letter-spacing:-.3px;
 }
-.footer-brand .nxt{color:var(--teal-600)}
+.footer-brand .nxt{color:var(--primary-brown)}
+
+/* Auth Modal & Header UI */
+.auth-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(59,36,24,.65);backdrop-filter:blur(4px);
+  display:grid;place-items:center;z-index:9999;padding:16px;
+}
+.auth-overlay.hidden{display:none !important}
+.auth-card{
+  background:var(--surface-card);border:1px solid var(--cream-border);
+  border-radius:var(--radius);box-shadow:0 20px 45px rgba(59,36,24,.28);
+  width:100%;max-width:440px;padding:32px 28px;
+}
+.auth-header{text-align:center;margin-bottom:20px}
+.auth-header h2{margin:0;color:var(--primary-brown);font-size:24px;font-weight:800;letter-spacing:-.5px}
+.auth-tabs{
+  display:flex;gap:8px;border-bottom:1px solid var(--cream-border);
+  margin-top:16px;padding-bottom:10px;
+}
+.auth-tab{
+  flex:1;background:transparent;border:0;padding:9px 12px;font-weight:700;
+  color:var(--text-secondary);border-radius:8px;cursor:pointer;transition:.18s;font-size:14px;
+}
+.auth-tab:hover{background:var(--blue-50);color:var(--primary-brown)}
+.auth-tab.active{
+  background:var(--baby-blue);color:#1F140D;
+  box-shadow:0 4px 12px rgba(142,197,255,.30);
+}
+.auth-error{
+  background:var(--red-100);color:var(--red-700);border:1px solid #f5c2c2;
+  padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;margin:12px 0;
+}
+.auth-success{
+  background:var(--green-100);color:var(--green-600);border:1px solid #b8e2cb;
+  padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;margin:12px 0;
+}
+.auth-switch{text-align:center;font-size:13px;color:var(--text-secondary);margin:16px 0 0}
+.auth-switch a{color:var(--primary-brown);font-weight:700;text-decoration:underline;cursor:pointer}
+.user-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 14px;
+  background:var(--surface-alt);border:1px solid var(--cream-border);
+  border-radius:999px;font-size:13px;font-weight:700;color:var(--primary-brown);
+}
+.history-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;background:var(--surface-alt);border:1px solid var(--cream-border);
+  border-radius:8px;margin-bottom:8px;font-size:13px;
+}
+.history-item-meta{color:var(--text-secondary);font-size:12px}
+.history-item-score{font-weight:800;color:var(--primary-brown);font-size:15px}
 
 @media(max-width:1000px){
   .app{flex-direction:column}
@@ -275,16 +363,16 @@ footer{
       <div class="logo-lockup">
         <div class="logo-mark" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 18L18 6" stroke="#04222b" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="M9.5 6H18V14.5" stroke="#04222b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 18L18 6" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M9.5 6H18V14.5" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="wordmark" aria-label="NXTSTEP">
           <span class="nxt">NXT</span><span class="step">STEP</span>
           <span class="arrow" aria-hidden="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 17L17 7" stroke="#63e6d4" stroke-width="2.6" stroke-linecap="round"/>
-              <path d="M10 7H17V14" stroke="#63e6d4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 17L17 7" stroke="#8EC5FF" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M10 7H17V14" stroke="#8EC5FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
         </div>
@@ -293,13 +381,14 @@ footer{
     <p class="tagline">Your next move, mapped.</p>
 
     <nav class="nav" aria-label="Main navigation">
-      <button class="active" data-view="dashboard"><span class="nav-icon">📊</span> Dashboard</button>
-      <button data-view="skills"><span class="nav-icon">🧠</span> Skill Analysis</button>
-      <button data-view="roadmap"><span class="nav-icon">🗓️</span> Learning Roadmap</button>
-      <button data-view="opportunities"><span class="nav-icon">🎯</span> Opportunities</button>
+      <button class="active nav-student" data-view="dashboard"><span class="nav-icon">📊</span> Dashboard</button>
+      <button class="nav-student" data-view="skills"><span class="nav-icon">🧠</span> Skill Analysis</button>
+      <button class="nav-student" data-view="roadmap"><span class="nav-icon">🗓️</span> Learning Roadmap</button>
+      <button class="nav-student" data-view="opportunities"><span class="nav-icon">🎯</span> Opportunities</button>
+      <button data-view="reviewer" id="navReviewerBtn" style="display: none;"><span class="nav-icon">⚖️</span> Evidence Review</button>
     </nav>
     <div class="sidebar-note">
-      <strong>Prototype notice:</strong> This demo uses deterministic, explainable rules and fictional sample data. It does not use a trained ML model, live job API, database, authentication, or cloud storage.
+      <strong>Prototype notice:</strong> This demo uses deterministic, explainable scoring and rule-based skill-gap and roadmap recommendations. It does not currently integrate a trained ML model, live job API, or cloud storage.
     </div>
   </aside>
 
@@ -310,16 +399,16 @@ footer{
         <div class="topbar-brand">
           <div class="topbar-logo" aria-hidden="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 18L18 6" stroke="#04222b" stroke-width="2.8" stroke-linecap="round"/>
-              <path d="M9.5 6H18V14.5" stroke="#04222b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 18L18 6" stroke="#3B2418" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M9.5 6H18V14.5" stroke="#3B2418" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="topbar-wordmark" aria-label="NXTSTEP">
             <span class="nxt">NXT</span><span>STEP</span>
             <span class="arrow" aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 17L17 7" stroke="#12a19a" stroke-width="2.8" stroke-linecap="round"/>
-                <path d="M10 7H17V14" stroke="#12a19a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 17L17 7" stroke="#3B2418" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M10 7H17V14" stroke="#3B2418" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </div>
@@ -328,6 +417,12 @@ footer{
         <p id="viewSubtitle">Personalized placement-readiness overview for the sample student profile.</p>
       </div>
       <div class="top-actions">
+        <div id="userBadge" class="user-badge" style="display:none">
+          <span>👤</span>
+          <span id="userEmailText"></span>
+        </div>
+        <button class="btn secondary" id="logoutBtn" style="display:none">Log Out</button>
+        <button class="btn secondary" id="loginHeaderBtn" style="display:none">Sign In</button>
         <button class="btn secondary" id="resetBtn">Reset Demo Data</button>
         <button class="btn" id="assessBtn">Assess My Readiness</button>
       </div>
@@ -337,29 +432,33 @@ footer{
       <!-- ============ DASHBOARD ============ -->
       <section id="view-dashboard">
         <div class="notice">
-          <strong>How this estimate works:</strong> The readiness score is calculated in the browser from your selected target role, skill levels, and project experience using transparent weighted rules. It is a <strong>prototype estimate</strong>, not a validated prediction of placement success.
+          <strong>Placement Readiness Score:</strong> The overall readiness score displayed below is computed by the NXTSTEP backend evaluation engine across four core assessment dimensions (Aptitude, Technical, Communication, and Problem Solving). This deterministic benchmark is <strong>distinct from</strong> any statistical ML placement probability estimate.
+        </div>
+
+        <div class="notice blue" id="dashActionBanner" style="margin-top:14px;display:none">
+          <strong>Recommended Next Action:</strong> <span id="dashActionText">—</span>
         </div>
 
         <div class="grid grid-4" style="margin-top:20px">
           <div class="metric">
-            <div class="label">Readiness Score</div>
+            <div class="label" id="dashScoreLabel">Readiness Score</div>
             <div class="value" id="dashScore">—</div>
-            <div class="hint">Out of 100, role-weighted</div>
+            <div class="hint" id="dashScoreHint">Backend Verified Score (0–100)</div>
           </div>
           <div class="metric">
-            <div class="label">Target Role</div>
+            <div class="label" id="dashRoleLabel">Target Role</div>
             <div class="value" id="dashRole" style="font-size:22px">—</div>
-            <div class="hint">Used for skill weighting</div>
+            <div class="hint" id="dashRoleHint">Used for skill weighting</div>
           </div>
           <div class="metric">
-            <div class="label">Strong Skills</div>
+            <div class="label" id="dashStrengthsLabel">Strong Skills</div>
             <div class="value" id="dashStrengths">—</div>
-            <div class="hint">Skill level 4 or 5</div>
+            <div class="hint" id="dashStrengthsHint">Skill level 4 or 5</div>
           </div>
           <div class="metric">
-            <div class="label">Priority Gaps</div>
+            <div class="label" id="dashGapsLabel">Priority Gaps</div>
             <div class="value" id="dashGaps">—</div>
-            <div class="hint">Skills needing attention</div>
+            <div class="hint" id="dashGapsHint">Skills needing attention</div>
           </div>
         </div>
 
@@ -369,9 +468,16 @@ footer{
             <p class="card-sub">Current score against the prototype readiness benchmark.</p>
             <div class="progress"><div id="dashProgress" style="width:0%"></div></div>
             <p style="font-size:13px;color:var(--slate-500);margin-top:10px" id="dashProgressText">Run an assessment to view progress.</p>
-            <div class="grid grid-2" style="margin-top:16px">
-              <div class="metric"><div class="label">Technical Score</div><div class="value" id="dashTechnical">—</div><div class="hint">Core technical skills</div></div>
-              <div class="metric"><div class="label">Applied Score</div><div class="value" id="dashApplied">—</div><div class="hint">Projects and Git</div></div>
+            <div class="grid grid-4" style="margin-top:16px">
+              <div class="metric"><div class="label">Aptitude</div><div class="value" id="dashAptitude">—</div><div class="hint">Score (0–100)</div></div>
+              <div class="metric"><div class="label">Technical</div><div class="value" id="dashTechnical">—</div><div class="hint">Score (0–100)</div></div>
+              <div class="metric"><div class="label">Communication</div><div class="value" id="dashCommunication">—</div><div class="hint">Score (0–100)</div></div>
+              <div class="metric"><div class="label">Problem Solving</div><div class="value" id="dashProblemSolving">—</div><div class="hint">Score (0–100)</div></div>
+            </div>
+            <div style="display:none"><div id="dashApplied">—</div></div>
+            <div id="dashRoleReadinessRow" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--slate-200);display:none">
+              <div style="font-size:12.5px;font-weight:700;color:var(--primary-brown);margin-bottom:6px">Benchmark Role Readiness:</div>
+              <div id="dashRoleReadinessBadges" style="display:flex;flex-wrap:wrap;gap:6px"></div>
             </div>
           </div>
 
@@ -398,10 +504,15 @@ footer{
       <section id="view-skills" class="hidden">
         <div class="card">
           <h3>Student Profile</h3>
-          <p class="card-sub">Update the sample student details. All data remains in this browser tab only.</p>
+          <p class="card-sub">Verified student profile details stored securely in the NXTSTEP backend.</p>
           <div class="field-row">
-            <div class="field"><label for="studentName">Student name</label><input id="studentName" type="text" /></div>
-            <div class="field"><label for="studentCollege">College / branch</label><input id="studentCollege" type="text" /></div>
+            <div class="field"><label for="studentName">Student full name *</label><input id="studentName" type="text" placeholder="e.g. Aarav Sharma" required /></div>
+            <div class="field"><label for="studentCollege">College / university</label><input id="studentCollege" type="text" placeholder="e.g. Engineering College of Pune" /></div>
+            <div class="field"><label for="studentBranch">Branch / discipline</label><input id="studentBranch" type="text" placeholder="e.g. Computer Science" /></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="studentGradYear">Graduation year (2020–2100)</label><input id="studentGradYear" type="number" min="2020" max="2100" placeholder="2026" /></div>
+            <div class="field"><label for="cgpa">CGPA (0–10)</label><input id="cgpa" type="number" min="0" max="10" step="0.01" placeholder="8.50" /></div>
             <div class="field"><label for="targetRole">Target placement role</label>
               <select id="targetRole">
                 <option value="Software Developer">Software Developer</option>
@@ -411,7 +522,6 @@ footer{
             </div>
           </div>
           <div class="field-row">
-            <div class="field"><label for="cgpa">CGPA (0–10)</label><input id="cgpa" type="number" min="0" max="10" step="0.01" /></div>
             <div class="field"><label for="projectsCount">Completed projects</label><input id="projectsCount" type="number" min="0" max="20" step="1" /></div>
             <div class="field"><label for="projectQuality">Best project quality</label>
               <select id="projectQuality">
@@ -422,16 +532,80 @@ footer{
                 <option value="5">Strong portfolio project with testing and documentation</option>
               </select>
             </div>
+            <div class="field" style="display:flex;align-items:flex-end">
+              <button class="btn" id="saveProfileBtn" style="width:100%;height:44px">Save Profile to Backend</button>
+            </div>
           </div>
           <div class="field">
             <label for="projectSummary">Project experience summary</label>
             <textarea id="projectSummary" rows="3" placeholder="Briefly describe your strongest project, technologies used, and your contribution."></textarea>
           </div>
+          <div id="profileStatus" class="hidden"></div>
+        </div>
+
+        <div class="card" id="assessmentCard">
+          <div class="section-title">
+            <div>
+              <h3>Placement Readiness Assessment</h3>
+              <p class="card-sub">Evaluate your readiness across core dimensions (0–100). Submitted securely to the NXTSTEP backend.</p>
+            </div>
+            <span id="assessmentLastUpdated" class="tag info" style="display:none"></span>
+          </div>
+
+          <form id="assessmentForm" onsubmit="return false;" style="margin-top:14px">
+            <div class="field-row">
+              <div class="field">
+                <label for="aptitudeScore">Aptitude Score (0–100) *</label>
+                <input id="aptitudeScore" type="number" min="0" max="100" step="0.1" placeholder="e.g. 75.0" required />
+              </div>
+              <div class="field">
+                <label for="technicalScore">Technical Score (0–100) *</label>
+                <input id="technicalScore" type="number" min="0" max="100" step="0.1" placeholder="e.g. 80.0" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="communicationScore">Communication Score (0–100) *</label>
+                <input id="communicationScore" type="number" min="0" max="100" step="0.1" placeholder="e.g. 70.0" required />
+              </div>
+              <div class="field">
+                <label for="problemSolvingScore">Problem Solving Score (0–100) *</label>
+                <input id="problemSolvingScore" type="number" min="0" max="100" step="0.1" placeholder="e.g. 85.0" required />
+              </div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <button class="btn" id="submitAssessmentBtn" type="submit" style="height:44px">Submit Assessment to Backend</button>
+              <button class="btn secondary" id="historyToggleBtn" type="button" style="height:44px;display:none">View Assessment History (<span id="historyCount">0</span>)</button>
+            </div>
+            <div id="assessmentStatus" class="hidden" style="margin-top:14px"></div>
+          </form>
+
+          <!-- Collapsible Assessment History Section -->
+          <div id="assessmentHistorySection" class="hidden" style="margin-top:18px;border-top:1px solid var(--slate-200);padding-top:16px">
+            <h4 style="margin:0 0 10px;color:var(--primary-brown)">Assessment Submission History</h4>
+            <div id="assessmentHistoryList"></div>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Skill Levels</h3>
-          <p class="card-sub">Use 1 = beginner, 2 = basic, 3 = intermediate, 4 = advanced, 5 = strong/interview-ready.</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+            <div>
+              <h3 style="margin:0 0 6px">Skill Levels</h3>
+              <p class="card-sub" style="margin:0 0 14px">Use 1 = beginner, 2 = basic, 3 = intermediate, 4 = advanced, 5 = strong/interview-ready.</p>
+            </div>
+            <div id="skillStatus" style="font-size:12.5px;font-weight:600;min-height:20px;display:none;align-items:center"></div>
+          </div>
+          <div class="notice blue" style="margin:0 0 16px;font-size:12.5px">
+            <strong>Evidence-Aware Scoring:</strong> Reported skills carry an evidence-based weighting factor (&lambda;).
+            <div style="margin-top:6px;display:flex;gap:12px;flex-wrap:wrap;font-size:12px">
+              <span><span class="evidence-badge tier-e0">E0</span> No claim recorded (&lambda; = 0.0)</span>
+              <span><span class="evidence-badge tier-e1">E1</span> Self-reported skill without approved evidence (&lambda; = 0.5)</span>
+              <span><span class="evidence-badge tier-e2">E2</span> Verified with &ge;1 approved evidence submission (&lambda; = 1.0)</span>
+            </div>
+            <div style="margin-top:5px;font-size:11.5px;color:var(--slate-600)">
+              Formula: <em>Adjusted Proficiency = Reported &times; &lambda;</em>. Click &ldquo;Evidence&rdquo; on any skill to submit proof or view review status.
+            </div>
+          </div>
           <div class="skill-grid" id="skillInputs"></div>
           <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
             <button class="btn" id="assessBtn2">Assess My Readiness</button>
@@ -511,6 +685,23 @@ footer{
           <div id="opportunityList" class="empty">Run an assessment to calculate eligibility and match scores.</div>
         </div>
       </section>
+
+      <!-- ================= REVIEWER PORTAL (EVIDENCE REVIEW) ================= -->
+      <section id="view-reviewer" class="view hidden">
+        <div class="card">
+          <div class="section-title">
+            <div>
+              <h3>Pending Evidence Evaluation Queue</h3>
+              <p class="card-sub" id="reviewerQueueSub">Review, verify, or reject student-submitted skill evidence across all roles.</p>
+            </div>
+            <button type="button" class="btn secondary" id="refreshReviewerQueueBtn">↻ Refresh Queue</button>
+          </div>
+          <div id="reviewerQueueMsg" class="hidden" style="margin-bottom:14px"></div>
+          <div id="reviewerQueueList">
+            <div class="empty" style="padding:24px">Loading pending evidence submissions...</div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <footer>
@@ -519,6 +710,124 @@ footer{
   </main>
 </div>
 
+<!-- ================= AUTHENTICATION MODAL OVERLAY ================= -->
+<div id="authOverlay" class="auth-overlay hidden">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="logo-mark" aria-hidden="true" style="margin:0 auto 12px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M9.5 6H18V14.5" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>NXTSTEP</h2>
+      <p class="tagline" style="margin:4px 0 16px;text-align:center">Your next move, mapped.</p>
+      <div class="auth-tabs">
+        <button id="authTabLogin" class="auth-tab active" type="button">Sign In</button>
+        <button id="authTabRegister" class="auth-tab" type="button">Create Account</button>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="auth-form" onsubmit="return false;">
+      <div class="field">
+        <label for="loginEmail">Email Address</label>
+        <input id="loginEmail" type="email" placeholder="student@example.com" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+      <div id="loginError" class="auth-error hidden"></div>
+      <button id="loginBtn" class="btn" type="submit" style="width:100%;margin-top:12px;height:44px">Sign In</button>
+      <p class="auth-switch">Don't have an account? <a href="#" id="switchToRegister">Create one</a></p>
+    </form>
+
+    <!-- Registration Form -->
+    <form id="registerForm" class="auth-form hidden" onsubmit="return false;">
+      <div class="field">
+        <label for="registerEmail">Email Address</label>
+        <input id="registerEmail" type="email" placeholder="student@example.com" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="registerPassword">Password (minimum 8 characters)</label>
+        <input id="registerPassword" type="password" placeholder="••••••••" required minlength="8" autocomplete="new-password" />
+      </div>
+      <div class="field">
+        <label for="registerPasswordConfirm">Confirm Password</label>
+        <input id="registerPasswordConfirm" type="password" placeholder="••••••••" required minlength="8" autocomplete="new-password" />
+      </div>
+      <div id="registerError" class="auth-error hidden"></div>
+      <div id="registerSuccess" class="auth-success hidden"></div>
+      <button id="registerBtn" class="btn" type="submit" style="width:100%;margin-top:12px;height:44px">Create Account</button>
+      <p class="auth-switch">Already have an account? <a href="#" id="switchToLogin">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- ================= EVIDENCE MODAL OVERLAY ================= -->
+<div id="evidenceOverlay" class="auth-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="evidenceModalTitle">
+  <div class="auth-card evidence-modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+      <div>
+        <h2 id="evidenceModalTitle" style="margin:0;color:var(--primary-brown);font-size:20px;font-weight:800">Skill Evidence</h2>
+        <p class="card-sub" style="margin:3px 0 0" id="evidenceModalSubtitle">Submit proof to verify your proficiency level.</p>
+      </div>
+      <button type="button" id="closeEvidenceModalBtn" style="background:transparent;border:0;font-size:24px;line-height:1;color:var(--slate-500);cursor:pointer;padding:2px 8px" aria-label="Close modal">&times;</button>
+    </div>
+
+    <!-- Active Skill Evidence Overview -->
+    <div id="evidenceModalOverview" style="background:var(--surface-alt);border:1px solid var(--cream-border);border-radius:8px;padding:12px;margin-bottom:18px"></div>
+
+    <!-- Submit Evidence Form -->
+    <div style="border-top:1px solid var(--cream-border);padding-top:16px;margin-bottom:18px">
+      <h3 style="font-size:15px;margin:0 0 10px;color:var(--slate-900)">Submit New Evidence</h3>
+      <form id="evidenceForm" novalidate>
+        <div class="grid grid-2" style="gap:10px;margin-bottom:10px">
+          <div>
+            <label for="evidenceType" style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:var(--slate-700)">Evidence Type *</label>
+            <select id="evidenceType" required style="width:100%">
+              <option value="github">GitHub Repository</option>
+              <option value="certificate">Certificate / Credential</option>
+              <option value="project">Project Deployment / Demo</option>
+              <option value="publication">Publication / Article</option>
+              <option value="other">Other Proof</option>
+            </select>
+          </div>
+          <div>
+            <label for="evidenceTitle" style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:var(--slate-700)">Title *</label>
+            <input type="text" id="evidenceTitle" maxlength="150" placeholder="e.g. Distributed Cache implementation" required style="width:100%" />
+          </div>
+        </div>
+        <div style="margin-bottom:10px">
+          <label for="evidenceUrl" style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:var(--slate-700)">URL / Verification Link *</label>
+          <input type="url" id="evidenceUrl" maxlength="500" placeholder="https://github.com/..." required style="width:100%" />
+        </div>
+        <div style="margin-bottom:12px">
+          <label for="evidenceDesc" style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:var(--slate-700)">Description <span style="font-weight:normal;color:var(--slate-500)">(Optional, max 500 chars)</span></label>
+          <textarea id="evidenceDesc" rows="2" maxlength="500" placeholder="Briefly describe what this evidence demonstrates..." style="width:100%"></textarea>
+        </div>
+        <div id="evidenceFormMsg" class="hidden"></div>
+        <div style="display:flex;justify-content:flex-end;margin-top:10px">
+          <button type="submit" class="btn" id="submitEvidenceBtn">Submit Evidence</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Evidence Submission History -->
+    <div style="border-top:1px solid var(--cream-border);padding-top:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <h3 style="font-size:15px;margin:0;color:var(--slate-900)">Submitted Evidence History</h3>
+        <span id="evidenceHistoryCount" style="font-size:12px;color:var(--slate-500)"></span>
+      </div>
+      <div id="evidenceHistoryList" style="max-height:260px;overflow-y:auto">
+        <div class="empty" style="padding:16px">No evidence submitted yet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="frontend/js/api.js"></script>
 <script>
 /* ==========================================================================
    NXTSTEP — AI-Based Personalized Placement Readiness &
@@ -582,6 +891,8 @@ const ROLE_WEIGHTS = {
 const SAMPLE_STUDENT = {
   name: "Aarav Sharma",
   college: "BTech CSE, Semester VII",
+  branch: "Computer Science",
+  graduationYear: 2026,
   targetRole: "Software Developer",
   cgpa: 8.2,
   projectsCount: 2,
@@ -680,6 +991,9 @@ const SAMPLE_OPPORTUNITIES = [
 
 let student = structuredClone(SAMPLE_STUDENT);
 let lastAssessment = null;
+let currentUser = null;
+let currentUserProfile = null;
+let hasProfile = false;
 
 /* --------------------------------------------------------------------------
    3. UTILITIES
@@ -691,6 +1005,13 @@ function clamp(value, min, max) {
 
 function round1(value) {
   return Math.round(value * 10) / 10;
+}
+
+function formatReadinessScore(value) {
+  if (value === null || value === undefined || value === "" || isNaN(Number(value))) {
+    return "—";
+  }
+  return round1(Number(value));
 }
 
 function getEl(id) {
@@ -941,9 +1262,10 @@ function calculateOpportunityMatch(profile, assessment, opportunity) {
 }
 
 function getOpportunityMatches() {
-  if (!lastAssessment) return [];
+  const assessment = lastAssessment || (typeof calculateReadiness === "function" && typeof student !== "undefined" ? calculateReadiness(student) : null);
+  if (!assessment) return [];
   return SAMPLE_OPPORTUNITIES
-    .map(opp => calculateOpportunityMatch(student, lastAssessment, opp))
+    .map(opp => calculateOpportunityMatch(student, assessment, opp))
     .sort((a, b) => b.matchScore - a.matchScore);
 }
 
@@ -953,7 +1275,10 @@ function getOpportunityMatches() {
 
 function renderSkillInputs() {
   const container = getEl("skillInputs");
+  if (!container) return;
   container.innerHTML = "";
+
+  const isAuthenticated = Boolean(window.api && window.api.isAuthenticated());
 
   SKILLS.forEach(skill => {
     const wrapper = document.createElement("div");
@@ -963,9 +1288,11 @@ function renderSkillInputs() {
     head.className = "skill-head";
     const name = document.createElement("span");
     name.textContent = SKILL_LABELS[skill];
+    const rawProf = student.skills ? student.skills[skill] : undefined;
+    const isSet = rawProf !== undefined && rawProf !== null && rawProf !== "" && !isNaN(Number(rawProf));
     const output = document.createElement("output");
     output.id = `output-${skill}`;
-    output.textContent = `${student.skills[skill]}/5`;
+    output.textContent = isSet ? `${rawProf}/5` : "Not set";
     head.append(name, output);
 
     const input = document.createElement("input");
@@ -973,33 +1300,114 @@ function renderSkillInputs() {
     input.min = "1";
     input.max = "5";
     input.step = "1";
-    input.value = student.skills[skill];
+    input.value = isSet ? rawProf : 1;
     input.id = `skill-${skill}`;
     input.setAttribute("aria-label", `${SKILL_LABELS[skill]} skill level`);
     input.addEventListener("input", event => {
-      student.skills[skill] = Number(event.target.value);
-      output.textContent = `${student.skills[skill]}/5`;
+      const val = Number(event.target.value);
+      student.skills[skill] = val;
+      output.textContent = `${val}/5`;
       saveState();
+      const adjEl = wrapper.querySelector(".skill-adj-val");
+      const lambdaVal = wrapper.dataset.lambda ? Number(wrapper.dataset.lambda) : 0.5;
+      if (adjEl) {
+        adjEl.textContent = `${(val * lambdaVal).toFixed(1)}/5`;
+      }
+    });
+    input.addEventListener("change", event => {
+      const val = Number(event.target.value);
+      student.skills[skill] = val;
+      output.textContent = `${val}/5`;
+      saveState();
+      saveBackendSkill(skill, val);
     });
 
-    wrapper.append(head, input);
+    // Evidence Metadata
+    const backendSkill = currentBackendSkills[skill];
+    let tier = "E1";
+    let lambda = 0.5;
+    let adjustedProf = isSet ? (Number(rawProf) * 0.5).toFixed(1) : "0.0";
+    let totalEv = 0;
+    let approvedEv = 0;
+    let pendingEv = 0;
+    let rejectedEv = 0;
+
+    if (isAuthenticated) {
+      if (backendSkill) {
+        tier = backendSkill.evidence_level || "E1";
+        lambda = typeof backendSkill.lambda_weight === "number" ? backendSkill.lambda_weight : 0.5;
+        adjustedProf = typeof backendSkill.adjusted_proficiency === "number"
+          ? backendSkill.adjusted_proficiency.toFixed(1)
+          : (Number(isSet ? rawProf : 1) * lambda).toFixed(1);
+        if (backendSkill.evidence_counts) {
+          totalEv = backendSkill.evidence_counts.total || 0;
+          approvedEv = backendSkill.evidence_counts.approved || 0;
+          pendingEv = backendSkill.evidence_counts.pending || 0;
+          rejectedEv = backendSkill.evidence_counts.rejected || 0;
+        }
+      } else {
+        tier = "E0";
+        lambda = 0.0;
+        adjustedProf = "0.0";
+      }
+    } else {
+      tier = "E1";
+      lambda = 0.5;
+      adjustedProf = isSet ? (Number(rawProf) * 0.5).toFixed(1) : "0.0";
+    }
+
+    wrapper.dataset.lambda = String(lambda);
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "skill-evidence-meta";
+    metaDiv.innerHTML = `
+      <div style="display:flex;align-items:center;gap:5px">
+        <span class="evidence-badge tier-${tier.toLowerCase()}">${tier}</span>
+        <span style="color:var(--slate-500);font-size:11.5px">&lambda; = ${lambda}</span>
+      </div>
+      <div style="color:var(--slate-700);font-size:11.5px">
+        Adjusted: <strong class="skill-adj-val" style="color:var(--primary-brown)">${adjustedProf}/5</strong>
+      </div>
+    `;
+
+    const actionDiv = document.createElement("div");
+    actionDiv.style.cssText = "margin-top:8px;display:flex;justify-content:space-between;align-items:center;gap:6px";
+
+    let countText = `${approvedEv} approved`;
+    if (pendingEv > 0) {
+      countText += ` • ${pendingEv} pending`;
+    }
+    if (rejectedEv > 0) {
+      countText += ` • ${rejectedEv} rejected`;
+    }
+
+    actionDiv.innerHTML = `
+      <span style="font-size:11px;color:var(--slate-500)">${countText}</span>
+      <button type="button" class="btn-evidence" data-skill="${skill}">Evidence</button>
+    `;
+
+    wrapper.append(head, input, metaDiv, actionDiv);
     container.appendChild(wrapper);
   });
 }
 
 function fillProfileForm() {
-  getEl("studentName").value = student.name;
-  getEl("studentCollege").value = student.college;
-  getEl("targetRole").value = student.targetRole;
-  getEl("cgpa").value = student.cgpa;
-  getEl("projectsCount").value = student.projectsCount;
-  getEl("projectQuality").value = String(student.projectQuality);
-  getEl("projectSummary").value = student.projectSummary;
+  getEl("studentName").value = student.name || "";
+  getEl("studentCollege").value = student.college || "";
+  if (getEl("studentBranch")) getEl("studentBranch").value = student.branch || "";
+  if (getEl("studentGradYear")) getEl("studentGradYear").value = student.graduationYear || "";
+  getEl("targetRole").value = student.targetRole || "Software Developer";
+  getEl("cgpa").value = student.cgpa !== undefined && student.cgpa !== null ? student.cgpa : "";
+  getEl("projectsCount").value = student.projectsCount !== undefined ? student.projectsCount : 0;
+  getEl("projectQuality").value = String(student.projectQuality || 3);
+  getEl("projectSummary").value = student.projectSummary || "";
 }
 
 function readProfileForm() {
   student.name = getEl("studentName").value.trim() || "Sample Student";
-  student.college = getEl("studentCollege").value.trim() || "BTech CSE";
+  student.college = getEl("studentCollege").value.trim() || "";
+  if (getEl("studentBranch")) student.branch = getEl("studentBranch").value.trim() || "";
+  if (getEl("studentGradYear")) student.graduationYear = Number(getEl("studentGradYear").value) || null;
   student.targetRole = getEl("targetRole").value;
   student.cgpa = clamp(Number(getEl("cgpa").value) || 0, 0, 10);
   student.projectsCount = clamp(Number(getEl("projectsCount").value) || 0, 0, 20);
@@ -1008,191 +1416,510 @@ function readProfileForm() {
 }
 
 function renderDashboard() {
-  if (!lastAssessment) {
-    getEl("dashScore").textContent = "—";
-    getEl("dashRole").textContent = student.targetRole;
+  const dashScoreEl = getEl("dashScore");
+  const dashProgressEl = getEl("dashProgress");
+  const dashProgressTextEl = getEl("dashProgressText");
+  const dashTechnicalEl = getEl("dashTechnical");
+  const dashAptitudeEl = getEl("dashAptitude");
+  const dashCommunicationEl = getEl("dashCommunication");
+  const dashProblemSolvingEl = getEl("dashProblemSolving");
+  const dashAppliedEl = getEl("dashApplied");
+
+  const dashScoreLabel = getEl("dashScoreLabel");
+  const dashScoreHint = getEl("dashScoreHint");
+  const dashRoleLabel = getEl("dashRoleLabel");
+  const dashRoleHint = getEl("dashRoleHint");
+  const dashStrengthsLabel = getEl("dashStrengthsLabel");
+  const dashStrengthsHint = getEl("dashStrengthsHint");
+  const dashGapsLabel = getEl("dashGapsLabel");
+  const dashGapsHint = getEl("dashGapsHint");
+  const actionBanner = getEl("dashActionBanner");
+  const actionText = getEl("dashActionText");
+  const roleReadinessRow = getEl("dashRoleReadinessRow");
+  const roleReadinessBadges = getEl("dashRoleReadinessBadges");
+
+  // CASE 1: Authenticated with backend dashboard summary
+  if (window.api && window.api.isAuthenticated() && currentBackendDashboardSummary) {
+    const summary = currentBackendDashboardSummary;
+    const readiness = summary.readiness || {};
+    const studentData = summary.student || {};
+    const skillsOverview = summary.skills_overview || {};
+    const roadmapProgress = summary.roadmap_progress || {};
+
+    // 1. Recommended next action banner
+    if (actionBanner && actionText && summary.recommended_next_action) {
+      actionText.textContent = summary.recommended_next_action;
+      actionBanner.style.display = "block";
+    } else if (actionBanner) {
+      actionBanner.style.display = "none";
+    }
+
+    // 2. Metric 1: Readiness Score
+    if (readiness.has_assessment && readiness.overall_readiness_score !== null && readiness.overall_readiness_score !== undefined) {
+      const scoreVal = Number(readiness.overall_readiness_score);
+      dashScoreEl.textContent = formatReadinessScore(scoreVal);
+      const band = getReadinessBand(scoreVal);
+      if (dashScoreHint) dashScoreHint.textContent = `${band.label} • Rule-based (0–100)`;
+    } else {
+      dashScoreEl.textContent = "—";
+      if (dashScoreHint) dashScoreHint.textContent = "No assessment submitted";
+    }
+    if (dashScoreLabel) dashScoreLabel.textContent = "Readiness Score";
+
+    // 3. Metric 2: Target Role & Best-Fit Role
+    getEl("dashRole").textContent = summary.best_fit_role || student.targetRole || "—";
+    if (dashRoleLabel) dashRoleLabel.textContent = summary.best_fit_role ? "Best-Fit Role" : "Target Role";
+    if (dashRoleHint) {
+      dashRoleHint.textContent = summary.best_fit_role
+        ? `Target: ${student.targetRole || "Software Developer"}`
+        : "Used for skill weighting";
+    }
+
+    // 4. Metric 3: Skills Logged (Do NOT label total skills logged as strong skills)
+    const totalSkills = Number(skillsOverview.total_skills_logged) || 0;
+    getEl("dashStrengths").textContent = totalSkills > 0 ? totalSkills : "—";
+    if (dashStrengthsLabel) dashStrengthsLabel.textContent = "Skills Logged";
+    if (dashStrengthsHint) {
+      dashStrengthsHint.textContent = totalSkills > 0
+        ? `${skillsOverview.top_skills ? skillsOverview.top_skills.length : 0} top benchmark skill(s)`
+        : "No skills rated yet";
+    }
+
+    // 5. Metric 4: High-Priority Tasks (Do NOT label pending high-priority tasks as all skill gaps)
+    if (dashGapsLabel) dashGapsLabel.textContent = "Priority Tasks";
+    if (roadmapProgress.has_active_roadmap) {
+      const pendingHigh = Array.isArray(roadmapProgress.pending_high_priority_tasks)
+        ? roadmapProgress.pending_high_priority_tasks.length
+        : 0;
+      getEl("dashGaps").textContent = pendingHigh;
+      if (dashGapsHint) {
+        dashGapsHint.textContent = `${roadmapProgress.completed_tasks || 0}/${roadmapProgress.total_tasks || 0} completed (${Math.round(roadmapProgress.completion_percentage || 0)}%)`;
+      }
+    } else {
+      getEl("dashGaps").textContent = "—";
+      if (dashGapsHint) dashGapsHint.textContent = "No active roadmap tasks";
+    }
+
+    // 6. Readiness Progress Card
+    if (readiness.has_assessment && readiness.overall_readiness_score !== null && readiness.overall_readiness_score !== undefined) {
+      const scoreVal = Number(readiness.overall_readiness_score);
+      const band = getReadinessBand(scoreVal);
+      dashProgressEl.style.width = `${scoreVal}%`;
+      const assessedDate = readiness.last_assessed_at
+        ? new Date(readiness.last_assessed_at).toLocaleDateString()
+        : "Recently";
+      dashProgressTextEl.innerHTML = `<strong>${band.label}.</strong> Overall Score: <strong>${formatReadinessScore(scoreVal) + '/100'}</strong> • Verified by NXTSTEP rule engine • Assessed ${assessedDate}.`;
+      if (dashAptitudeEl) dashAptitudeEl.textContent = readiness.aptitude_score != null ? Math.round(readiness.aptitude_score) : "—";
+      if (dashTechnicalEl) dashTechnicalEl.textContent = readiness.technical_score != null ? Math.round(readiness.technical_score) : "—";
+      if (dashCommunicationEl) dashCommunicationEl.textContent = readiness.communication_score != null ? Math.round(readiness.communication_score) : "—";
+      if (dashProblemSolvingEl) dashProblemSolvingEl.textContent = readiness.problem_solving_score != null ? Math.round(readiness.problem_solving_score) : "—";
+    } else {
+      dashProgressEl.style.width = "0%";
+      dashProgressTextEl.textContent = "Take the placement readiness assessment in Skill Analysis to view progress.";
+      if (dashAptitudeEl) dashAptitudeEl.textContent = "—";
+      if (dashTechnicalEl) dashTechnicalEl.textContent = "—";
+      if (dashCommunicationEl) dashCommunicationEl.textContent = "—";
+      if (dashProblemSolvingEl) dashProblemSolvingEl.textContent = "—";
+    }
+
+    // 7. Role Readiness Information
+    if (roleReadinessRow && roleReadinessBadges && Array.isArray(summary.role_readiness) && summary.role_readiness.length > 0) {
+      roleReadinessRow.style.display = "block";
+      roleReadinessBadges.innerHTML = summary.role_readiness.map(r => {
+        const cls = r.status === "Ready" ? "good" : (r.status === "In Progress" ? "info" : "warn");
+        return `<span class="tag ${cls}"><strong>${escapeHtml(r.role)}:</strong> ${Math.round(r.readiness_percentage)}% (${escapeHtml(r.status)})</span>`;
+      }).join("");
+    } else if (roleReadinessRow) {
+      roleReadinessRow.style.display = "none";
+    }
+
+    // 8. Student Profile Card (Verified Backend Data)
+    const profileEl = getEl("dashProfile");
+    if (profileEl) {
+      const isAuth = Boolean(window.api && window.api.isAuthenticated());
+      const displayName = studentData.full_name || (isAuth ? "" : student.name);
+      const displayCollege = studentData.college || (isAuth ? "" : student.college);
+      const displayBranch = studentData.branch || (isAuth ? "" : student.branch);
+      const displayGradYear = studentData.graduation_year || (isAuth ? null : student.graduationYear);
+      const displayCgpa = studentData.cgpa != null ? studentData.cgpa : (isAuth ? null : student.cgpa);
+
+      if (!displayName && !displayCollege && displayCgpa == null) {
+        profileEl.innerHTML = `<div class="empty">No student profile found in backend. Go to <strong>Skill Analysis</strong> to save your profile.</div>`;
+      } else {
+        const collegeLine = [displayCollege, displayBranch].filter(Boolean).map(escapeHtml).join(" • ");
+        const cgpaBadge = displayCgpa != null ? `<span class="tag info">CGPA ${displayCgpa}</span>` : "";
+        const gradBadge = displayGradYear ? `<span class="tag teal">Class of ${displayGradYear}</span>` : "";
+        const projectBadge = student.projectsCount ? `<span class="tag info">${student.projectsCount} project(s)</span>` : "";
+        const qualityBadge = student.projectQuality ? `<span class="tag info">Quality ${student.projectQuality}/5</span>` : "";
+        const projectSummary = student.projectSummary ? `<p style="margin:6px 0 0;font-size:12.5px;color:var(--slate-700)">${escapeHtml(student.projectSummary)}</p>` : "";
+
+        profileEl.innerHTML = `
+          <div>
+            <p style="margin:0 0 6px"><strong>${escapeHtml(displayName || "Student")}</strong><br /><span style="font-size:13px;color:var(--slate-500)">${collegeLine || "College / Discipline not set"}</span></p>
+            <p style="margin:0 0 4px">${cgpaBadge} ${gradBadge} ${projectBadge} ${qualityBadge}</p>
+            ${projectSummary}
+          </div>
+        `;
+      }
+    }
+
+    // 9. Top Opportunities
+    if (currentBackendOpportunities && currentBackendOpportunities.length > 0) {
+      const topMatches = currentBackendOpportunities.slice(0, 3);
+      getEl("dashTopOpportunities").innerHTML = topMatches
+        .map(opp => renderOpportunityCard(opp, false, "dashboard"))
+        .join("");
+    } else {
+      const matches = getOpportunityMatches().slice(0, 3);
+      getEl("dashTopOpportunities").innerHTML = matches.length
+        ? matches.map(match => renderOpportunityCard(match, false, "dashboard")).join("")
+        : `<div class="empty">No sample opportunities match the selected filter.</div>`;
+    }
+    return;
+  }
+
+  // CASE 2: Unauthenticated / Local Fallback
+  if (actionBanner) actionBanner.style.display = "none";
+  if (roleReadinessRow) roleReadinessRow.style.display = "none";
+  if (dashScoreLabel) dashScoreLabel.textContent = "Readiness Score";
+  if (dashScoreHint) dashScoreHint.textContent = "Prototype estimate (0–100)";
+  if (dashRoleLabel) dashRoleLabel.textContent = "Target Role";
+  if (dashRoleHint) dashRoleHint.textContent = "Used for skill weighting";
+  if (dashStrengthsLabel) dashStrengthsLabel.textContent = "Strong Skills";
+  if (dashStrengthsHint) dashStrengthsHint.textContent = "Skill level 4 or 5";
+  if (dashGapsLabel) dashGapsLabel.textContent = "Priority Gaps";
+  if (dashGapsHint) dashGapsHint.textContent = "Skills needing attention";
+
+  if (!currentBackendAssessment && !lastAssessment) {
+    dashScoreEl.textContent = "—";
+    getEl("dashRole").textContent = student.targetRole || "—";
     getEl("dashStrengths").textContent = "—";
     getEl("dashGaps").textContent = "—";
-    getEl("dashTechnical").textContent = "—";
-    getEl("dashApplied").textContent = "—";
-    getEl("dashProgress").style.width = "0%";
-    getEl("dashProgressText").textContent = "Run an assessment to view progress.";
+    if (dashTechnicalEl) dashTechnicalEl.textContent = "—";
+    if (dashAptitudeEl) dashAptitudeEl.textContent = "—";
+    if (dashCommunicationEl) dashCommunicationEl.textContent = "—";
+    if (dashProblemSolvingEl) dashProblemSolvingEl.textContent = "—";
+    if (dashAppliedEl) dashAppliedEl.textContent = "—";
+    dashProgressEl.style.width = "0%";
+    dashProgressTextEl.textContent = "Submit a placement assessment to view backend readiness score.";
     getEl("dashProfile").innerHTML = `<div class="empty">Click <strong>Assess My Readiness</strong> to generate results.</div>`;
     getEl("dashTopOpportunities").innerHTML = `<div class="empty">No matches calculated yet.</div>`;
     return;
   }
 
-  const { strengths, gaps } = identifyStrengthsAndGaps(lastAssessment);
-  const band = getReadinessBand(lastAssessment.finalScore);
+  const dashGapsData = identifyStrengthsAndGaps(lastAssessment || calculateReadiness(student));
+  const dashStrengths = dashGapsData.strengths;
+  const dashGaps = dashGapsData.gaps;
+  const dashRawScore = currentBackendAssessment ? currentBackendAssessment.readiness_score : (lastAssessment ? lastAssessment.finalScore : null);
+  const dashBand = dashRawScore != null ? getReadinessBand(Number(dashRawScore)) : null;
 
-  getEl("dashScore").textContent = lastAssessment.finalScore;
-  getEl("dashRole").textContent = student.targetRole;
-  getEl("dashStrengths").textContent = strengths.length;
-  getEl("dashGaps").textContent = gaps.length;
-  getEl("dashTechnical").textContent = lastAssessment.technicalScore;
-  getEl("dashApplied").textContent = lastAssessment.projectScore;
-  getEl("dashProgress").style.width = `${lastAssessment.finalScore}%`;
-  getEl("dashProgressText").innerHTML =
-    `<strong>${band.label}.</strong> Score: ${lastAssessment.finalScore}/100 for the ${student.targetRole} target role.`;
+  dashScoreEl.textContent = formatReadinessScore(dashRawScore);
+  getEl("dashRole").textContent = student.targetRole || "—";
+  getEl("dashStrengths").textContent = dashStrengths.length;
+  getEl("dashGaps").textContent = dashGaps.length;
+
+  if (currentBackendAssessment) {
+    if (dashAptitudeEl) dashAptitudeEl.textContent = currentBackendAssessment.aptitude_score;
+    if (dashTechnicalEl) dashTechnicalEl.textContent = currentBackendAssessment.technical_score;
+    if (dashCommunicationEl) dashCommunicationEl.textContent = currentBackendAssessment.communication_score;
+    if (dashProblemSolvingEl) dashProblemSolvingEl.textContent = currentBackendAssessment.problem_solving_score;
+    if (dashAppliedEl) dashAppliedEl.textContent = "—";
+    const scoreVal = Number(currentBackendAssessment.readiness_score);
+    dashProgressEl.style.width = `${scoreVal}%`;
+    dashProgressTextEl.innerHTML =
+      `<strong>${dashBand.label}.</strong> Backend Readiness Score: <strong>${formatReadinessScore(scoreVal) + '/100'}</strong> (Aptitude: ${currentBackendAssessment.aptitude_score}, Technical: ${currentBackendAssessment.technical_score}, Comm: ${currentBackendAssessment.communication_score}, Problem Solving: ${currentBackendAssessment.problem_solving_score}).`;
+  } else {
+    if (dashTechnicalEl) dashTechnicalEl.textContent = lastAssessment.technicalScore;
+    if (dashAppliedEl) dashAppliedEl.textContent = lastAssessment.projectScore;
+    const scoreVal = Number(lastAssessment.finalScore);
+    dashProgressEl.style.width = `${scoreVal}%`;
+    dashProgressTextEl.innerHTML =
+      `<strong>${dashBand.label}.</strong> Score: ${formatReadinessScore(scoreVal) + '/100'} for the ${student.targetRole} target role.`;
+  }
 
   getEl("dashProfile").innerHTML = `
-    <p style="margin:0 0 8px"><strong>${escapeHtml(student.name)}</strong><br>${escapeHtml(student.college)}</p>
-    <p style="margin:0 0 8px"><span class="tag info">CGPA ${student.cgpa}</span>
-      <span class="tag teal">${student.projectsCount} project(s)</span>
-      <span class="tag info">Quality ${student.projectQuality}/5</span></p>
-    <p style="margin:0;font-size:13px;color:var(--slate-700)">${escapeHtml(student.projectSummary || "No project summary provided.")}</p>
+    <div>
+      <p style="margin:0 0 8px"><strong>${escapeHtml(student.name)}</strong><br />${escapeHtml(student.college)}</p>
+      <p style="margin:0 0 8px"><span class="tag info">CGPA ${student.cgpa}</span>
+        <span class="tag teal">${student.projectsCount} project(s)</span>
+        <span class="tag info">Quality ${student.projectQuality}/5</span></p>
+      <p style="margin:0;font-size:13px;color:var(--slate-700)">${escapeHtml(student.projectSummary || "No project summary provided.")}</p>
+    </div>
   `;
 
-  const matches = getOpportunityMatches().slice(0, 3);
-  getEl("dashTopOpportunities").innerHTML = matches.length
-    ? matches.map(match => renderOpportunityCard(match, false, "dashboard")).join("")
-    : `<div class="empty">No sample opportunities match the selected filter.</div>`;
+  if (currentBackendOpportunities && currentBackendOpportunities.length > 0) {
+    const topMatches = currentBackendOpportunities.slice(0, 3);
+    getEl("dashTopOpportunities").innerHTML = topMatches
+      .map(opp => renderOpportunityCard(opp, false, "dashboard"))
+      .join("");
+  } else {
+    const matches = getOpportunityMatches().slice(0, 3);
+    getEl("dashTopOpportunities").innerHTML = matches.length
+      ? matches.map(match => renderOpportunityCard(match, false, "dashboard")).join("")
+      : `<div class="empty">No sample opportunities match the selected filter.</div>`;
+  }
+}
+
+function renderBreakdownCard(label, value, explanation) {
+  return `
+      <div style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13.5px">
+          <span>${label}</span><span>${value + '/100'}</span>
+        </div>
+        <div class="progress" style="margin-top:6px"><div style="width:${value}%"></div></div>
+        <p style="margin:5px 0 0;font-size:12.5px;color:var(--slate-500)">${explanation}</p>
+      </div>
+    `;
 }
 
 function renderAnalysis() {
-  if (!lastAssessment) {
+  if (!lastAssessment && !currentBackendAssessment) {
     getEl("analysisResult").classList.add("hidden");
     return;
   }
 
-  const assessment = lastAssessment;
-  const { strengths, gaps } = identifyStrengthsAndGaps(assessment);
-  const band = getReadinessBand(assessment.finalScore);
+  const analysisAssessment = lastAssessment || calculateReadiness(student);
+  const analysisGapsData = identifyStrengthsAndGaps(analysisAssessment);
+  const analysisStrengths = analysisGapsData.strengths;
+  const analysisGaps = analysisGapsData.gaps;
+  const analysisRawScore = currentBackendAssessment ? currentBackendAssessment.readiness_score : (analysisAssessment ? analysisAssessment.finalScore : null);
+  const analysisScore = analysisRawScore != null ? Number(analysisRawScore) : 0;
+  const analysisBand = getReadinessBand(analysisScore);
 
   getEl("analysisResult").classList.remove("hidden");
-  getEl("analysisMeta").textContent =
-    `Calculated for ${student.name} targeting ${student.targetRole}. Prototype estimate only.`;
-  getEl("finalScore").textContent = assessment.finalScore;
-  getEl("scoreRing").style.setProperty("--pct", assessment.finalScore);
-  getEl("readinessBand").innerHTML = `<span class="tag ${band.className}">${band.label}</span>`;
+  getEl("analysisMeta").textContent = currentBackendAssessment
+    ? `Backend assessment for ${student.name} • Submitted ${new Date(currentBackendAssessment.created_at).toLocaleString()}`
+    : `Calculated for ${student.name} targeting ${student.targetRole}. Prototype estimate only.`;
+  getEl("finalScore").textContent = formatReadinessScore(analysisRawScore);
+  getEl("scoreRing").style.setProperty("--pct", analysisScore);
+  getEl("readinessBand").innerHTML = `<span class="tag ${analysisBand.className}">${analysisBand.label}</span>`;
 
-  const breakdown = [
-    ["Technical skills", assessment.technicalScore, "Role-weighted average of all ten skill levels."],
-    ["Applied / project experience", assessment.projectScore, "Based on completed projects and best-project quality."],
-    ["Academic indicator", assessment.academicScore, "CGPA converted to a 0–100 indicator."]
-  ];
+  let breakdownHtml = "";
+  let cardsHtml = "";
+  let noticeHtml = "";
 
-  getEl("scoreBreakdown").innerHTML = breakdown.map(([label, value, explanation]) => `
-    <div style="margin-bottom:14px">
-      <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13.5px">
-        <span>${label}</span><span>${value}/100</span>
+  if (currentBackendAssessment) {
+    const dimensions = [
+      ["Aptitude Evaluation", currentBackendAssessment.aptitude_score, "Quantitative, logical, and analytical evaluation score."],
+      ["Technical Proficiency", currentBackendAssessment.technical_score, "Core software engineering and programming competency."],
+      ["Communication Skills", currentBackendAssessment.communication_score, "Verbal, written, and collaborative communication ability."],
+      ["Problem Solving", currentBackendAssessment.problem_solving_score, "Algorithmic thinking and complex problem solving capability."]
+    ];
+
+    cardsHtml = dimensions.map(([label, value, explanation]) => renderBreakdownCard(label, value, explanation)).join("");
+
+    noticeHtml = `
+      <div class="notice blue" style="margin-top:14px">
+        <strong>Backend Formula:</strong> Overall Readiness Score = (Aptitude + Technical + Communication + Problem Solving) / 4 = <strong>${formatReadinessScore(currentBackendAssessment.readiness_score) + '/100'}</strong>.<br />
+        <span style="font-size:12px;color:var(--text-secondary)">Verified rule-based score from backend database. Distinct from statistical ML placement probability.</span>
       </div>
-      <div class="progress" style="margin-top:6px"><div style="width:${value}%"></div></div>
-      <p style="margin:5px 0 0;font-size:12.5px;color:var(--slate-500)">${explanation}</p>
-    </div>
-  `).join("") + `
-    <div class="notice blue" style="margin-top:14px">
-      Final score = 75% technical + 20% applied/project + 5% academic indicator.
-    </div>
-  `;
+    `;
 
-  getEl("strengthsBox").innerHTML = strengths.length
-    ? strengths.map(s => `<span class="tag good">${SKILL_LABELS[s]} — Level ${student.skills[s]}/5</span>`).join("")
-    : `<div class="empty">No skill is currently at level 4 or 5. Focus first on the prioritized gaps below.</div>`;
+    breakdownHtml = cardsHtml + noticeHtml;
+  } else {
+    const breakdown = [
+      ["Technical skills", analysisAssessment.technicalScore, "Role-weighted average of all ten skill levels."],
+      ["Applied / project experience", analysisAssessment.projectScore, "Based on completed projects and best-project quality."],
+      ["Academic indicator", analysisAssessment.academicScore, "CGPA converted to a 0–100 indicator."],
+    ];
 
-  getEl("gapsBox").innerHTML = gaps.length
-    ? gaps.map(g => `<span class="tag warn">${SKILL_LABELS[g.skill]} — Level ${g.level}/5</span>`).join("")
-    : `<div class="empty">No major role-relevant gaps detected by the prototype rules.</div>`;
+    cardsHtml = breakdown.map(([label, value, explanation]) => renderBreakdownCard(label, value, explanation)).join("");
 
-  getEl("priorityGaps").innerHTML = gaps.length
-    ? gaps.map((g, index) => `
+    noticeHtml = `
+      <div class="notice blue" style="margin-top:14px">
+        Final score = 75% technical + 20% applied/project + 5% academic indicator.
+      </div>
+    `;
+
+    breakdownHtml = cardsHtml + noticeHtml;
+  }
+
+  getEl("scoreBreakdown").innerHTML = breakdownHtml;
+
+  if (analysisStrengths.length > 0) {
+    getEl("strengthsBox").innerHTML = analysisStrengths
+      .map(s => `<span class="tag good">${SKILL_LABELS[s]} — Level ${student.skills[s]}/5</span>`)
+      .join("");
+  } else {
+    getEl("strengthsBox").innerHTML = `<div class="empty">No skill is currently at level 4 or 5. Focus first on the prioritized gaps below.</div>`;
+  }
+
+  if (analysisGaps.length > 0) {
+    getEl("gapsBox").innerHTML = analysisGaps
+      .map(g => `<span class="tag warn">${SKILL_LABELS[g.skill]} — Level ${g.level}/5</span>`)
+      .join("");
+  } else {
+    getEl("gapsBox").innerHTML = `<div class="empty">No major role-relevant gaps detected by the prototype rules.</div>`;
+  }
+
+  if (analysisGaps.length > 0) {
+    getEl("priorityGaps").innerHTML = analysisGaps
+      .map((g, index) => `
         <div class="roadmap-step">
           <h4>${index + 1}. ${SKILL_LABELS[g.skill]}</h4>
-          <p><strong>Current level:</strong> ${g.level}/5 &nbsp;•&nbsp; <strong>Role importance:</strong> ${g.importance}/100</p>
+          <p><strong>Current level:</strong> ${g.level + '/5'} &nbsp;•&nbsp; <strong>Role importance:</strong> ${g.importance + '/100'}</p>
           <p>${escapeHtml(g.reason)}</p>
         </div>
-      `).join("")
-    : `<div class="empty">Your current profile meets the prototype threshold for the selected role’s core skills.</div>`;
+      `)
+      .join("");
+  } else {
+    getEl("priorityGaps").innerHTML = `<div class="empty">Your current profile meets the prototype threshold for the selected role’s core skills.</div>`;
+  }
 
   renderRoadmap();
 }
 
+function renderRoadmapWeekCard(week) {
+  return `
+    <div class="roadmap-step">
+      <h4>${week.week}: ${week.focus}</h4>
+      <ul class="clean">
+        ${week.actions.map(action => `<li>${escapeHtml(action)}</li>`).join("")}
+      </ul>
+      <p style="margin-top:8px"><strong>Expected outcome:</strong> ${escapeHtml(week.outcome)}</p>
+    </div>
+  `;
+}
+
 function renderRoadmap() {
+  if (window.api && window.api.isAuthenticated() && currentBackendRoadmapTasks) {
+    const targetRole = student.targetRole || (getEl("targetRole") ? getEl("targetRole").value : "Software Developer");
+    const backendRole = getBackendRole(targetRole);
+    renderBackendRoadmap(currentBackendRoadmapTasks, backendRole, targetRole);
+    return;
+  }
+
   if (!lastAssessment) {
     getEl("roadmapMeta").textContent = "Run an assessment first to generate your roadmap.";
     getEl("roadmapContent").innerHTML = `<div class="empty">No roadmap available yet.</div>`;
     return;
   }
 
-  const { gaps } = identifyStrengthsAndGaps(lastAssessment);
-  const roadmap = buildRoadmap(lastAssessment, gaps);
+  const roadmapGapsData = identifyStrengthsAndGaps(lastAssessment);
+  const roadmapGaps = roadmapGapsData.gaps;
+  const roadmap = buildRoadmap(lastAssessment, roadmapGaps);
 
   getEl("roadmapMeta").textContent =
-    `Generated for ${student.name} • Target role: ${student.targetRole} • Current readiness: ${lastAssessment.finalScore}/100.`;
+    `Generated for ${student.name} • Target role: ${student.targetRole} • Current readiness: ${lastAssessment.finalScore + '/100.'}`;
 
   getEl("roadmapContent").innerHTML = `
     <p style="margin:0 0 14px">
       <strong>Focus areas:</strong>
-      ${roadmap.focusSkills.map(skill => `<span class="tag teal">${SKILL_LABELS[skill]}</span>`).join("")}
+      ${roadmap.focusSkills.map(skill => `<span class="tag teal">${SKILL_LABELS[skill] || skill}</span>`).join("")}
     </p>
-    ${roadmap.weeks.map(week => `
-      <div class="roadmap-step">
-        <h4>${week.week}: ${week.focus}</h4>
-        <ul class="clean">
-          ${week.actions.map(action => `<li>${escapeHtml(action)}</li>`).join("")}
-        </ul>
-        <p style="margin-top:8px"><strong>Expected outcome:</strong> ${escapeHtml(week.outcome)}</p>
-      </div>
-    `).join("")}
+    ${roadmap.weeks.map(week => renderRoadmapWeekCard(week)).join("")}
     <div class="notice" style="margin-top:14px">
       This roadmap is generated from rule-based gap prioritization. Adjust your skill levels and reassess to see an updated plan.
     </div>
   `;
 }
 
-function renderOpportunityCard(match, showDetails = false, context = "opportunities") {
-  const opp = match.opportunity;
+function matchesOpportunityRole(oppOrMatch, filter) {
+  if (!filter || filter === "all") return true;
+  const role = (
+    oppOrMatch.role_title ||
+    (oppOrMatch.opportunity && oppOrMatch.opportunity.role) ||
+    oppOrMatch.role ||
+    ""
+  ).toLowerCase();
+  const f = filter.toLowerCase();
+
+  if (f === "software developer") {
+    if (role.includes("frontend") || role === "backend developer") return false;
+    return role === "software developer" ||
+      role.includes("software") ||
+      role.includes("programmer") ||
+      role.includes("sde") ||
+      role.includes("genc next") ||
+      role.includes("analyst") ||
+      role.includes("full stack");
+  }
+  if (f === "frontend developer") {
+    return role === "frontend developer" ||
+      role.includes("frontend") ||
+      role.includes("full stack");
+  }
+  if (f === "backend developer") {
+    return role === "backend developer" ||
+      role.includes("backend") ||
+      role.includes("digital software") ||
+      role.includes("full stack");
+  }
+  return role === f || role.includes(f);
+}
+
+function renderBackendOpportunityCard(opp, showDetails = false, context = "opportunities") {
   const safeContext = context === "dashboard" ? "dashboard" : "opportunities";
   const detailsId = `${safeContext}-details-${opp.id}`;
   const buttonId = `${safeContext}-toggle-${opp.id}`;
 
-  const requiredTags = match.required.length
-    ? match.required.map(skill => {
-        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
-        const cls = level >= 3 ? "good" : "bad";
-        return `<span class="tag ${cls}">${skill} — ${level}/5</span>`;
+  let eligibilityClass = "warn";
+  if (opp.cgpa_eligibility_status === "Eligible") {
+    eligibilityClass = "good";
+  } else if (opp.cgpa_eligibility_status === "Not Eligible") {
+    eligibilityClass = "bad";
+  }
+
+  const missingMap = new Map();
+  if (Array.isArray(opp.missing_skills)) {
+    opp.missing_skills.forEach(m => {
+      missingMap.set(String(m.skill).toLowerCase(), m);
+    });
+  }
+
+  const reqEntries = Object.entries(opp.required_skills || {});
+  const requiredTags = reqEntries.length
+    ? reqEntries.map(([skill, reqLevel]) => {
+        const missing = missingMap.get(skill.toLowerCase());
+        if (missing) {
+          return `<span class="tag bad">${escapeHtml(skill)} — Level ${missing.current_level} of ${reqLevel}</span>`;
+        }
+        return `<span class="tag good">${escapeHtml(skill)} — Level ${reqLevel} of ${reqLevel}</span>`;
       }).join("")
     : `<span class="tag info">No required skills specified</span>`;
 
-  const matchingTags = match.matching.length
-    ? match.matching.map(skill => `<span class="tag good">${skill}</span>`).join("")
-    : `<span class="tag bad">No required skill currently meets the level-3 threshold</span>`;
+  const matchingList = reqEntries.filter(([skill]) => !missingMap.has(skill.toLowerCase()));
+  const matchingTags = matchingList.length
+    ? matchingList.map(([skill, reqLevel]) => `<span class="tag good">${escapeHtml(skill)} (Level ${reqLevel})</span>`).join("")
+    : `<span class="tag bad">None meeting required benchmark level</span>`;
 
-  const missingTags = match.missing.length
-    ? match.missing.map(skill => `<span class="tag bad">${skill}</span>`).join("")
-    : `<span class="tag good">None</span>`;
+  const missingTags = (opp.missing_skills && opp.missing_skills.length > 0)
+    ? opp.missing_skills.map(m => `<span class="tag bad">${escapeHtml(m.skill)} (Current: Level ${m.current_level}, Req: Level ${m.required_level}, Gap: ${m.gap})</span>`).join("")
+    : `<span class="tag good">All benchmark skills satisfied</span>`;
 
-  const preferredTags = match.preferred.length
-    ? match.preferred.map(skill => {
-        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
-        const cls = level >= 3 ? "good" : "warn";
-        return `<span class="tag ${cls}">${skill} — ${level}/5</span>`;
-      }).join("")
-    : `<span class="tag info">No preferred skills specified</span>`;
+  const packageText = opp.package_lpa ? `₹${opp.package_lpa} LPA` : "Standard campus package";
+  const fitPct = Math.round(Number(opp.overall_fit_score) || 0);
+
+  let formulaExplanation = "Rule-based heuristic: 30% CGPA eligibility + 70% skill match.";
+  if (opp.cgpa_eligibility_status === "Not Eligible") {
+    formulaExplanation = "Rule-based heuristic: 50% of demonstrated skill match (CGPA below minimum benchmark cutoff).";
+  } else if (opp.cgpa_eligibility_status && opp.cgpa_eligibility_status.startsWith("Unknown")) {
+    formulaExplanation = "Rule-based heuristic: 100% of demonstrated skill match (academic verification pending).";
+  }
 
   return `
     <div class="opp" data-opportunity-id="${escapeHtml(opp.id)}">
       <div class="opp-head">
         <div>
-          <h4>${escapeHtml(opp.company)} — ${escapeHtml(opp.role)}</h4>
-          <p>${escapeHtml(opp.type)} • ${escapeHtml(opp.stipend)}</p>
-          <p>${escapeHtml(opp.description)}</p>
+          <h4>${escapeHtml(opp.company_name)} — ${escapeHtml(opp.role_title)}</h4>
+          <p>${escapeHtml(packageText)} • ${escapeHtml(opp.location || "Pan India")}</p>
+          <p>${escapeHtml(opp.description || "Benchmark campus opportunity for readiness analysis.")}</p>
           <div style="margin-top:8px">
-            <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span>
-            <span class="tag info">Min. CGPA ${opp.minCgpa}</span>
-            <span class="tag info">Min. projects ${opp.minProjects}</span>
+            <span class="tag ${eligibilityClass}">${escapeHtml(opp.cgpa_eligibility_status)}</span>
+            <span class="tag info">Min. CGPA ${opp.min_cgpa}</span>
+            <span class="tag info">${escapeHtml(opp.location || "Pan India")}</span>
           </div>
         </div>
-        <div class="match-pill">${match.matchScore}%</div>
+        <div class="match-pill">${fitPct + '%'}</div>
       </div>
 
       <div style="margin-top:10px">
-        <strong style="font-size:13px">Matching required skills:</strong><br>
+        <strong style="font-size:13px">Matching required skills:</strong><br />
         ${matchingTags}
       </div>
 
       <div style="margin-top:6px">
-        <strong style="font-size:13px">Missing / below-threshold required skills:</strong><br>
+        <strong style="font-size:13px">Missing / below-threshold required skills:</strong><br />
         ${missingTags}
       </div>
 
@@ -1215,7 +1942,148 @@ function renderOpportunityCard(match, showDetails = false, context = "opportunit
         <div class="detail-grid">
           <div class="detail-block">
             <h5>Company and Role</h5>
-            <p style="margin:0"><strong>${escapeHtml(opp.company)}</strong><br>${escapeHtml(opp.role)}</p>
+            <p style="margin:0"><strong>${escapeHtml(opp.company_name)}</strong><br />${escapeHtml(opp.role_title)}</p>
+            <p style="margin:6px 0 0">${escapeHtml(packageText)} • ${escapeHtml(opp.location || "Pan India")}</p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Opportunity Summary</h5>
+            <p style="margin:0">${escapeHtml(opp.description || "Benchmark campus opportunity for readiness analysis.")}</p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Required Skills and Benchmark Level</h5>
+            <div>${requiredTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Skills You Already Possess</h5>
+            <div>${matchingTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Missing / Below-Threshold Skills</h5>
+            <div>${missingTags}</div>
+          </div>
+
+          <div class="detail-block">
+            <h5>Eligibility Status and Criteria</h5>
+            <p style="margin:0">
+              <span class="tag ${eligibilityClass}">${escapeHtml(opp.cgpa_eligibility_status)}</span><br />
+              Minimum CGPA: <strong>${opp.min_cgpa}</strong> — ${opp.is_eligible_cgpa === true ? "Met" : opp.is_eligible_cgpa === false ? "Below Cutoff" : "Verification Required"}.
+            </p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Overall Fit Score</h5>
+            <p style="margin:0"><strong>${opp.overall_fit_score + '%'}</strong> (Skill Match: ${opp.skill_match_percentage + '%'})</p>
+            <p style="margin:6px 0 0;font-size:12.5px;color:var(--slate-500)">
+              ${formulaExplanation}
+            </p>
+          </div>
+
+          <div class="detail-block">
+            <h5>Recommendation Status</h5>
+            <p style="margin:0"><span class="tag ${eligibilityClass}">${escapeHtml(opp.status)}</span></p>
+          </div>
+        </div>
+
+        <div class="detail-block" style="margin-top:14px">
+          <h5>Score Explanation</h5>
+          <ul class="clean">
+            <li>Overall Fit Score: <strong>${opp.overall_fit_score + '%'}</strong> (${escapeHtml(opp.status)}).</li>
+            <li>Demonstrated Skill Match: <strong>${opp.skill_match_percentage + '%'}</strong> across required skills.</li>
+            <li>Academic Benchmark: CGPA cutoff of <strong>${opp.min_cgpa}</strong> (${escapeHtml(opp.cgpa_eligibility_status)}).</li>
+            ${(opp.missing_skills && opp.missing_skills.length > 0)
+              ? `<li>Targeted Improvement: Enhance ${escapeHtml(opp.missing_skills.map(m => `${m.skill} (gap of ${m.gap})`).join(", "))} to increase fit score.</li>`
+              : `<li>Targeted Improvement: All required skill levels satisfied for this benchmark role.</li>`}
+          </ul>
+        </div>
+
+        <div class="notice blue" style="margin-top:14px">
+          <span style="font-size:12px">${escapeHtml(opp.benchmark_disclaimer || "Illustrative benchmark opportunity for readiness analysis; not verified live recruitment data.")}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderPrototypeOpportunityCard(match, showDetails = false, context = "opportunities") {
+  const opp = match.opportunity;
+  const safeContext = context === "dashboard" ? "dashboard" : "opportunities";
+  const detailsId = `${safeContext}-details-${opp.id}`;
+  const buttonId = `${safeContext}-toggle-${opp.id}`;
+
+  const requiredTags = match.required.length
+    ? match.required.map(skill => {
+        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
+        const cls = level >= 3 ? "good" : "bad";
+        return `<span class="tag ${cls}">${skill} — Level ${level} of 5</span>`;
+      }).join("")
+    : `<span class="tag info">No required skills specified</span>`;
+
+  const matchingTags = match.matching.length
+    ? match.matching.map(skill => `<span class="tag good">${skill}</span>`).join("")
+    : `<span class="tag bad">No required skill currently meets the level-3 threshold</span>`;
+
+  const missingTags = match.missing.length
+    ? match.missing.map(skill => `<span class="tag bad">${skill}</span>`).join("")
+    : `<span class="tag good">None</span>`;
+
+  const preferredTags = match.preferred.length
+    ? match.preferred.map(skill => {
+        const level = clamp(Number(student.skills[skill]) || 1, 1, 5);
+        const cls = level >= 3 ? "good" : "warn";
+        return `<span class="tag ${cls}">${skill} — Level ${level} of 5</span>`;
+      }).join("")
+    : `<span class="tag info">No preferred skills specified</span>`;
+
+  return `
+    <div class="opp" data-opportunity-id="${escapeHtml(opp.id)}">
+      <div class="opp-head">
+        <div>
+          <h4>${escapeHtml(opp.company)} — ${escapeHtml(opp.role)}</h4>
+          <p>${escapeHtml(opp.type)} • ${escapeHtml(opp.stipend)}</p>
+          <p>${escapeHtml(opp.description)}</p>
+          <div style="margin-top:8px">
+            <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span>
+            <span class="tag info">Min. CGPA ${opp.minCgpa}</span>
+            <span class="tag info">Min. projects ${opp.minProjects}</span>
+          </div>
+        </div>
+        <div class="match-pill">${match.matchScore + '%'}</div>
+      </div>
+
+      <div style="margin-top:10px">
+        <strong style="font-size:13px">Matching required skills:</strong><br />
+        ${matchingTags}
+      </div>
+
+      <div style="margin-top:6px">
+        <strong style="font-size:13px">Missing / below-threshold required skills:</strong><br />
+        ${missingTags}
+      </div>
+
+      <div class="opp-actions">
+        <button
+          class="btn secondary"
+          id="${buttonId}"
+          data-detail-context="${safeContext}"
+          data-detail-opportunity="${escapeHtml(opp.id)}"
+          aria-expanded="${showDetails}"
+          aria-controls="${detailsId}"
+        >
+          ${showDetails ? "Hide details" : "View details"}
+        </button>
+      </div>
+
+      <div id="${detailsId}" class="detail ${showDetails ? "" : "hidden"}">
+        <h4>Opportunity Details</h4>
+
+        <div class="detail-grid">
+          <div class="detail-block">
+            <h5>Company and Role</h5>
+            <p style="margin:0"><strong>${escapeHtml(opp.company)}</strong><br />${escapeHtml(opp.role)}</p>
             <p style="margin:6px 0 0">${escapeHtml(opp.type)} • ${escapeHtml(opp.stipend)}</p>
           </div>
 
@@ -1247,15 +2115,15 @@ function renderOpportunityCard(match, showDetails = false, context = "opportunit
           <div class="detail-block">
             <h5>Eligibility Status and Criteria</h5>
             <p style="margin:0">
-              <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span><br>
-              CGPA: <strong>${match.cgpa}</strong> / minimum ${opp.minCgpa} — ${match.cgpaOk ? "met" : "not met"}.<br>
+              <span class="tag ${match.eligibility.className}">${escapeHtml(match.eligibility.status)}</span><br />
+              CGPA: <strong>${match.cgpa}</strong> / minimum ${opp.minCgpa} — ${match.cgpaOk ? "met" : "not met"}.<br />
               Projects: <strong>${match.projects}</strong> / minimum ${opp.minProjects} — ${match.projectsOk ? "met" : "not met"}.
             </p>
           </div>
 
           <div class="detail-block">
             <h5>Match Percentage</h5>
-            <p style="margin:0"><strong>${match.matchScore}%</strong></p>
+            <p style="margin:0"><strong>${match.matchScore + '%'}</strong></p>
             <p style="margin:6px 0 0;font-size:12.5px;color:var(--slate-500)">
               Formula: 70% required skills + 15% preferred skills + 10% eligibility + 5% project-quality alignment.
             </p>
@@ -1285,19 +2153,44 @@ function renderOpportunityCard(match, showDetails = false, context = "opportunit
   `;
 }
 
-function renderOpportunities() {
-  const filter = getEl("oppRoleFilter").value;
-  const matches = getOpportunityMatches().filter(match =>
-    filter === "all" || match.opportunity.role === filter
-  );
+function renderOpportunityCard(matchOrOpp, showDetails = false, context = "opportunities") {
+  if (matchOrOpp && (matchOrOpp.company_name !== undefined || matchOrOpp.overall_fit_score !== undefined)) {
+    return renderBackendOpportunityCard(matchOrOpp, showDetails, context);
+  }
+  return renderPrototypeOpportunityCard(matchOrOpp, showDetails, context);
+}
 
+function renderOpportunities() {
+  const filter = (getEl("oppRoleFilter") && getEl("oppRoleFilter").value) ? getEl("oppRoleFilter").value : "all";
   const container = getEl("opportunityList");
-  if (!lastAssessment) {
-    container.innerHTML = `<div class="empty">Run an assessment to calculate eligibility and match scores.</div>`;
-    return;
+  if (!container) return;
+
+  if (window.api && window.api.isAuthenticated()) {
+    if (isOpportunitiesLoading) {
+      container.innerHTML = `<div class="empty">Loading benchmark opportunities from backend...</div>`;
+      return;
+    }
+
+    if (currentBackendOpportunities) {
+      const filtered = currentBackendOpportunities.filter(opp => matchesOpportunityRole(opp, filter));
+      if (!filtered.length) {
+        container.innerHTML = `<div class="empty">No benchmark opportunities match this role filter.</div>`;
+        return;
+      }
+      container.innerHTML = filtered
+        .map(opp => renderOpportunityCard(opp, false, "opportunities"))
+        .join("");
+      return;
+    }
   }
 
+  // Fallback: unauthenticated prototype data
+  const matches = getOpportunityMatches().filter(match => matchesOpportunityRole(match, filter));
   if (!matches.length) {
+    if (!lastAssessment && !(typeof calculateReadiness === "function" && typeof student !== "undefined")) {
+      container.innerHTML = `<div class="empty">Run an assessment to calculate eligibility and match scores.</div>`;
+      return;
+    }
     container.innerHTML = `<div class="empty">No sample opportunities match this role filter.</div>`;
     return;
   }
@@ -1324,35 +2217,81 @@ const VIEW_META = {
   dashboard: ["Student Dashboard", "Personalized placement-readiness overview for the sample student profile."],
   skills: ["Skill Analysis", "Edit the student profile, select a target role, and calculate a transparent readiness estimate."],
   roadmap: ["Learning Roadmap", "A personalized four-week study plan based on the latest skill-gap assessment."],
-  opportunities: ["Opportunities", "Explore sample opportunities, eligibility status, and personalized match explanations."]
+  opportunities: ["Opportunities", "Explore sample opportunities, eligibility status, and personalized match explanations."],
+  reviewer: ["Evidence Review", "Evaluate pending student evidence submissions across all skills."]
 };
 
 function showView(viewName) {
-  ["dashboard", "skills", "roadmap", "opportunities"].forEach(view => {
-    getEl(`view-${view}`).classList.toggle("hidden", view !== viewName);
+  if (isCurrentReviewer && viewName !== "reviewer") {
+    return;
+  }
+
+  ["dashboard", "skills", "roadmap", "opportunities", "reviewer"].forEach(view => {
+    const el = getEl(`view-${view}`);
+    if (el) el.classList.toggle("hidden", view !== viewName);
   });
 
   document.querySelectorAll(".nav button").forEach(button => {
     button.classList.toggle("active", button.dataset.view === viewName);
   });
 
-  const [title, subtitle] = VIEW_META[viewName];
+  const meta = VIEW_META[viewName] || ["NXTSTEP", "Placement Readiness Platform"];
+  const [title, subtitle] = meta;
   getEl("viewTitle").textContent = title;
   getEl("viewSubtitle").textContent = subtitle;
   window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (viewName === "reviewer") {
+    loadReviewerQueue();
+  } else if (viewName === "roadmap") {
+    loadBackendRoadmap();
+  } else if (viewName === "dashboard") {
+    if (window.api && window.api.isAuthenticated()) {
+      loadBackendDashboard();
+    } else {
+      renderDashboard();
+    }
+  } else if (viewName === "opportunities") {
+    if (window.api && window.api.isAuthenticated()) {
+      loadBackendOpportunities();
+    } else {
+      renderOpportunities();
+    }
+  }
 }
 
 function runAssessment() {
-  readProfileForm();
-  lastAssessment = calculateReadiness(student);
+  if (!window.api || !window.api.isAuthenticated()) {
+    const overlay = getEl("authOverlay");
+    if (overlay) overlay.classList.remove("hidden");
+    return;
+  }
 
-  saveState();
-  renderDashboard();
-  renderAnalysis();
-  renderOpportunities();
+  showView("skills");
+  const card = getEl("assessmentCard");
+  if (card) {
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
-  const band = getReadinessBand(lastAssessment.finalScore);
-  alert(`Assessment complete.\n\nReadiness score: ${lastAssessment.finalScore}/100\nReadiness band: ${band.label}\n\nOpen Skill Analysis or Learning Roadmap for the detailed result.`);
+  const apt = getEl("aptitudeScore") ? getEl("aptitudeScore").value.trim() : "";
+  const tech = getEl("technicalScore") ? getEl("technicalScore").value.trim() : "";
+  const comm = getEl("communicationScore") ? getEl("communicationScore").value.trim() : "";
+  const ps = getEl("problemSolvingScore") ? getEl("problemSolvingScore").value.trim() : "";
+
+  if (apt && tech && comm && ps) {
+    handleSaveAssessment();
+  } else {
+    if (getEl("aptitudeScore")) getEl("aptitudeScore").focus();
+    const statusEl = getEl("assessmentStatus");
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--baby-blue)";
+      statusEl.style.background = "var(--blue-50)";
+      statusEl.style.color = "var(--primary-brown)";
+      statusEl.innerHTML = "Enter your Aptitude, Technical, Communication, and Problem Solving scores (0–100), then click <strong>Submit Assessment to Backend</strong>.";
+      statusEl.classList.remove("hidden");
+    }
+  }
 }
 
 function resetDemoData() {
@@ -1405,10 +2344,1622 @@ function handleGlobalClick(event) {
 }
 
 /* --------------------------------------------------------------------------
-   8. INITIALIZATION
+   8. BACKEND AUTHENTICATION & PROFILE INTEGRATION
    -------------------------------------------------------------------------- */
 
-function initializeApp() {
+let currentBackendDashboardSummary = null;
+let isDashboardLoading = false;
+let currentBackendOpportunities = null;
+let isOpportunitiesLoading = false;
+let currentBackendSkills = {};
+let activeEvidenceSkill = null;
+
+async function loadBackendDashboard() {
+  if (!window.api || !window.api.isAuthenticated()) {
+    renderDashboard();
+    return;
+  }
+
+  try {
+    isDashboardLoading = true;
+    const summary = await window.api.getDashboardSummary();
+    if (summary) {
+      currentBackendDashboardSummary = summary;
+      renderDashboard();
+    }
+  } catch (err) {
+    console.warn("Failed to load backend dashboard summary:", err.message);
+    renderDashboard();
+  } finally {
+    isDashboardLoading = false;
+  }
+}
+
+window.loadBackendDashboard = loadBackendDashboard;
+
+async function loadBackendOpportunities() {
+  if (!window.api || !window.api.isAuthenticated()) {
+    currentBackendOpportunities = null;
+    isOpportunitiesLoading = false;
+    renderOpportunities();
+    return;
+  }
+
+  const container = getEl("opportunityList");
+  try {
+    isOpportunitiesLoading = true;
+    if (container && (!currentBackendOpportunities || currentBackendOpportunities.length === 0)) {
+      container.innerHTML = `<div class="empty">Loading benchmark opportunities from backend...</div>`;
+    }
+
+    const opps = await window.api.getOpportunities();
+    currentBackendOpportunities = Array.isArray(opps) ? opps : [];
+    isOpportunitiesLoading = false;
+    renderOpportunities();
+
+    const dashTopEl = getEl("dashTopOpportunities");
+    if (dashTopEl && currentBackendOpportunities.length > 0) {
+      dashTopEl.innerHTML = currentBackendOpportunities
+        .slice(0, 3)
+        .map(opp => renderOpportunityCard(opp, false, "dashboard"))
+        .join("");
+    }
+  } catch (err) {
+    console.warn("Could not load backend opportunities:", err.message);
+    if (container) {
+      container.innerHTML = `
+        <div class="notice" style="border-left-color:var(--red-700);background:var(--red-100);color:var(--red-700)">
+          <strong>Error loading opportunities:</strong> ${escapeHtml(err.message)}
+        </div>
+      `;
+    }
+  } finally {
+    isOpportunitiesLoading = false;
+  }
+}
+
+window.loadBackendOpportunities = loadBackendOpportunities;
+
+async function loadBackendProfile() {
+  const statusEl = getEl("profileStatus");
+  if (statusEl) {
+    statusEl.className = "hidden";
+    statusEl.innerHTML = "";
+  }
+
+  try {
+    const profile = await window.api.getProfile();
+    currentUserProfile = profile;
+    hasProfile = true;
+
+    // Populate profile inputs
+    if (getEl("studentName")) getEl("studentName").value = profile.full_name || "";
+    if (getEl("studentCollege")) getEl("studentCollege").value = profile.college || "";
+    if (getEl("studentBranch")) getEl("studentBranch").value = profile.branch || "";
+    if (getEl("studentGradYear")) getEl("studentGradYear").value = profile.graduation_year || "";
+    if (getEl("cgpa")) getEl("cgpa").value = profile.cgpa !== null && profile.cgpa !== undefined ? profile.cgpa : "";
+
+    // Sync to local student object
+    student.name = profile.full_name || student.name;
+    student.college = profile.college || student.college;
+    student.branch = profile.branch || "";
+    student.graduationYear = profile.graduation_year || null;
+    student.cgpa = profile.cgpa !== null ? Number(profile.cgpa) : student.cgpa;
+
+    saveState();
+    await loadBackendDashboard();
+    renderDashboard();
+    renderAnalysis();
+    renderOpportunities();
+    await loadBackendOpportunities();
+
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--green-600)";
+      statusEl.style.background = "var(--green-100)";
+      statusEl.style.color = "var(--green-600)";
+      statusEl.innerHTML = `<strong>Connected Profile:</strong> Loaded profile for <strong>${escapeHtml(profile.full_name)}</strong> (User #${profile.user_id}).`;
+      statusEl.classList.remove("hidden");
+    }
+  } catch (err) {
+    if (err.status === 404) {
+      hasProfile = false;
+      currentUserProfile = null;
+
+      student.name = "";
+      student.college = "";
+      student.branch = "";
+      student.graduationYear = null;
+      student.cgpa = null;
+      student.projectsCount = 0;
+      student.projectSummary = "";
+
+      if (getEl("studentName")) getEl("studentName").value = "";
+      if (getEl("studentCollege")) getEl("studentCollege").value = "";
+      if (getEl("studentBranch")) getEl("studentBranch").value = "";
+      if (getEl("studentGradYear")) getEl("studentGradYear").value = "";
+      if (getEl("cgpa")) getEl("cgpa").value = "";
+      if (getEl("projectsCount")) getEl("projectsCount").value = "0";
+      if (getEl("projectSummary")) getEl("projectSummary").value = "";
+
+      if (statusEl) {
+        statusEl.className = "notice";
+        statusEl.style.borderLeftColor = "var(--amber-700)";
+        statusEl.style.background = "var(--amber-100)";
+        statusEl.style.color = "var(--amber-700)";
+        statusEl.innerHTML = `<strong>Welcome!</strong> No profile found on the backend for your account. Please complete your academic details below and click <strong>Save Profile to Backend</strong>.`;
+        statusEl.classList.remove("hidden");
+      }
+    } else {
+      console.warn("Could not load backend profile:", err.message);
+    }
+  }
+}
+
+async function handleSaveProfile() {
+  const statusEl = getEl("profileStatus");
+  const saveBtn = getEl("saveProfileBtn");
+
+  const fullName = getEl("studentName").value.trim();
+  const college = getEl("studentCollege").value.trim() || null;
+  const branch = (getEl("studentBranch") ? getEl("studentBranch").value.trim() : null) || null;
+  const gradYearStr = getEl("studentGradYear") ? getEl("studentGradYear").value.trim() : "";
+  const graduation_year = gradYearStr ? parseInt(gradYearStr, 10) : null;
+  const cgpaStr = getEl("cgpa").value.trim();
+  const cgpa = cgpaStr ? parseFloat(cgpaStr) : null;
+
+  if (!fullName) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = "<strong>Validation Error:</strong> Student full name is required.";
+      statusEl.classList.remove("hidden");
+    }
+    getEl("studentName").focus();
+    return;
+  }
+
+  if (graduation_year !== null && (isNaN(graduation_year) || graduation_year < 2020 || graduation_year > 2100)) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = "<strong>Validation Error:</strong> Graduation year must be an integer between 2020 and 2100.";
+      statusEl.classList.remove("hidden");
+    }
+    return;
+  }
+
+  if (cgpa !== null && (isNaN(cgpa) || cgpa < 0 || cgpa > 10)) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = "<strong>Validation Error:</strong> CGPA must be a number between 0.0 and 10.0.";
+      statusEl.classList.remove("hidden");
+    }
+    return;
+  }
+
+  const payload = {
+    full_name: fullName,
+    college: college,
+    branch: branch,
+    graduation_year: graduation_year,
+    cgpa: cgpa,
+  };
+
+  saveBtn.disabled = true;
+  const origBtnText = saveBtn.textContent;
+  saveBtn.textContent = "Saving to Backend...";
+
+  try {
+    let result;
+    if (hasProfile) {
+      result = await window.api.updateProfile(payload);
+    } else {
+      result = await window.api.createProfile(payload);
+    }
+
+    currentUserProfile = result;
+    hasProfile = true;
+
+    student.name = result.full_name;
+    student.college = result.college || "";
+    student.branch = result.branch || "";
+    student.graduationYear = result.graduation_year || null;
+    student.cgpa = result.cgpa !== null ? Number(result.cgpa) : student.cgpa;
+
+    saveState();
+    await loadBackendDashboard();
+    renderDashboard();
+    renderAnalysis();
+    renderOpportunities();
+    await loadBackendOpportunities();
+
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--green-600)";
+      statusEl.style.background = "var(--green-100)";
+      statusEl.style.color = "var(--green-600)";
+      statusEl.innerHTML = `<strong>Success:</strong> Profile saved successfully to NXTSTEP backend!`;
+      statusEl.classList.remove("hidden");
+    }
+  } catch (err) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = `<strong>Error saving profile:</strong> ${escapeHtml(err.message)}`;
+      statusEl.classList.remove("hidden");
+    }
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = origBtnText;
+  }
+}
+
+let currentBackendAssessment = null;
+let isSubmittingAssessment = false;
+
+async function loadBackendAssessment() {
+  if (!window.api || !window.api.isAuthenticated()) return;
+
+  const statusEl = getEl("assessmentStatus");
+  const lastUpdatedEl = getEl("assessmentLastUpdated");
+
+  try {
+    const latestAssessment = await window.api.getLatestAssessment();
+    currentBackendAssessment = latestAssessment;
+
+    if (getEl("aptitudeScore")) getEl("aptitudeScore").value = latestAssessment.aptitude_score;
+    if (getEl("technicalScore")) getEl("technicalScore").value = latestAssessment.technical_score;
+    if (getEl("communicationScore")) getEl("communicationScore").value = latestAssessment.communication_score;
+    if (getEl("problemSolvingScore")) getEl("problemSolvingScore").value = latestAssessment.problem_solving_score;
+
+    if (lastUpdatedEl) {
+      const dt = new Date(latestAssessment.created_at);
+      lastUpdatedEl.textContent = `Last assessed: ${dt.toLocaleDateString()} ${dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+      lastUpdatedEl.style.display = "inline-block";
+    }
+
+    lastAssessment = {
+      finalScore: round1(Number(latestAssessment.readiness_score)),
+      technicalScore: latestAssessment.technical_score,
+      aptitudeScore: latestAssessment.aptitude_score,
+      communicationScore: latestAssessment.communication_score,
+      problemSolvingScore: latestAssessment.problem_solving_score,
+      role: student.targetRole || "Software Developer",
+      skillDetails: calculateReadiness(student).skillDetails,
+      projectScore: calculateReadiness(student).projectScore,
+      academicScore: calculateReadiness(student).academicScore,
+      projects: student.projectsCount,
+      quality: student.projectQuality,
+      cgpa: student.cgpa
+    };
+
+    saveState();
+    await loadBackendDashboard();
+    renderDashboard();
+    renderAnalysis();
+    renderOpportunities();
+    await loadBackendOpportunities();
+    await loadAssessmentHistory();
+  } catch (err) {
+    if (err.status === 404) {
+      currentBackendAssessment = null;
+      if (lastUpdatedEl) {
+        lastUpdatedEl.textContent = "No assessment recorded";
+        lastUpdatedEl.style.display = "inline-block";
+      }
+      renderDashboard();
+    } else {
+      console.warn("Could not load backend assessment:", err.message);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   BACKEND SKILLS INTEGRATION
+   -------------------------------------------------------------------------- */
+
+const BACKEND_TO_FRONTEND_SKILL_MAP = {
+  "python": "Python",
+  "java": "Java",
+  "dsa": "DSA",
+  "data structures & algorithms": "DSA",
+  "data structures and algorithms": "DSA",
+  "oop": "OOP",
+  "object-oriented programming": "OOP",
+  "object oriented programming": "OOP",
+  "dbms": "DBMS",
+  "dbms concepts": "DBMS",
+  "sql": "SQL",
+  "html": "HTML",
+  "css": "CSS",
+  "javascript": "JavaScript",
+  "js": "JavaScript",
+  "git": "Git",
+  "git & version control": "Git",
+  "git and version control": "Git"
+};
+
+function normalizeSkillName(backendName) {
+  if (!backendName) return null;
+  const key = String(backendName).trim().toLowerCase();
+  return BACKEND_TO_FRONTEND_SKILL_MAP[key] || null;
+}
+
+const skillSaveVersions = {};
+
+async function loadBackendSkills(sessionUserId) {
+  const expectedUserId = sessionUserId || (currentUser ? currentUser.id : null);
+  if (!window.api || !window.api.isAuthenticated()) {
+    currentBackendSkills = {};
+    renderSkillInputs();
+    return;
+  }
+
+  try {
+    const skillsList = await window.api.getSkills();
+    if (expectedUserId && currentUser && currentUser.id !== expectedUserId) {
+      return;
+    }
+    currentBackendSkills = {};
+    student.skills = {};
+    if (Array.isArray(skillsList)) {
+      let updatedAny = false;
+      skillsList.forEach(item => {
+        const canonical = normalizeSkillName(item.skill_name);
+        if (canonical && SKILLS.includes(canonical)) {
+          currentBackendSkills[canonical] = item;
+          const prof = clamp(Number(item.proficiency) || 1, 1, 5);
+          student.skills[canonical] = prof;
+          updatedAny = true;
+        }
+      });
+
+      if (updatedAny) {
+        saveState();
+      }
+      renderSkillInputs();
+      if (activeEvidenceSkill && currentBackendSkills[activeEvidenceSkill]) {
+        updateEvidenceModalHeader(activeEvidenceSkill);
+      }
+      if (!currentBackendAssessment) {
+        lastAssessment = calculateReadiness(student);
+        renderDashboard();
+        renderAnalysis();
+        renderOpportunities();
+        loadBackendOpportunities();
+      }
+    }
+  } catch (err) {
+    console.warn("Could not load backend skills:", err.message);
+  }
+}
+
+async function saveBackendSkill(skill, proficiency) {
+  if (!window.api || !window.api.isAuthenticated()) {
+    return;
+  }
+
+  const statusEl = getEl("skillStatus");
+  const version = (skillSaveVersions[skill] || 0) + 1;
+  skillSaveVersions[skill] = version;
+
+  if (statusEl) {
+    statusEl.style.display = "inline-flex";
+    statusEl.style.color = "var(--slate-500)";
+    statusEl.textContent = `Saving ${SKILL_LABELS[skill] || skill}...`;
+  }
+
+  try {
+    const result = await window.api.saveSkill({
+      skill_name: skill,
+      proficiency: proficiency
+    });
+
+    // Ensure API responses cannot overwrite newer slider changes
+    if (skillSaveVersions[skill] !== version) {
+      return;
+    }
+
+    const canonical = normalizeSkillName(skill) || skill;
+    currentBackendSkills[canonical] = result;
+    renderSkillInputs();
+    if (activeEvidenceSkill === canonical) {
+      updateEvidenceModalHeader(canonical);
+    }
+
+    if (statusEl) {
+      statusEl.style.display = "inline-flex";
+      statusEl.style.color = "var(--green-600)";
+      statusEl.textContent = `✓ Saved ${SKILL_LABELS[skill] || skill} (${result.proficiency}/5)`;
+      setTimeout(() => {
+        if (skillSaveVersions[skill] === version && statusEl) {
+          statusEl.textContent = "";
+          statusEl.style.display = "none";
+        }
+      }, 2500);
+    }
+
+    // Regenerate roadmap tasks since user skills were updated
+    regenerateBackendRoadmap();
+    loadBackendDashboard();
+    loadBackendOpportunities();
+  } catch (err) {
+    if (skillSaveVersions[skill] !== version) {
+      return;
+    }
+    if (statusEl) {
+      statusEl.style.display = "inline-flex";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.textContent = `⚠️ Error saving ${SKILL_LABELS[skill] || skill}: ${err.message}`;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   EVIDENCE-AWARE SCORING FRONTEND INTEGRATION
+   -------------------------------------------------------------------------- */
+
+function updateEvidenceModalHeader(skill) {
+  const overviewEl = getEl("evidenceModalOverview");
+  if (!overviewEl) return;
+  const backendSkill = currentBackendSkills[skill];
+  const reported = student.skills[skill] || 1;
+  const tier = backendSkill ? (backendSkill.evidence_level || "E1") : "E1";
+  const lambda = backendSkill && typeof backendSkill.lambda_weight === "number" ? backendSkill.lambda_weight : 0.5;
+  const adjusted = backendSkill && typeof backendSkill.adjusted_proficiency === "number"
+    ? backendSkill.adjusted_proficiency.toFixed(1)
+    : (reported * lambda).toFixed(1);
+
+  let tierDesc = "Self-reported without approved evidence (λ = 0.5)";
+  if (tier === "E0") tierDesc = "No skill record registered in profile (λ = 0.0)";
+  else if (tier === "E2") tierDesc = "Verified by at least 1 approved evidence submission (λ = 1.0)";
+
+  overviewEl.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:11px;color:var(--slate-500);text-transform:uppercase;letter-spacing:.5px;font-weight:700">Selected Skill</div>
+        <div style="font-size:16px;font-weight:800;color:var(--slate-900)">${escapeHtml(SKILL_LABELS[skill] || skill)}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--slate-500)">Reported</div>
+          <div style="font-size:14px;font-weight:800;color:var(--primary-brown)">${reported} / 5</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--slate-500)">Multiplier</div>
+          <div style="font-size:14px;font-weight:800;color:var(--slate-700)">&lambda; = ${lambda}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--slate-500)">Adjusted</div>
+          <div style="font-size:15px;font-weight:800;color:var(--green-600)">${adjusted} / 5</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--cream-border);display:flex;align-items:center;gap:8px;font-size:12px">
+      <span class="evidence-badge tier-${tier.toLowerCase()}">${tier}</span>
+      <span style="color:var(--slate-700)">${tierDesc}</span>
+    </div>
+  `;
+}
+
+async function openEvidenceModal(skill) {
+  if (!window.api || !window.api.isAuthenticated()) {
+    showLoginTab();
+    const overlay = getEl("authOverlay");
+    if (overlay) overlay.classList.remove("hidden");
+    return;
+  }
+
+  activeEvidenceSkill = skill;
+  const overlay = getEl("evidenceOverlay");
+  if (overlay) overlay.classList.remove("hidden");
+
+  getEl("evidenceModalTitle").textContent = `Skill Evidence — ${SKILL_LABELS[skill] || skill}`;
+  getEl("evidenceModalSubtitle").textContent = "Submit proof to verify your proficiency level or track evaluation status.";
+
+  // Reset form inputs & messages
+  getEl("evidenceType").value = "github";
+  getEl("evidenceTitle").value = "";
+  getEl("evidenceUrl").value = "";
+  getEl("evidenceDesc").value = "";
+  const formMsg = getEl("evidenceFormMsg");
+  if (formMsg) {
+    formMsg.className = "hidden";
+    formMsg.textContent = "";
+  }
+
+  // Ensure skill is registered in backend so an ID exists
+  if (!currentBackendSkills[skill] || !currentBackendSkills[skill].id) {
+    try {
+      const saved = await window.api.saveSkill({
+        skill_name: skill,
+        proficiency: student.skills[skill] || 1
+      });
+      const canonical = normalizeSkillName(skill) || skill;
+      currentBackendSkills[canonical] = saved;
+      renderSkillInputs();
+    } catch (err) {
+      console.warn("Could not auto-register skill in backend:", err.message);
+    }
+  }
+
+  updateEvidenceModalHeader(skill);
+
+  const backendSkill = currentBackendSkills[skill];
+  if (backendSkill && backendSkill.id) {
+    await loadSkillEvidenceList(backendSkill.id);
+  } else {
+    const listEl = getEl("evidenceHistoryList");
+    if (listEl) {
+      listEl.innerHTML = `<div class="auth-error">Skill record not found in backend. Please try again.</div>`;
+    }
+  }
+}
+
+function closeEvidenceModal() {
+  const overlay = getEl("evidenceOverlay");
+  if (overlay) overlay.classList.add("hidden");
+  activeEvidenceSkill = null;
+  const msgEl = getEl("evidenceFormMsg");
+  if (msgEl) {
+    msgEl.className = "hidden";
+    msgEl.textContent = "";
+  }
+}
+
+function renderEvidenceHistoryItem(item) {
+  const statusLower = String(item.status || "pending").toLowerCase();
+  let badgeClass = "badge-pending";
+  let statusLabel = "⏳ Pending Review";
+  if (statusLower === "approved") {
+    badgeClass = "badge-approved";
+    statusLabel = "✓ Approved (E2)";
+  } else if (statusLower === "rejected") {
+    badgeClass = "badge-rejected";
+    statusLabel = "✕ Rejected";
+  }
+
+  const typeLabelMap = {
+    github: "GitHub",
+    certificate: "Certificate",
+    project: "Project",
+    publication: "Publication",
+    other: "Other"
+  };
+  const typeLabel = typeLabelMap[String(item.evidence_type).toLowerCase()] || item.evidence_type;
+
+  const dateStr = item.created_at ? new Date(item.created_at).toLocaleDateString() : "";
+  const reviewedDateStr = item.reviewed_at ? new Date(item.reviewed_at).toLocaleDateString() : "";
+
+  const notesHtml = item.reviewer_notes
+    ? `<div style="margin-top:6px;padding:6px 10px;background:#fef3c7;border-left:3px solid #d97706;border-radius:4px;font-size:12px;color:#92400e">
+        <strong>Reviewer Notes:</strong> ${escapeHtml(item.reviewer_notes)}
+       </div>`
+    : "";
+
+  const deleteBtnHtml = statusLower === "pending"
+    ? `<button type="button" class="btn-delete-evidence" data-evidence-id="${item.id}" style="color:#b91c1c;background:none;border:none;cursor:pointer;font-size:11.5px;font-weight:600;text-decoration:underline;padding:2px 0">Delete pending</button>`
+    : "";
+
+  return `
+    <div class="evidence-history-item" style="border:1px solid var(--slate-200);border-radius:8px;padding:12px;margin-bottom:10px;background:var(--white)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--surface-alt);border:1px solid var(--cream-border);color:var(--slate-700)">${escapeHtml(typeLabel)}</span>
+          <strong style="font-size:13.5px;color:var(--slate-900)">${escapeHtml(item.title)}</strong>
+        </div>
+        <span class="evidence-status-badge ${badgeClass}">${statusLabel}</span>
+      </div>
+      <div style="margin-top:6px;font-size:12.5px">
+        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary-brown);text-decoration:underline;word-break:break-all">${escapeHtml(item.url)}</a>
+      </div>
+      ${item.description ? `<p style="margin:6px 0 0;font-size:12px;color:var(--slate-600);white-space:pre-wrap">${escapeHtml(item.description)}</p>` : ""}
+      ${notesHtml}
+      <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--slate-500);flex-wrap:wrap;gap:6px">
+        <span>Submitted: ${dateStr}${reviewedDateStr ? ` • Reviewed: ${reviewedDateStr}` : ""}</span>
+        ${deleteBtnHtml}
+      </div>
+    </div>
+  `;
+}
+
+async function loadSkillEvidenceList(skillId) {
+  const listEl = getEl("evidenceHistoryList");
+  const countEl = getEl("evidenceHistoryCount");
+  if (!listEl) return;
+  listEl.innerHTML = `<div class="empty" style="padding:16px">Loading evidence submissions...</div>`;
+
+  try {
+    const items = await window.api.getSkillEvidence(skillId);
+    if (!Array.isArray(items) || items.length === 0) {
+      if (countEl) countEl.textContent = "0 items";
+      listEl.innerHTML = `<div class="empty" style="padding:16px">No evidence submitted for this skill yet. Use the form above to submit your proof.</div>`;
+      return;
+    }
+
+    if (countEl) countEl.textContent = `${items.length} item(s)`;
+    listEl.innerHTML = items.map(item => renderEvidenceHistoryItem(item)).join("");
+  } catch (err) {
+    listEl.innerHTML = `<div class="auth-error" style="margin:12px 0">${escapeHtml(err.message || "Failed to load evidence submissions.")}</div>`;
+  }
+}
+
+async function handleEvidenceSubmit(e) {
+  if (e) e.preventDefault();
+  const msgEl = getEl("evidenceFormMsg");
+  msgEl.className = "hidden";
+  msgEl.textContent = "";
+
+  if (!activeEvidenceSkill || !currentBackendSkills[activeEvidenceSkill]?.id) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "Please select a valid skill first.";
+    return;
+  }
+
+  const skillId = currentBackendSkills[activeEvidenceSkill].id;
+  const type = getEl("evidenceType").value.trim().toLowerCase();
+  const title = getEl("evidenceTitle").value.trim();
+  const url = getEl("evidenceUrl").value.trim();
+  const desc = getEl("evidenceDesc").value.trim();
+
+  // Client validations
+  if (!type || !["github", "certificate", "project", "publication", "other"].includes(type)) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "Please select a valid evidence type.";
+    return;
+  }
+  if (!title || title.length < 2 || title.length > 150) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "Title must be between 2 and 150 characters.";
+    return;
+  }
+  if (!url || url.length < 4 || url.length > 500) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "URL must be between 4 and 500 characters.";
+    return;
+  }
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "URL must begin with http:// or https://";
+    return;
+  }
+  if (desc && desc.length > 500) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = "Description cannot exceed 500 characters.";
+    return;
+  }
+
+  const submitBtn = getEl("submitEvidenceBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
+
+  try {
+    const payload = {
+      evidence_type: type,
+      title: title,
+      url: url,
+    };
+    if (desc) {
+      payload.description = desc;
+    }
+
+    await window.api.submitSkillEvidence(skillId, payload);
+
+    // Success feedback
+    msgEl.className = "auth-success";
+    msgEl.textContent = "✓ Evidence submitted successfully! Reviewers will evaluate your submission.";
+
+    // Clear inputs
+    getEl("evidenceTitle").value = "";
+    getEl("evidenceUrl").value = "";
+    getEl("evidenceDesc").value = "";
+
+    // Refresh history and backend skills
+    await loadSkillEvidenceList(skillId);
+    await loadBackendSkills();
+
+    // Update modal header overview
+    if (activeEvidenceSkill) {
+      updateEvidenceModalHeader(activeEvidenceSkill);
+    }
+  } catch (err) {
+    msgEl.className = "auth-error";
+    msgEl.textContent = err.message || "Failed to submit evidence.";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit Evidence";
+  }
+}
+
+async function handleDeleteEvidence(evidenceId) {
+  if (!confirm("Are you sure you want to delete this pending evidence submission?")) {
+    return;
+  }
+  try {
+    await window.api.deleteSkillEvidence(evidenceId);
+    if (activeEvidenceSkill && currentBackendSkills[activeEvidenceSkill]?.id) {
+      await loadSkillEvidenceList(currentBackendSkills[activeEvidenceSkill].id);
+    }
+    await loadBackendSkills();
+    if (activeEvidenceSkill) {
+      updateEvidenceModalHeader(activeEvidenceSkill);
+    }
+  } catch (err) {
+    alert("Could not delete evidence: " + (err.message || "Unknown error"));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8.3 REVIEWER PORTAL & PENDING EVIDENCE QUEUE
+   -------------------------------------------------------------------------- */
+
+let isCurrentReviewer = false;
+let isReviewerQueueLoading = false;
+
+async function checkIsReviewer() {
+  if (!window.api || !window.api.isAuthenticated()) {
+    isCurrentReviewer = false;
+    return false;
+  }
+  try {
+    await window.api.request("/skills/evidence/pending", { method: "GET" });
+    isCurrentReviewer = true;
+    return true;
+  } catch (err) {
+    if (err.status === 403) {
+      isCurrentReviewer = false;
+      return false;
+    }
+    if (err.status === 401 || !window.api.isAuthenticated()) {
+      isCurrentReviewer = false;
+      return false;
+    }
+    // Network / server / 500 error: re-throw so callers do not silently classify as student
+    throw err;
+  }
+}
+
+function renderReviewerQueueCard(item) {
+  const isSelf = Boolean(currentUser && currentUser.id === item.user_id);
+  const dateStr = item.created_at ? new Date(item.created_at).toLocaleString() : "Unknown date";
+  const typeLabelMap = {
+    github: "GitHub Repository",
+    github_repo: "GitHub Repository",
+    certificate: "Certificate / Credential",
+    project: "Project Deployment",
+    publication: "Publication / Article",
+    other: "Other Verification"
+  };
+  const typeLabel = typeLabelMap[String(item.evidence_type).toLowerCase()] || item.evidence_type;
+
+  return `
+    <div class="card" style="border:1px solid var(--slate-200);border-radius:10px;padding:16px;margin-bottom:14px;background:var(--white)" id="reviewer-card-${item.id}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+        <div>
+          <span style="display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--surface-alt);border:1px solid var(--cream-border);color:var(--slate-700);margin-bottom:6px">
+            ${escapeHtml(typeLabel)} • Submission #${item.id}
+          </span>
+          <h4 style="margin:0 0 4px;font-size:16px;color:var(--slate-900)">${escapeHtml(item.title)}</h4>
+          <p style="margin:0;font-size:12px;color:var(--slate-500)">
+            Student User ID: <strong>#${item.user_id}</strong> • Submitted: ${escapeHtml(dateStr)}
+          </p>
+        </div>
+        <span class="evidence-status-badge badge-pending">⏳ Pending Review</span>
+      </div>
+
+      <div style="margin-top:10px;font-size:13px">
+        <strong style="color:var(--slate-700)">Verification URL:</strong>
+        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary-brown);text-decoration:underline;margin-left:4px;word-break:break-all">
+          ${escapeHtml(item.url)} ↗
+        </a>
+      </div>
+
+      ${item.description ? `
+        <div style="margin-top:8px;font-size:12.5px;color:var(--slate-700);background:var(--surface-alt);padding:8px 12px;border-radius:6px;border-left:3px solid var(--cream-border)">
+          <strong>Student Description:</strong>
+          <p style="margin:4px 0 0;white-space:pre-wrap;color:var(--slate-600)">${escapeHtml(item.description)}</p>
+        </div>
+      ` : ""}
+
+      <div style="margin-top:14px;border-top:1px solid var(--slate-200);padding-top:12px">
+        <label for="reviewNotes_${item.id}" style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:var(--slate-700)">
+          Reviewer Notes / Feedback <span style="font-weight:normal;color:var(--slate-500)">(Optional, max 500 chars)</span>
+        </label>
+        <textarea id="reviewNotes_${item.id}" rows="2" maxlength="500" placeholder="e.g. Verified implementation details and test coverage..." style="width:100%;resize:vertical;font-size:13px" ${isSelf ? "disabled" : ""}></textarea>
+
+        ${isSelf ? `
+          <div class="notice" style="margin-top:10px;padding:8px 12px;font-size:12px;background:#fef3c7;border-left:3px solid #d97706;color:#92400e">
+            ⚠️ <strong>Self-review prohibited:</strong> You submitted this evidence. Another reviewer must evaluate it.
+          </div>
+        ` : ""}
+
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+          <button type="button" class="btn btn-review-reject secondary" data-evidence-id="${item.id}" style="color:#b91c1c;border-color:#fca5a5" ${isSelf ? "disabled" : ""}>
+            ✕ Reject
+          </button>
+          <button type="button" class="btn btn-review-approve" data-evidence-id="${item.id}" style="background:var(--green-600);border-color:var(--green-600);color:#fff" ${isSelf ? "disabled" : ""}>
+            ✓ Approve (Verify E2)
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function loadReviewerQueue() {
+  const listEl = getEl("reviewerQueueList");
+  const subEl = getEl("reviewerQueueSub");
+  if (!listEl) return;
+
+  if (isReviewerQueueLoading) return;
+  isReviewerQueueLoading = true;
+  listEl.innerHTML = `<div class="empty" style="padding:24px">Loading pending evidence submissions...</div>`;
+
+  try {
+    const items = await window.api.request("/skills/evidence/pending", { method: "GET" });
+    if (!Array.isArray(items) || items.length === 0) {
+      if (subEl) subEl.textContent = "0 pending submissions awaiting evaluation.";
+      listEl.innerHTML = `<div class="empty" style="padding:24px">🎉 All caught up! There are no pending evidence submissions to review at this time.</div>`;
+      return;
+    }
+
+    if (subEl) subEl.textContent = `${items.length} submission(s) awaiting evaluation.`;
+    listEl.innerHTML = items.map(item => renderReviewerQueueCard(item)).join("");
+  } catch (err) {
+    listEl.innerHTML = `<div class="auth-error" style="margin:16px 0">Failed to load pending evidence: ${escapeHtml(err.message || "Unknown error")}</div>`;
+  } finally {
+    isReviewerQueueLoading = false;
+  }
+}
+
+async function handleReviewEvidence(evidenceId, reviewStatus) {
+  const card = getEl(`reviewer-card-${evidenceId}`);
+  const notesEl = getEl(`reviewNotes_${evidenceId}`);
+  const notes = notesEl ? notesEl.value.trim() : "";
+  const msgEl = getEl("reviewerQueueMsg");
+
+  if (msgEl) {
+    msgEl.className = "hidden";
+    msgEl.textContent = "";
+  }
+
+  const confirmMsg = reviewStatus === "approved"
+    ? "Are you sure you want to APPROVE this evidence and elevate the student's skill to Verified Tier E2?"
+    : "Are you sure you want to REJECT this evidence submission?";
+
+  if (!confirm(confirmMsg)) {
+    return;
+  }
+
+  if (card) {
+    card.querySelectorAll("button").forEach(b => b.disabled = true);
+  }
+
+  try {
+    const payload = {
+      status: reviewStatus
+    };
+    if (notes) {
+      payload.reviewer_notes = notes;
+    }
+
+    await window.api.request(`/skills/evidence/${evidenceId}/review`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (msgEl) {
+      msgEl.className = "auth-success";
+      msgEl.style.display = "block";
+      msgEl.textContent = `✓ Evidence #${evidenceId} successfully ${reviewStatus === "approved" ? "approved (Tier E2 verified)" : "rejected"}.`;
+    }
+
+    await loadReviewerQueue();
+  } catch (err) {
+    if (msgEl) {
+      msgEl.className = "auth-error";
+      msgEl.style.display = "block";
+      msgEl.textContent = `Review failed: ${err.message || "Unknown error"}`;
+    }
+    if (card) {
+      card.querySelectorAll("button").forEach(b => b.disabled = false);
+    }
+  }
+}
+
+async function handleSaveAssessment() {
+  if (isSubmittingAssessment) return;
+
+  const statusEl = getEl("assessmentStatus");
+  const submitBtn = getEl("submitAssessmentBtn");
+  const aptInput = getEl("aptitudeScore");
+  const techInput = getEl("technicalScore");
+  const commInput = getEl("communicationScore");
+  const psInput = getEl("problemSolvingScore");
+
+  if (!window.api || !window.api.isAuthenticated()) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--amber-700)";
+      statusEl.style.background = "var(--amber-100)";
+      statusEl.style.color = "var(--amber-700)";
+      statusEl.innerHTML = "<strong>Authentication Required:</strong> Please sign in to submit your assessment to the backend.";
+      statusEl.classList.remove("hidden");
+    }
+    const overlay = getEl("authOverlay");
+    if (overlay) overlay.classList.remove("hidden");
+    return;
+  }
+
+  const aptitudeStr = aptInput ? aptInput.value.trim() : "";
+  const technicalStr = techInput ? techInput.value.trim() : "";
+  const communicationStr = commInput ? commInput.value.trim() : "";
+  const problemSolvingStr = psInput ? psInput.value.trim() : "";
+
+  if (!aptitudeStr || !technicalStr || !communicationStr || !problemSolvingStr) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = "<strong>Validation Error:</strong> All four assessment scores (Aptitude, Technical, Communication, and Problem Solving) are required.";
+      statusEl.classList.remove("hidden");
+    }
+    return;
+  }
+
+  const aptitude_score = parseFloat(aptitudeStr);
+  const technical_score = parseFloat(technicalStr);
+  const communication_score = parseFloat(communicationStr);
+  const problem_solving_score = parseFloat(problemSolvingStr);
+
+  const scores = [
+    { name: "Aptitude Score", val: aptitude_score, el: aptInput },
+    { name: "Technical Score", val: technical_score, el: techInput },
+    { name: "Communication Score", val: communication_score, el: commInput },
+    { name: "Problem Solving Score", val: problem_solving_score, el: psInput }
+  ];
+
+  for (const s of scores) {
+    if (isNaN(s.val) || s.val < 0 || s.val > 100) {
+      if (statusEl) {
+        statusEl.className = "notice";
+        statusEl.style.borderLeftColor = "var(--red-700)";
+        statusEl.style.background = "var(--red-100)";
+        statusEl.style.color = "var(--red-700)";
+        statusEl.innerHTML = `<strong>Validation Error:</strong> ${s.name} must be a number between 0.0 and 100.0.`;
+        statusEl.classList.remove("hidden");
+      }
+      if (s.el) s.el.focus();
+      return;
+    }
+  }
+
+  isSubmittingAssessment = true;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting to Backend...";
+  }
+
+  const assessBtn1 = getEl("assessBtn");
+  const assessBtn2 = getEl("assessBtn2");
+  if (assessBtn1) assessBtn1.disabled = true;
+  if (assessBtn2) assessBtn2.disabled = true;
+
+  if (statusEl) {
+    statusEl.className = "notice";
+    statusEl.style.borderLeftColor = "var(--baby-blue)";
+    statusEl.style.background = "var(--blue-50)";
+    statusEl.style.color = "var(--primary-brown)";
+    statusEl.innerHTML = "Submitting assessment to backend...";
+    statusEl.classList.remove("hidden");
+  }
+
+  try {
+    const result = await window.api.createAssessment({
+      aptitude_score,
+      technical_score,
+      communication_score,
+      problem_solving_score
+    });
+
+    currentBackendAssessment = result;
+
+    lastAssessment = {
+      finalScore: round1(Number(result.readiness_score)),
+      technicalScore: result.technical_score,
+      aptitudeScore: result.aptitude_score,
+      communicationScore: result.communication_score,
+      problemSolvingScore: result.problem_solving_score,
+      role: student.targetRole || "Software Developer",
+      skillDetails: calculateReadiness(student).skillDetails,
+      projectScore: calculateReadiness(student).projectScore,
+      academicScore: calculateReadiness(student).academicScore,
+      projects: student.projectsCount,
+      quality: student.projectQuality,
+      cgpa: student.cgpa
+    };
+
+    saveState();
+    await loadBackendDashboard();
+    renderDashboard();
+    renderAnalysis();
+    renderOpportunities();
+    await loadBackendOpportunities();
+
+    const lastUpdatedEl = getEl("assessmentLastUpdated");
+    if (lastUpdatedEl) {
+      const dt = new Date(result.created_at);
+      lastUpdatedEl.textContent = `Last assessed: ${dt.toLocaleDateString()} ${dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+      lastUpdatedEl.style.display = "inline-block";
+    }
+
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--green-600)";
+      statusEl.style.background = "var(--green-100)";
+      statusEl.style.color = "var(--green-600)";
+      statusEl.innerHTML = `<strong>Success:</strong> Assessment saved to backend! Verified Readiness Score: <strong>${formatReadinessScore(result.readiness_score) + '/100'}</strong>.`;
+      statusEl.classList.remove("hidden");
+    }
+
+    await loadAssessmentHistory();
+  } catch (err) {
+    if (statusEl) {
+      statusEl.className = "notice";
+      statusEl.style.borderLeftColor = "var(--red-700)";
+      statusEl.style.background = "var(--red-100)";
+      statusEl.style.color = "var(--red-700)";
+      statusEl.innerHTML = `<strong>Error submitting assessment:</strong> ${escapeHtml(err.message)}`;
+      statusEl.classList.remove("hidden");
+    }
+  } finally {
+    isSubmittingAssessment = false;
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Assessment to Backend";
+    }
+    if (assessBtn1) assessBtn1.disabled = false;
+    if (assessBtn2) assessBtn2.disabled = false;
+  }
+}
+
+function renderHistoryItemCard(item, idx, totalCount) {
+  const dt = new Date(item.created_at);
+  const dateStr = `${dt.toLocaleDateString()} ${dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+  return `
+    <div class="history-item">
+      <div>
+        <span style="font-weight:700">#${totalCount - idx}</span>
+        <span class="history-item-meta" style="margin-left:8px">${dateStr}</span>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:3px">
+          Aptitude: ${item.aptitude_score} • Technical: ${item.technical_score} • Comm: ${item.communication_score} • Problem Solving: ${item.problem_solving_score}
+        </div>
+      </div>
+      <div class="history-item-score">
+        ${formatReadinessScore(item.readiness_score) + ' / 100'}
+      </div>
+    </div>
+  `;
+}
+
+async function loadAssessmentHistory() {
+  if (!window.api || !window.api.isAuthenticated()) return;
+
+  try {
+    const history = await window.api.getAssessmentHistory();
+    const toggleBtn = getEl("historyToggleBtn");
+    const countEl = getEl("historyCount");
+    const listEl = getEl("assessmentHistoryList");
+
+    if (history && history.length > 0) {
+      if (toggleBtn) toggleBtn.style.display = "inline-block";
+      if (countEl) countEl.textContent = history.length;
+
+      if (listEl) {
+        listEl.innerHTML = history.map((item, idx) => renderHistoryItemCard(item, idx, history.length)).join("");
+      }
+    } else {
+      if (toggleBtn) toggleBtn.style.display = "none";
+      if (listEl) listEl.innerHTML = `<div class="empty">No prior assessments recorded.</div>`;
+    }
+  } catch (err) {
+    console.warn("Could not load assessment history:", err.message);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8.4 BACKEND ROADMAP INTEGRATION
+   -------------------------------------------------------------------------- */
+
+const FRONTEND_TO_BACKEND_ROLE_MAP = {
+  "software developer": "software development engineer",
+  "software development engineer": "software development engineer",
+  "frontend developer": "frontend developer",
+  "backend developer": "backend developer",
+  "full stack developer": "full stack developer",
+  "python developer": "python developer"
+};
+
+function getBackendRole(frontendRole) {
+  const normalized = String(frontendRole || "").trim().toLowerCase();
+  return FRONTEND_TO_BACKEND_ROLE_MAP[normalized] || normalized;
+}
+
+let currentBackendRoadmapTasks = null;
+let roadmapRegenTimer = null;
+
+function renderRoadmapTaskCard(task) {
+  const priorityTag = task.priority === "High"
+    ? '<span class="tag bad" style="font-weight:700">High Priority</span>'
+    : '<span class="tag warn" style="font-weight:700">Medium Priority</span>';
+
+  const statusBadge = task.is_completed
+    ? '<span class="tag good" style="display:inline-flex;align-items:center;gap:4px;font-weight:700">✓ Completed</span>'
+    : '<button type="button" class="btn secondary" onclick="completeBackendTask(' + task.id + ')" style="padding:5px 12px;font-size:12.5px;cursor:pointer">Mark Complete</button>';
+
+  const borderStyle = task.is_completed ? ';border-color:var(--green-200, #bbf7d0);opacity:0.88' : '';
+
+  return '<div class="roadmap-step" id="roadmap-task-' + task.id + '" style="margin-bottom:12px' + borderStyle + '">' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">' +
+    '<div>' +
+    '<h4 style="margin:0 0 4px;display:flex;align-items:center;gap:8px">' +
+    escapeHtml(task.skill_name) + ' ' + priorityTag +
+    '</h4>' +
+    '<div style="font-size:12.5px;color:var(--slate-500);margin-bottom:8px">' +
+    'Current proficiency: <strong>Level ' + task.current_level + '/5</strong> &nbsp;•&nbsp; Target required: <strong>Level ' + task.required_level + '/5</strong>' +
+    '</div>' +
+    '</div>' +
+    '<div>' + statusBadge + '</div>' +
+    '</div>' +
+    '<p style="margin:6px 0 0;font-size:13.5px;color:var(--slate-700)">' + escapeHtml(task.recommendation) + '</p>' +
+    '</div>';
+}
+
+function renderBackendRoadmap(tasks, backendRole, displayRole) {
+  const metaEl = getEl("roadmapMeta");
+  const contentEl = getEl("roadmapContent");
+  if (!contentEl) return;
+
+  const roleLabel = displayRole || student.targetRole || "Target Role";
+  const total = Array.isArray(tasks) ? tasks.length : 0;
+  const completed = Array.isArray(tasks) ? tasks.filter(t => t.is_completed).length : 0;
+
+  if (metaEl) {
+    metaEl.innerHTML = 'Personalized study plan for <strong>' + escapeHtml(roleLabel) + '</strong> (' + escapeHtml(student.name || "Student") + ') • <strong>' + completed + '/' + total + '</strong> tasks completed.';
+  }
+
+  if (total === 0) {
+    contentEl.className = "";
+    contentEl.innerHTML = '<div class="empty">All required skills for <strong>' + escapeHtml(roleLabel) + '</strong> meet or exceed the benchmark levels! No open gap tasks.</div>';
+    return;
+  }
+
+  contentEl.className = "";
+  const headerHtml = '<div style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">' +
+    '<div style="font-size:13px;color:var(--slate-500)">Tasks prioritized by skill gap. Mark each task complete as you study.</div>' +
+    '<button type="button" class="btn secondary" onclick="regenerateBackendRoadmap()" style="padding:4px 10px;font-size:12px;cursor:pointer">↻ Refresh Roadmap</button>' +
+    '</div>';
+
+  const cardsHtml = tasks.map(renderRoadmapTaskCard).join("");
+  contentEl.innerHTML = headerHtml + cardsHtml;
+}
+
+async function loadBackendRoadmap() {
+  if (!window.api || !window.api.isAuthenticated()) {
+    renderRoadmap();
+    return;
+  }
+
+  const targetRole = student.targetRole || (getEl("targetRole") ? getEl("targetRole").value : "Software Developer");
+  const backendRole = getBackendRole(targetRole);
+  const contentEl = getEl("roadmapContent");
+  const metaEl = getEl("roadmapMeta");
+
+  if (!currentBackendRoadmapTasks) {
+    if (contentEl) {
+      contentEl.className = "";
+      contentEl.innerHTML = '<div class="empty">Loading your personalized roadmap from backend...</div>';
+    }
+    if (metaEl) {
+      metaEl.textContent = 'Loading roadmap for ' + targetRole + '...';
+    }
+  }
+
+  try {
+    const tasks = await window.api.getRoadmap(backendRole);
+    if (Array.isArray(tasks) && tasks.length > 0) {
+      currentBackendRoadmapTasks = tasks;
+      renderBackendRoadmap(tasks, backendRole, targetRole);
+    } else {
+      const genTasks = await window.api.generateRoadmap(backendRole);
+      currentBackendRoadmapTasks = genTasks || [];
+      renderBackendRoadmap(currentBackendRoadmapTasks, backendRole, targetRole);
+    }
+  } catch (err) {
+    console.error("Failed to load backend roadmap:", err);
+    if (contentEl) {
+      contentEl.className = "";
+      contentEl.innerHTML = '<div class="empty" style="color:var(--red-700)">' +
+        'Unable to load roadmap from backend (' + escapeHtml(err.message) + ').' +
+        '<div style="margin-top:10px">' +
+        '<button type="button" class="btn secondary" onclick="loadBackendRoadmap()">Retry</button>' +
+        '</div>' +
+        '</div>';
+    }
+  }
+}
+
+async function regenerateBackendRoadmap() {
+  if (!window.api || !window.api.isAuthenticated()) return;
+
+  if (roadmapRegenTimer) {
+    clearTimeout(roadmapRegenTimer);
+  }
+
+  roadmapRegenTimer = setTimeout(async () => {
+    const targetRole = student.targetRole || (getEl("targetRole") ? getEl("targetRole").value : "Software Developer");
+    const backendRole = getBackendRole(targetRole);
+
+    try {
+      const tasks = await window.api.generateRoadmap(backendRole);
+      if (Array.isArray(tasks)) {
+        currentBackendRoadmapTasks = tasks;
+        const roadmapSection = getEl("view-roadmap");
+        if (roadmapSection && !roadmapSection.classList.contains("hidden")) {
+          renderBackendRoadmap(tasks, backendRole, targetRole);
+        }
+      }
+    } catch (err) {
+      console.warn("Roadmap regeneration warning:", err.message);
+    }
+  }, 250);
+}
+
+async function completeBackendTask(taskId) {
+  if (!window.api || !window.api.isAuthenticated()) return;
+
+  const btn = document.querySelector('#roadmap-task-' + taskId + ' button');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Updating...";
+  }
+
+  try {
+    const res = await window.api.completeRoadmapTask(taskId);
+    if (res && res.task) {
+      if (Array.isArray(currentBackendRoadmapTasks)) {
+        const idx = currentBackendRoadmapTasks.findIndex(t => t.id === taskId);
+        if (idx !== -1) {
+          currentBackendRoadmapTasks[idx] = res.task;
+        }
+      }
+      const targetRole = student.targetRole || (getEl("targetRole") ? getEl("targetRole").value : "Software Developer");
+      const backendRole = getBackendRole(targetRole);
+      renderBackendRoadmap(currentBackendRoadmapTasks, backendRole, targetRole);
+    }
+  } catch (err) {
+    console.error("Failed to complete task:", err);
+    alert('Failed to complete task: ' + err.message);
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Mark Complete";
+    }
+  }
+}
+
+window.completeBackendTask = completeBackendTask;
+window.regenerateBackendRoadmap = regenerateBackendRoadmap;
+window.loadBackendRoadmap = loadBackendRoadmap;
+
+function initAuth() {
+  const overlay = getEl("authOverlay");
+  const tabLogin = getEl("authTabLogin");
+  const tabRegister = getEl("authTabRegister");
+  const formLogin = getEl("loginForm");
+  const formRegister = getEl("registerForm");
+  const switchToRegister = getEl("switchToRegister");
+  const switchToLogin = getEl("switchToLogin");
+  const userBadge = getEl("userBadge");
+  const userEmailText = getEl("userEmailText");
+  const logoutBtn = getEl("logoutBtn");
+  const loginHeaderBtn = getEl("loginHeaderBtn");
+
+  function showLoginTab() {
+    tabLogin.classList.add("active");
+    tabRegister.classList.remove("active");
+    formLogin.classList.remove("hidden");
+    formRegister.classList.add("hidden");
+    getEl("loginError").classList.add("hidden");
+    getEl("registerError").classList.add("hidden");
+  }
+
+  function showRegisterTab() {
+    tabRegister.classList.add("active");
+    tabLogin.classList.remove("active");
+    formRegister.classList.remove("hidden");
+    formLogin.classList.add("hidden");
+    getEl("loginError").classList.add("hidden");
+    getEl("registerError").classList.add("hidden");
+  }
+
+  tabLogin.addEventListener("click", showLoginTab);
+  tabRegister.addEventListener("click", showRegisterTab);
+  switchToRegister.addEventListener("click", (e) => { e.preventDefault(); showRegisterTab(); });
+  switchToLogin.addEventListener("click", (e) => { e.preventDefault(); showLoginTab(); });
+
+  async function submitLogin() {
+    const email = getEl("loginEmail").value.trim();
+    const password = getEl("loginPassword").value;
+    const errorEl = getEl("loginError");
+    const loginBtn = getEl("loginBtn");
+
+    errorEl.classList.add("hidden");
+    errorEl.textContent = "";
+
+    if (!email || !password) {
+      errorEl.textContent = "Please enter both email and password.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Signing In...";
+
+    try {
+      await window.api.login(email, password);
+      const user = await window.api.getCurrentUser();
+      currentUser = user;
+
+      overlay.classList.add("hidden");
+      userEmailText.textContent = user.email;
+      userBadge.style.display = "inline-flex";
+      logoutBtn.style.display = "inline-block";
+      if (loginHeaderBtn) loginHeaderBtn.style.display = "none";
+
+      getEl("loginPassword").value = "";
+
+      // Check if authenticated user is an authorized reviewer
+      let isReviewer = false;
+      try {
+        isReviewer = await checkIsReviewer();
+      } catch (checkErr) {
+        errorEl.textContent = `Reviewer verification failed: ${checkErr.message || "Network error"}. Please try again.`;
+        errorEl.classList.remove("hidden");
+        return;
+      }
+
+      const revNav = getEl("navReviewerBtn");
+      const studentNavs = document.querySelectorAll(".nav-student");
+      if (isReviewer) {
+        if (revNav) revNav.style.display = "flex";
+        studentNavs.forEach(b => b.style.display = "none");
+        userEmailText.textContent = `${user.email} (Reviewer)`;
+        showView("reviewer");
+      } else {
+        if (revNav) revNav.style.display = "none";
+        studentNavs.forEach(b => b.style.display = "");
+        await loadBackendProfile();
+        await loadBackendAssessment();
+        await loadBackendSkills();
+        await loadBackendDashboard();
+        await loadBackendOpportunities();
+        const activeNav = document.querySelector(".nav button.active");
+        if (!activeNav || activeNav.dataset.view === "dashboard") {
+          showView("dashboard");
+        }
+      }
+    } catch (err) {
+      errorEl.textContent = err.message || "Failed to sign in. Please verify your credentials.";
+      errorEl.classList.remove("hidden");
+    } finally {
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Sign In";
+    }
+  }
+
+  formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitLogin();
+  });
+  getEl("loginBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    submitLogin();
+  });
+
+  async function submitRegister() {
+    const email = getEl("registerEmail").value.trim();
+    const password = getEl("registerPassword").value;
+    const confirm = getEl("registerPasswordConfirm").value;
+    const errorEl = getEl("registerError");
+    const successEl = getEl("registerSuccess");
+    const registerBtn = getEl("registerBtn");
+
+    errorEl.classList.add("hidden");
+    successEl.classList.add("hidden");
+
+    if (!email || !password || !confirm) {
+      errorEl.textContent = "All fields are required.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+
+    if (password.length < 8) {
+      errorEl.textContent = "Password must be at least 8 characters long.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+
+    if (password !== confirm) {
+      errorEl.textContent = "Passwords do not match.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+
+    registerBtn.disabled = true;
+    registerBtn.textContent = "Creating Account...";
+
+    try {
+      const newUser = await window.api.register(email, password);
+      successEl.innerHTML = `Account created successfully for <strong>${escapeHtml(newUser.email)}</strong>! Please sign in with your password.`;
+      successEl.classList.remove("hidden");
+
+      getEl("loginEmail").value = newUser.email;
+      getEl("registerPassword").value = "";
+      getEl("registerPasswordConfirm").value = "";
+      setTimeout(() => {
+        showLoginTab();
+      }, 1500);
+    } catch (err) {
+      errorEl.textContent = err.message || "Registration failed.";
+      errorEl.classList.remove("hidden");
+    } finally {
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Create Account";
+    }
+  }
+
+  formRegister.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitRegister();
+  });
+  getEl("registerBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    submitRegister();
+  });
+
+  let isLoggingOut = false;
+
+  function performLogout() {
+    if (isLoggingOut) return;
+    isLoggingOut = true;
+
+    try {
+      if (window.api) {
+        window.api.clearToken();
+      }
+      isCurrentReviewer = false;
+      const revNav = getEl("navReviewerBtn");
+      if (revNav) revNav.style.display = "none";
+      document.querySelectorAll(".nav-student").forEach(b => b.style.display = "");
+
+      currentUser = null;
+      currentUserProfile = null;
+      hasProfile = false;
+      currentBackendAssessment = null;
+      currentBackendRoadmapTasks = null;
+      currentBackendDashboardSummary = null;
+      currentBackendOpportunities = null;
+      isOpportunitiesLoading = false;
+      currentBackendSkills = {};
+      closeEvidenceModal();
+
+      userBadge.style.display = "none";
+      logoutBtn.style.display = "none";
+      if (loginHeaderBtn) loginHeaderBtn.style.display = "inline-block";
+
+      getEl("studentName").value = "";
+      getEl("studentCollege").value = "";
+      if (getEl("studentBranch")) getEl("studentBranch").value = "";
+      if (getEl("studentGradYear")) getEl("studentGradYear").value = "";
+      getEl("cgpa").value = "";
+      const statusEl = getEl("profileStatus");
+      if (statusEl) statusEl.classList.add("hidden");
+
+      if (getEl("aptitudeScore")) getEl("aptitudeScore").value = "";
+      if (getEl("technicalScore")) getEl("technicalScore").value = "";
+      if (getEl("communicationScore")) getEl("communicationScore").value = "";
+      if (getEl("problemSolvingScore")) getEl("problemSolvingScore").value = "";
+      const lastUpdatedEl = getEl("assessmentLastUpdated");
+      if (lastUpdatedEl) { lastUpdatedEl.style.display = "none"; lastUpdatedEl.textContent = ""; }
+      const assessStatusEl = getEl("assessmentStatus");
+      if (assessStatusEl) assessStatusEl.classList.add("hidden");
+      const historyToggleBtn = getEl("historyToggleBtn");
+      if (historyToggleBtn) historyToggleBtn.style.display = "none";
+      const historySection = getEl("assessmentHistorySection");
+      if (historySection) historySection.classList.add("hidden");
+      const skillStatus = getEl("skillStatus");
+      if (skillStatus) { skillStatus.textContent = ""; skillStatus.style.display = "none"; }
+
+      renderSkillInputs();
+      renderDashboard();
+      renderAnalysis();
+      renderOpportunities();
+      showView("dashboard");
+
+      showLoginTab();
+      overlay.classList.remove("hidden");
+    } finally {
+      isLoggingOut = false;
+    }
+  }
+
+  logoutBtn.addEventListener("click", performLogout);
+  if (loginHeaderBtn) {
+    loginHeaderBtn.addEventListener("click", () => {
+      showLoginTab();
+      overlay.classList.remove("hidden");
+    });
+  }
+
+  window.addEventListener("nxtstep:unauthorized", () => {
+    performLogout();
+  });
+
+  window.addEventListener("nxtstep:logout", () => {
+    performLogout();
+  });
+
+  const saveBtn = getEl("saveProfileBtn");
+  if (saveBtn) {
+    saveBtn.addEventListener("click", handleSaveProfile);
+  }
+
+  const submitAssessBtn = getEl("submitAssessmentBtn");
+  if (submitAssessBtn) {
+    submitAssessBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleSaveAssessment();
+    });
+  }
+  const assessForm = getEl("assessmentForm");
+  if (assessForm) {
+    assessForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleSaveAssessment();
+    });
+  }
+  const historyToggleBtn = getEl("historyToggleBtn");
+  if (historyToggleBtn) {
+    historyToggleBtn.addEventListener("click", () => {
+      const section = getEl("assessmentHistorySection");
+      if (!section) return;
+      const isHidden = section.classList.contains("hidden");
+      section.classList.toggle("hidden", !isHidden);
+      const count = getEl("historyCount") ? getEl("historyCount").textContent : "0";
+      historyToggleBtn.textContent = isHidden
+        ? `Hide History (${count})`
+        : `View Assessment History (${count})`;
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. INITIALIZATION
+   -------------------------------------------------------------------------- */
+
+async function initializeApp() {
   loadState();
 
   SKILLS.forEach(skill => {
@@ -1437,16 +3988,163 @@ function initializeApp() {
 
   getEl("oppRoleFilter").addEventListener("change", renderOpportunities);
 
-  ["studentName", "studentCollege", "targetRole", "cgpa", "projectsCount", "projectQuality", "projectSummary"]
+  ["studentName", "studentCollege", "studentBranch", "studentGradYear", "targetRole", "cgpa", "projectsCount", "projectQuality", "projectSummary"]
     .forEach(id => {
-      getEl(id).addEventListener("input", () => {
-        readProfileForm();
-        saveState();
-        renderDashboard();
-      });
+      const el = getEl(id);
+      if (el) {
+        el.addEventListener("input", () => {
+          readProfileForm();
+          saveState();
+          renderDashboard();
+        });
+      }
     });
 
-  showView("dashboard");
+  const targetRoleSelect = getEl("targetRole");
+  if (targetRoleSelect) {
+    targetRoleSelect.addEventListener("change", () => {
+      readProfileForm();
+      saveState();
+      renderDashboard();
+      if (window.api && window.api.isAuthenticated()) {
+        regenerateBackendRoadmap();
+      }
+    });
+  }
+
+  // Initialize Authentication & Profile wiring
+  initAuth();
+
+  // Evidence modal & interaction listeners
+  const skillInputsEl = getEl("skillInputs");
+  if (skillInputsEl) {
+    skillInputsEl.addEventListener("click", e => {
+      const btn = e.target.closest(".btn-evidence");
+      if (btn && btn.dataset.skill) {
+        openEvidenceModal(btn.dataset.skill);
+      }
+    });
+  }
+
+  const closeEvModalBtn = getEl("closeEvidenceModalBtn");
+  if (closeEvModalBtn) {
+    closeEvModalBtn.addEventListener("click", closeEvidenceModal);
+  }
+
+  const evOverlay = getEl("evidenceOverlay");
+  if (evOverlay) {
+    evOverlay.addEventListener("click", e => {
+      if (e.target === evOverlay) {
+        closeEvidenceModal();
+      }
+    });
+  }
+
+  const evForm = getEl("evidenceForm");
+  if (evForm) {
+    evForm.addEventListener("submit", handleEvidenceSubmit);
+  }
+
+  const evHistoryList = getEl("evidenceHistoryList");
+  if (evHistoryList) {
+    evHistoryList.addEventListener("click", e => {
+      const delBtn = e.target.closest(".btn-delete-evidence");
+      if (delBtn && delBtn.dataset.evidenceId) {
+        handleDeleteEvidence(Number(delBtn.dataset.evidenceId));
+      }
+    });
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      closeEvidenceModal();
+    }
+  });
+
+  const reviewerQueueList = getEl("reviewerQueueList");
+  if (reviewerQueueList) {
+    reviewerQueueList.addEventListener("click", e => {
+      const approveBtn = e.target.closest(".btn-review-approve");
+      const rejectBtn = e.target.closest(".btn-review-reject");
+      if (approveBtn && approveBtn.dataset.evidenceId) {
+        handleReviewEvidence(Number(approveBtn.dataset.evidenceId), "approved");
+      } else if (rejectBtn && rejectBtn.dataset.evidenceId) {
+        handleReviewEvidence(Number(rejectBtn.dataset.evidenceId), "rejected");
+      }
+    });
+  }
+
+  const refreshReviewerBtn = getEl("refreshReviewerQueueBtn");
+  if (refreshReviewerBtn) {
+    refreshReviewerBtn.addEventListener("click", () => {
+      loadReviewerQueue();
+    });
+  }
+
+  // Check existing session
+  if (window.api && window.api.isAuthenticated()) {
+    let user;
+    try {
+      user = await window.api.getCurrentUser();
+      currentUser = user;
+      getEl("authOverlay").classList.add("hidden");
+      getEl("userEmailText").textContent = user.email;
+      getEl("userBadge").style.display = "inline-flex";
+      getEl("logoutBtn").style.display = "inline-block";
+      if (getEl("loginHeaderBtn")) getEl("loginHeaderBtn").style.display = "none";
+    } catch (err) {
+      console.warn("Session check failed:", err.message);
+      // On HTTP 401, api.js has already called clearToken() and dispatched nxtstep:unauthorized -> performLogout()
+      if (!window.api.isAuthenticated()) {
+        return;
+      }
+      // For network / server errors, preserve the stored token but show the auth overlay
+      getEl("authOverlay").classList.remove("hidden");
+      return;
+    }
+
+    // Determine reviewer role
+    let isReviewer = false;
+    try {
+      isReviewer = await checkIsReviewer();
+    } catch (checkErr) {
+      console.error("Could not determine reviewer status on init:", checkErr);
+      alert(`Unable to verify reviewer permissions: ${checkErr.message || "Network error"}. Please check your connection and reload.`);
+      return;
+    }
+
+    const revNav = getEl("navReviewerBtn");
+    const studentNavs = document.querySelectorAll(".nav-student");
+    if (isReviewer) {
+      if (revNav) revNav.style.display = "flex";
+      studentNavs.forEach(b => b.style.display = "none");
+      getEl("userEmailText").textContent = `${currentUser.email} (Reviewer)`;
+      showView("reviewer");
+    } else {
+      if (revNav) revNav.style.display = "none";
+      studentNavs.forEach(b => b.style.display = "");
+
+      // Authenticated student data loading (non-destructive: failures here do not invalidate authentication)
+      try {
+        await loadBackendProfile();
+        await loadBackendAssessment();
+        await loadBackendSkills();
+        await loadBackendDashboard();
+        await loadBackendOpportunities();
+      } catch (err) {
+        console.warn("Could not load complete backend data:", err.message);
+      }
+
+      // View restoration for student
+      const activeNav = document.querySelector(".nav button.active");
+      if (!activeNav || activeNav.dataset.view === "dashboard") {
+        showView("dashboard");
+      }
+    }
+  } else {
+    // Unauthenticated: present auth overlay
+    getEl("authOverlay").classList.remove("hidden");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initializeApp);

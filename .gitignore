@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.pytest_cache/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Recovery snapshots
+*.recovered.html
+index.recovered.html
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
