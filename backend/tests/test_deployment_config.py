@@ -26,21 +26,51 @@ class TestDeploymentConfiguration(unittest.TestCase):
     """Test suite verifying deployment configuration invariants."""
 
     def test_postgres_url_normalization_legacy_scheme(self):
-        """Verify that legacy 'postgres://' connection URLs normalize to 'postgresql://'."""
+        """Verify that legacy 'postgres://' connection URLs normalize to 'postgresql+psycopg2://'."""
         neon_url = "postgres://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require"
         settings = Settings(secret_key="test-key-32-chars-long-strictly", database_url=neon_url)
-        self.assertTrue(settings.database_url.startswith("postgresql://"))
+        self.assertTrue(settings.database_url.startswith("postgresql+psycopg2://"))
         self.assertFalse(settings.database_url.startswith("postgres://"))
         self.assertEqual(
             settings.database_url,
-            "postgresql://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require",
+            "postgresql+psycopg2://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require",
         )
 
-    def test_postgres_url_normalization_standard_scheme(self):
-        """Verify that standard 'postgresql://' URLs are preserved as-is."""
+    def test_postgres_url_normalization_bare_postgresql_scheme(self):
+        """Verify that bare 'postgresql://' URLs normalize to explicit 'postgresql+psycopg2://'."""
         standard_url = "postgresql://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require"
         settings = Settings(secret_key="test-key-32-chars-long-strictly", database_url=standard_url)
-        self.assertEqual(settings.database_url, standard_url)
+        self.assertTrue(settings.database_url.startswith("postgresql+psycopg2://"))
+        self.assertEqual(
+            settings.database_url,
+            "postgresql+psycopg2://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require",
+        )
+
+    def test_postgres_url_already_explicit_psycopg2_preserved(self):
+        """Verify that already explicit 'postgresql+psycopg2://' URLs remain unchanged."""
+        explicit_url = "postgresql+psycopg2://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require"
+        settings = Settings(secret_key="test-key-32-chars-long-strictly", database_url=explicit_url)
+        self.assertEqual(settings.database_url, explicit_url)
+
+    def test_postgres_url_normalization_whitespace_handling(self):
+        """Verify that leading/trailing whitespace is stripped during PostgreSQL URL normalization."""
+        padded_url = "   postgres://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require   "
+        settings = Settings(secret_key="test-key-32-chars-long-strictly", database_url=padded_url)
+        self.assertEqual(
+            settings.database_url,
+            "postgresql+psycopg2://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require",
+        )
+
+    def test_normalized_url_uses_installed_psycopg2_driver_without_psycopg3(self):
+        """Verify that create_engine with normalized URL binds to psycopg2 and does not require psycopg (v3)."""
+        settings = Settings(
+            secret_key="test-key-32-chars-long-strictly",
+            database_url="postgresql://user:password@ep-xyz-123.us-east-2.aws.neon.tech/neondb?sslmode=require",
+        )
+        # create_engine succeeds in resolving the dialect/driver without raising ModuleNotFoundError: No module named 'psycopg'
+        engine = create_engine(settings.database_url)
+        self.assertEqual(engine.dialect.name, "postgresql")
+        self.assertEqual(engine.dialect.driver, "psycopg2")
 
     def test_sqlite_url_preserved(self):
         """Verify that local SQLite database URLs remain unchanged."""

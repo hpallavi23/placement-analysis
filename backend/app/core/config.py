@@ -33,9 +33,12 @@ class Settings(BaseSettings):
     def normalize_database_url(cls, v: str) -> str:
         if isinstance(v, str):
             trimmed = v.strip()
-            # Normalize legacy 'postgres://' scheme to SQLAlchemy-compatible 'postgresql://'
+            # Normalize legacy 'postgres://' scheme to explicit 'postgresql+psycopg2://'
             if trimmed.startswith("postgres://"):
-                return "postgresql://" + trimmed[len("postgres://"):]
+                return "postgresql+psycopg2://" + trimmed[len("postgres://"):]
+            # Normalize bare 'postgresql://' scheme to explicit 'postgresql+psycopg2://' for SQLAlchemy 2.1+
+            if trimmed.startswith("postgresql://"):
+                return "postgresql+psycopg2://" + trimmed[len("postgresql://"):]
             return trimmed
         return v
 
