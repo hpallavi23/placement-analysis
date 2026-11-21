@@ -17,9 +17,30 @@
   const DEFAULT_BASE_URL = "http://127.0.0.1:8000/api/v1";
   const TOKEN_STORAGE_KEY = "nxtstep_access_token";
 
+  function resolveBaseUrl() {
+    if (typeof window !== "undefined" && window.NXTSTEP_API_BASE_URL && typeof window.NXTSTEP_API_BASE_URL === "string") {
+      const trimmed = window.NXTSTEP_API_BASE_URL.trim();
+      if (trimmed) {
+        return trimmed;
+      }
+    }
+    return DEFAULT_BASE_URL;
+  }
+
   class ApiClient {
-    constructor(baseUrl = DEFAULT_BASE_URL) {
-      this.baseUrl = baseUrl.replace(/\/+$/, "");
+    constructor(baseUrl) {
+      this._customBaseUrl = baseUrl ? String(baseUrl).trim().replace(/\/+$/, "") : null;
+    }
+
+    get baseUrl() {
+      if (this._customBaseUrl) {
+        return this._customBaseUrl;
+      }
+      return resolveBaseUrl().replace(/\/+$/, "");
+    }
+
+    set baseUrl(url) {
+      this._customBaseUrl = url ? String(url).trim().replace(/\/+$/, "") : null;
     }
 
     /**

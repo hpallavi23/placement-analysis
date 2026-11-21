@@ -20,11 +20,13 @@ python-multipart>=0.0.20,<1.0
 python-dotenv>=1.0,<2.0
 
 # ---------------------------------------------------------------
-# Database: SQLite now, MySQL later
+# Database: SQLite, MySQL, and PostgreSQL (Production)
 # ---------------------------------------------------------------
 SQLAlchemy==2.1.4
 # Pure-Python MySQL driver: no C compiler needed on Windows
 PyMySQL==1.2.3
+# PostgreSQL driver for production deployment (e.g. Neon PostgreSQL on Render)
+psycopg2-binary==2.9.10
 
 # ---------------------------------------------------------------
 # Authentication and password hashing
