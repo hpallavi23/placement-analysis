@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.db.session import get_db
+from app.models.assessment import Assessment
 from app.models.skill import Skill
 from app.models.skill_evidence import SkillEvidence
 from app.models.user import User
@@ -110,7 +111,14 @@ def get_skill_gap(
         Skill.user_id == user.id
     ).all()
 
-    result = calculate_skill_gap(user_skills, role)
+    latest_assessment = (
+        db.query(Assessment)
+        .filter(Assessment.user_id == user.id)
+        .order_by(Assessment.created_at.desc())
+        .first()
+    )
+
+    result = calculate_skill_gap(user_skills, role, latest_assessment=latest_assessment)
 
     if result is None:
         raise HTTPException(

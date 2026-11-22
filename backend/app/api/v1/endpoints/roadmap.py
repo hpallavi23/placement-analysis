@@ -4,13 +4,17 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models.user import User
 from app.models.skill import Skill
+from app.models.assessment import Assessment
 from app.models.roadmap import RoadmapTask
 
 from app.schemas.roadmap import RoadmapTaskResponse, RoadmapTaskCompleteResponse
 
 from app.api.v1.endpoints.auth import get_current_user
 
-from app.services.skill_gap import ROLE_REQUIREMENTS
+from app.services.skill_gap import (
+    ROLE_REQUIREMENTS,
+    get_user_effective_skills
+)
 from app.services.roadmap import (
     generate_recommendation,
     get_priority
@@ -38,10 +42,11 @@ def create_roadmap(
         Skill.user_id == user.id
     ).all()
 
-    current_skills = {
-        skill.skill_name.strip().lower(): skill.proficiency
-        for skill in skills
-    }
+    latest_assessment = db.query(Assessment).filter(
+        Assessment.user_id == user.id
+    ).order_by(Assessment.created_at.desc()).first()
+
+    current_skills, is_assessed_map = get_user_effective_skills(skills, latest_assessment)
 
     existing_tasks = db.query(RoadmapTask).filter(
         RoadmapTask.user_id == user.id,
@@ -51,8 +56,9 @@ def create_roadmap(
     task_map = {task.skill_name: task for task in existing_tasks}
 
     for skill, required in requirements.items():
-
-        current = current_skills.get(skill.lower(), 0)
+        skill_key = skill.lower()
+        current = current_skills.get(skill_key, 0)
+        is_assessed = is_assessed_map.get(skill_key, False)
         task = task_map.get(skill)
 
         if current >= required:
@@ -60,11 +66,21 @@ def create_roadmap(
                 db.delete(task)
             continue
 
-        recommendation = generate_recommendation(
-            skill, current, required
-        )
-
-        priority = get_priority(current, required)
+        if not is_assessed:
+            if skill.lower() == "problem solving":
+                recommendation = (
+                    f"Complete your Placement Readiness Assessment to evaluate your "
+                    f"Problem Solving proficiency. Target level: {required}/5."
+                )
+            else:
+                recommendation = generate_recommendation(skill, 0, required)
+            priority = "High"
+        elif current == 0:
+            recommendation = generate_recommendation(skill, 0, required)
+            priority = "High"
+        else:
+            recommendation = generate_recommendation(skill, current, required)
+            priority = get_priority(current, required)
 
         if task:
             task.current_level = current

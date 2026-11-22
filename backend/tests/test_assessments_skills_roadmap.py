@@ -393,3 +393,198 @@ def test_roadmap_user_isolation(
     matched = [t for t in res_a_roadmap.json() if t["id"] == task_a_id]
     assert len(matched) == 1
     assert matched[0]["is_completed"] is False
+
+
+# ============================================================================
+# SDE Role Consistency & Boundary Tests
+# ============================================================================
+
+def test_software_developer_gap_and_roadmap_consistency(client: TestClient, auth_headers_a: dict):
+    """Verify SDE role gap analysis and roadmap generation include Java and DBMS, and bridge Problem Solving."""
+    # Log skills for student: Python 4, Java 3, DSA 3, OOP 4, DBMS 3, SQL 4, Git 3
+    test_skills = [
+        {"skill_name": "Python", "proficiency": 4},
+        {"skill_name": "Java", "proficiency": 3},
+        {"skill_name": "DSA", "proficiency": 3},
+        {"skill_name": "OOP", "proficiency": 4},
+        {"skill_name": "DBMS", "proficiency": 3},
+        {"skill_name": "SQL", "proficiency": 4},
+        {"skill_name": "Git", "proficiency": 3},
+    ]
+    for s in test_skills:
+        client.post("/api/v1/skills/", json=s, headers=auth_headers_a)
+
+    # Submit assessment with Problem Solving = 80.0 (converts to Level 5/5)
+    client.post(
+        "/api/v1/assessments/",
+        json={
+            "aptitude_score": 75.0,
+            "technical_score": 80.0,
+            "communication_score": 70.0,
+            "problem_solving_score": 80.0,
+        },
+        headers=auth_headers_a
+    )
+
+    # Verify Gap Analysis
+    res_gap = client.get("/api/v1/skills/gap/software-development-engineer", headers=auth_headers_a)
+    assert res_gap.status_code == 200
+    gap_data = res_gap.json()
+    skills_map = {item["skill"]: item for item in gap_data["skills"]}
+
+    # Verify Java is evaluated at required 4 (gap 1)
+    assert "Java" in skills_map
+    assert skills_map["Java"]["current_level"] == 3
+    assert skills_map["Java"]["required_level"] == 4
+    assert skills_map["Java"]["gap"] == 1
+    assert skills_map["Java"]["status"] == "Needs Improvement"
+    assert skills_map["Java"]["is_assessed"] is True
+
+    # Verify DBMS is evaluated at required 4 (gap 1)
+    assert "DBMS" in skills_map
+    assert skills_map["DBMS"]["current_level"] == 3
+    assert skills_map["DBMS"]["required_level"] == 4
+    assert skills_map["DBMS"]["gap"] == 1
+    assert skills_map["DBMS"]["status"] == "Needs Improvement"
+    assert skills_map["DBMS"]["is_assessed"] is True
+
+    # Verify DSA is evaluated at required 5 (gap 2)
+    assert "DSA" in skills_map
+    assert skills_map["DSA"]["current_level"] == 3
+    assert skills_map["DSA"]["required_level"] == 5
+    assert skills_map["DSA"]["gap"] == 2
+    assert skills_map["DSA"]["status"] == "Needs Improvement"
+
+    # Verify Problem Solving derived from assessment (80.0 -> level 5, gap 0)
+    assert "Problem Solving" in skills_map
+    assert skills_map["Problem Solving"]["current_level"] == 5
+    assert skills_map["Problem Solving"]["required_level"] == 5
+    assert skills_map["Problem Solving"]["gap"] == 0
+    assert skills_map["Problem Solving"]["status"] == "Ready"
+    assert skills_map["Problem Solving"]["is_assessed"] is True
+
+    # Generate Roadmap
+    res_gen = client.post("/api/v1/roadmaps/software-development-engineer/generate", headers=auth_headers_a)
+    assert res_gen.status_code == 200
+    tasks = res_gen.json()
+    task_skills = {t["skill_name"] for t in tasks}
+
+    # Exactly Java, DSA, and DBMS should be on the roadmap
+    assert task_skills == {"Java", "DSA", "DBMS"}
+    task_map = {t["skill_name"]: t for t in tasks}
+    assert task_map["Java"]["current_level"] == 3
+    assert task_map["Java"]["required_level"] == 4
+    assert task_map["Java"]["priority"] == "Medium"
+    assert task_map["DBMS"]["current_level"] == 3
+    assert task_map["DBMS"]["required_level"] == 4
+    assert task_map["DBMS"]["priority"] == "Medium"
+    assert task_map["DSA"]["current_level"] == 3
+    assert task_map["DSA"]["required_level"] == 5
+    assert task_map["DSA"]["priority"] == "Medium"
+
+
+def test_problem_solving_score_conversion_boundaries():
+    """Verify all 13 boundary values for Problem Solving score conversion."""
+    from app.services.skill_gap import convert_problem_solving_score
+
+    assert convert_problem_solving_score(None) == (0, False)
+    assert convert_problem_solving_score(0.0) == (0, True)
+    assert convert_problem_solving_score(1.0) == (1, True)
+    assert convert_problem_solving_score(19.0) == (1, True)
+    assert convert_problem_solving_score(20.0) == (2, True)
+    assert convert_problem_solving_score(39.0) == (2, True)
+    assert convert_problem_solving_score(40.0) == (3, True)
+    assert convert_problem_solving_score(59.0) == (3, True)
+    assert convert_problem_solving_score(60.0) == (4, True)
+    assert convert_problem_solving_score(79.0) == (4, True)
+    assert convert_problem_solving_score(80.0) == (5, True)
+    assert convert_problem_solving_score(99.0) == (5, True)
+    assert convert_problem_solving_score(100.0) == (5, True)
+
+
+def test_problem_solving_unassessed_vs_assessed_zero_roadmap(client: TestClient, auth_headers_b: dict):
+    """Verify unassessed versus assessed level 0 generates distinct roadmap tasks."""
+    # User B has no assessment and no skills logged
+    res_unassessed = client.post("/api/v1/roadmaps/software-development-engineer/generate", headers=auth_headers_b)
+    assert res_unassessed.status_code == 200
+    tasks_unassessed = {t["skill_name"]: t for t in res_unassessed.json()}
+    assert "Problem Solving" in tasks_unassessed
+    ps_unassessed = tasks_unassessed["Problem Solving"]
+    assert ps_unassessed["current_level"] == 0
+    assert ps_unassessed["priority"] == "High"
+    assert "Complete your Placement Readiness Assessment" in ps_unassessed["recommendation"]
+
+    # Now User B takes an assessment with problem_solving_score = 0.0 (genuine zero)
+    client.post(
+        "/api/v1/assessments/",
+        json={
+            "aptitude_score": 50.0,
+            "technical_score": 50.0,
+            "communication_score": 50.0,
+            "problem_solving_score": 0.0,
+        },
+        headers=auth_headers_b
+    )
+
+    res_assessed_zero = client.post("/api/v1/roadmaps/software-development-engineer/generate", headers=auth_headers_b)
+    assert res_assessed_zero.status_code == 200
+    tasks_zero = {t["skill_name"]: t for t in res_assessed_zero.json()}
+    assert "Problem Solving" in tasks_zero
+    ps_zero = tasks_zero["Problem Solving"]
+    assert ps_zero["current_level"] == 0
+    assert ps_zero["priority"] == "High"
+    assert "Start learning Problem Solving fundamentals" in ps_zero["recommendation"]
+
+
+def test_all_five_roles_gap_analysis_supported():
+    """Verify calculate_skill_gap supports all five benchmark roles with expected requirements."""
+    from app.services.skill_gap import calculate_skill_gap, ROLE_REQUIREMENTS
+
+    roles = [
+        "software development engineer",
+        "frontend developer",
+        "backend developer",
+        "full stack developer",
+        "python developer",
+    ]
+    for r in roles:
+        assert r in ROLE_REQUIREMENTS
+        res = calculate_skill_gap([], r)
+        assert res is not None
+        assert res["role"].lower() == r
+        assert "skills" in res
+        assert len(res["skills"]) == len(ROLE_REQUIREMENTS[r])
+
+
+def test_skill_gap_with_assessment_and_zero_profile_skills(client: TestClient, auth_headers_b: dict):
+    """Verify GET /skills/gap/{role} accurately resolves Problem Solving from latest assessment when user has 0 profile skills."""
+    # User B has no skills logged. Submit an assessment with problem_solving_score = 80.0
+    client.post(
+        "/api/v1/assessments/",
+        json={
+            "aptitude_score": 75.0,
+            "technical_score": 80.0,
+            "communication_score": 70.0,
+            "problem_solving_score": 80.0,
+        },
+        headers=auth_headers_b
+    )
+
+    # Call GET /api/v1/skills/gap/software-development-engineer
+    res = client.get("/api/v1/skills/gap/software-development-engineer", headers=auth_headers_b)
+    assert res.status_code == 200
+    data = res.json()
+    skills_map = {item["skill"]: item for item in data["skills"]}
+
+    # Problem Solving should be assessed at Level 5 with gap 0 and status "Ready"
+    assert "Problem Solving" in skills_map
+    assert skills_map["Problem Solving"]["current_level"] == 5
+    assert skills_map["Problem Solving"]["required_level"] == 5
+    assert skills_map["Problem Solving"]["gap"] == 0
+    assert skills_map["Problem Solving"]["status"] == "Ready"
+    assert skills_map["Problem Solving"]["is_assessed"] is True
+
+    # Other skills (e.g. Python, Java) should be unassessed at Level 0
+    assert skills_map["Python"]["current_level"] == 0
+    assert skills_map["Python"]["is_assessed"] is False
+    assert skills_map["Python"]["status"] == "Unassessed"

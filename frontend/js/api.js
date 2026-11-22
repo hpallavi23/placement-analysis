@@ -339,6 +339,16 @@
     }
 
     /**
+     * Retrieve benchmark skill gap analysis for a specific role.
+     * Backend: GET /api/v1/skills/gap/{role} (Protected)
+     * Returns: { role, readiness_percentage, skills: [{ skill, current_level, required_level, gap, status, is_assessed }] }
+     */
+    async getSkillGap(role) {
+      const cleanRole = encodeURIComponent(String(role || "").trim().toLowerCase().replace(/\s+/g, "-"));
+      return this.request(`/skills/gap/${cleanRole}`, { method: "GET" });
+    }
+
+    /**
      * Upsert (add or update) an individual skill proficiency level.
      * Backend: POST /api/v1/skills/ (Protected, JSON)
      * Payload: { skill_name, proficiency }
